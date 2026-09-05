@@ -34,7 +34,7 @@ const TASK_TIMEOUT_MS = 8 * 60 * 1000;
 // would just double the wall-clock cost of a task that is unlikely to be
 // fixed by resampling. --no-retry sets this to 1 to reproduce a run without
 // retries.
-const MAX_ATTEMPTS = 2;
+const MAX_ATTEMPTS = 3;
 const EVE_BIN = resolve(import.meta.dirname, "../node_modules/.bin/eve");
 
 // scripts/score.sh sources .env.local itself; do the same here so a judge

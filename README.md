@@ -55,7 +55,7 @@ npm run predict -- --dataset-dir /path/to/data --out-dir /path/to/out
   port. Without `--url`, it stops the server it started when the run ends.
 - `--force`: rerun a task even if `predictions.jsonl` already has an `ok` line for it
   with an output file that still exists on disk.
-- `--no-retry`: disable the one-retry-per-task behavior below, for a reproducible run.
+- `--no-retry`: disable the retry behavior below, for a reproducible run.
 
 Each task runs as its own session with an 8-minute timeout. On timeout, a model
 failure, or a missing output file, the init workbook is copied to
@@ -63,10 +63,11 @@ failure, or a missing output file, the init workbook is copied to
 task always gets a `predictions.jsonl` line.
 
 A first attempt that ends `missing_output`, `model_failed`, or `error` (not `timeout`)
-gets one retry in a brand-new session with the same first message; the final attempt's
-result is what lands in `predictions.jsonl`, whatever its status. The first attempt's
-trace is kept as `traces/<id>.attempt1.jsonl`, and `traces/<id>.jsonl` holds the last
-attempt, so the judges still see one trace file per task. Pass `--no-retry` to turn
+gets up to two more attempts, each in a brand-new session with the same first message;
+the final attempt's result is what lands in `predictions.jsonl`, whatever its status.
+Earlier attempts' traces are kept as `traces/<id>.attempt1.jsonl` and
+`traces/<id>.attempt2.jsonl`, and `traces/<id>.jsonl` holds the last attempt, so the
+judges still see one trace file per task. Pass `--no-retry` to turn
 this off.
 
 Rerunning the same command resumes: it skips any id already recorded with status `ok`
@@ -162,6 +163,31 @@ Build the sandbox image first (`docker build -t enyl-sandbox:local .`, above) â€
 backends are configured to pull `enyl-sandbox:local`, and neither exists until that
 build runs. If neither backend is available, `npm run predict` will fail when the agent
 tries to run code in the sandbox, not at startup.
+
+## Optional: Ornith on Runcrate
+
+Infra for #12 and #13: serves `ornith-ai/Ornith-1.5-35B-A3B-FP8` on a Runcrate H100 as
+an OpenAI-compatible endpoint. Not needed for `npm run predict`, which stays fixed on
+`deepseek/deepseek-v4-flash-0731`.
+
+```bash
+scripts/runcrate/serve_ornith.sh create   # pick the cheapest single H100, launch the box
+scripts/runcrate/serve_ornith.sh setup    # install uv + a 3.12 venv + vLLM, pull the weights
+scripts/runcrate/serve_ornith.sh serve    # start vLLM, wait for readiness, write .env.local, smoke test
+scripts/runcrate/serve_ornith.sh status   # print the public IP and a one-line curl check
+scripts/runcrate/serve_ornith.sh delete   # terminate the box
+```
+
+The instance is named `ornith-serve`; `rc instances delete ornith-serve` (or the
+script's `delete` subcommand) tears it down. Runcrate bills per minute, so delete it
+once nothing needs it. A single H100 currently runs about $3.60-4.80/hr depending on
+region; `create` always picks whichever single-GPU H100 type is cheapest at the time.
+
+`serve` writes `ORNITH_API_KEY` and `ORNITH_BASE_URL` into `.env.local`. The key never
+appears anywhere else: it is generated locally with `openssl rand -hex 24` and sent to
+the box over `rc ssh` stdin, not argv.
+
+As of this writing, `ornith-serve` is running and left up for #12 and #13.
 
 ## Things to look at
 
