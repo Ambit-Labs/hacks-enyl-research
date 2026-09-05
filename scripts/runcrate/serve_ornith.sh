@@ -24,16 +24,21 @@ set -euo pipefail
 export RUNCRATE_PROJECT_ID="${RUNCRATE_PROJECT_ID:-29550a54-cba3-4938-8b0b-b5e30156abc1}"
 
 NAME="${ORNITH_INSTANCE_NAME:-ornith-serve}"
+# GPU type for create (H100, GH200, ...). One box per NAME.
+GPU="${ORNITH_GPU:-H100}"
 TEMPLATE=ubuntu-inference
 MODEL_REPO="ornith-ai/Ornith-1.5-35B-A3B-FP8"
 MODEL_DIR="/root/models/ornith-1.5-35b-a3b-fp8"
 VENV=/root/venv
 PORT=8000
-MAX_MODEL_LEN=65536
+MAX_MODEL_LEN="${ORNITH_MAX_MODEL_LEN:-65536}"
 RC_SLEEP="${RC_SLEEP:-8}"
 
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
-ENV_LOCAL="$ROOT/.env.local"
+# Where serve writes ORNITH_API_KEY / ORNITH_BASE_URL. Point a second box at
+# its own file (e.g. runs/boxes/<name>.env, gitignored) so it does not
+# overwrite the endpoint the agent is using.
+ENV_LOCAL="${ORNITH_ENV_FILE:-$ROOT/.env.local}"
 
 log() { printf '%s [%s] %s\n' "$(date +%T)" "$NAME" "$*" >&2; }
 rc_sleep() { sleep "$RC_SLEEP"; }
@@ -72,10 +77,10 @@ cmd_create() {
     return 0
   fi
 
-  log "listing H100 types to find the cheapest single-GPU option"
+  log "listing $GPU types to find the cheapest single-GPU option"
   rc_sleep
   local types_json
-  types_json="$(rc instances types --gpu H100 --json 2>/dev/null)"
+  types_json="$(rc instances types --gpu "$GPU" --json 2>/dev/null)"
   local type_id rate region selection
   selection="$(printf '%s' "$types_json" | python3 -c '
 import json, sys
@@ -90,7 +95,7 @@ print("\t".join(str(best[k]) for k in ("id", "hourly_rate", "region")))
 
   log "creating instance: type=$type_id region=$region \$$rate/hr template=$TEMPLATE"
   rc_sleep
-  rc instances create --name "$NAME" --gpu H100 --type-id "$type_id" --template "$TEMPLATE" --json
+  rc instances create --name "$NAME" --gpu "$GPU" --type-id "$type_id" --template "$TEMPLATE" --json
 
   log "waiting for the instance to reach status=running"
   local i status
