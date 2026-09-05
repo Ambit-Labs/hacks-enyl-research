@@ -79,3 +79,21 @@ test("answerRanges falls back to the task's answer_sheet when a range has no she
   };
   assert.deepEqual(answerRanges(task), [{ sheet: "LISTS", range: "A3:D32" }]);
 });
+
+test("answerRanges settles on a null sheet, not undefined, when the range and the task both lack one", () => {
+  // Some dataset rows omit answer_sheet entirely (e.g. task 44017), same as
+  // eval/sb.py's `task.get("answer_sheet")`. The result must carry an
+  // explicit "sheet" key so JSON.stringify doesn't drop it before the
+  // sandboxed reader indexes into it.
+  const task: Task = {
+    id: "44017",
+    instruction: "",
+    instruction_type: "",
+    answer_position: "AD14:AO42",
+    data_position: "",
+    spreadsheet_path: "spreadsheet/44017",
+  };
+  const ranges = answerRanges(task);
+  assert.deepEqual(ranges, [{ sheet: null, range: "AD14:AO42" }]);
+  assert.equal(JSON.stringify(ranges), '[{"sheet":null,"range":"AD14:AO42"}]');
+});

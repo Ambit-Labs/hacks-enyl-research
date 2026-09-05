@@ -12,7 +12,9 @@ export interface Task {
   id: string;
   instruction: string;
   instruction_type: string;
-  answer_sheet: string;
+  // Some dataset rows omit this field entirely (see eval/sb.py's
+  // `task.get("answer_sheet")`), so it is not always present.
+  answer_sheet?: string | null;
   answer_position: string;
   data_position: string;
   spreadsheet_path: string;
@@ -166,10 +168,17 @@ export function expandRange(cellRange: string, maxRow?: number): string[] {
   return coords;
 }
 
-/** Port of eval/sb.py's answer_ranges: resolves each range's sheet against the task default. */
+/**
+ * Port of eval/sb.py's answer_ranges: resolves each range's sheet against the
+ * task default. `answer_sheet` can itself be missing from the dataset row
+ * (eval/sb.py falls back to `wb.active` in that case), so this always
+ * settles on `null` rather than `undefined`. A plain object literal would
+ * silently drop an `undefined` "sheet" key when JSON.stringify'd, and the
+ * sandboxed reader indexes that key directly.
+ */
 export function answerRanges(task: Task): SheetRange[] {
   return parseAnswerPosition(task.answer_position).map(({ sheet, range }) => ({
-    sheet: sheet ?? task.answer_sheet,
+    sheet: sheet ?? task.answer_sheet ?? null,
     range,
   }));
 }

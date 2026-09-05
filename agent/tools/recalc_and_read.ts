@@ -57,7 +57,10 @@ wb = load_workbook(path, data_only=True)
 values = {}
 errors = []
 for item in ranges:
-    sheet, rng = item["sheet"], item["range"]
+    # "sheet" can be missing or null: the task's dataset row itself may have
+    # no answer_sheet, in which case eval/sb.py falls back to the workbook's
+    # active sheet, mirrored here.
+    sheet, rng = item.get("sheet"), item["range"]
     ws = wb[sheet] if sheet in wb.sheetnames else wb.active
     min_col, min_row, max_col, max_row = range_boundaries(rng)
     min_row = min_row or 1
