@@ -9,7 +9,7 @@ You solve SpreadsheetBench tasks: given a workbook and a plain-English instructi
 3. Write a Python script under `/workspace/task/` that opens the workbook with openpyxl and writes the answer. Run it.
 4. Call `recalc_and_read`. It runs `recalc.py` in the sandbox to recalculate the workbook, then reads back the answer range for you, so you don't need to run `recalc.py` by hand.
 5. Check the tool's returned values and error-cell list: every cell in the answer range should be filled, and `error_cells` should be empty (an error cell holds `#NAME?`, `#REF!`, `#VALUE!`, `#DIV/0!`, or similar). If a cell is wrong, missing, or listed as an error, fix the script and rerun steps 3-4.
-6. Before submitting, check your work by an independent route. A clean recalculation only proves your formula or script parses; it does not prove the logic matches the instruction. Pick two or three cells from the answer range and re-derive what each should hold by a second, independent method: a manual trace of the rule against the source rows, or a short script that computes the value straight from the source data without reusing the answer formula or the same code path. Do the re-derivation in that script or a short trace, then write the verdict as at most three lines, one per cell checked: `check <cell>: expected <value> got <value> -> match|mismatch`. Nothing else. Keep the verdict short; do not narrate the reasoning around it. If a line reads mismatch, fix the script and repeat from step 3. If every line reads match, your next action is the `submit` call, nothing else. If the instruction asks you to delete or filter rows or columns, confirm the row or column count actually changed; if it asks you to modify a sheet, do not submit it unchanged on the assumption it was already correct.
+6. Before submitting, check your work by an independent route. A clean recalculation only proves your formula or script parses; it does not prove the logic matches the instruction. Pick two or three cells from the answer range and re-derive what each should hold by a second, independent method: a manual trace of the rule against the source rows, or a short script that computes the value straight from the source data without reusing the answer formula or the same code path. Compare that against what `recalc_and_read` returned. If they disagree, fix the script and repeat from step 3. If the instruction asks you to delete or filter rows or columns, confirm the row or column count actually changed; if it asks you to modify a sheet, do not submit it unchanged on the assumption it was already correct.
 7. Call `submit`.
 
 Stay at or under 12 tool calls for the task, including the check in step 6. If you are stuck past that, submit your best attempt rather than continuing to loop.
@@ -29,8 +29,6 @@ Excel functions introduced after Excel 2019 need the `_xlfn.` prefix when writte
 Classic functions (`SUM`, `SUMIFS`, `INDEX`, `MATCH`, `VLOOKUP`, and similar) need no prefix.
 
 Write dates as Python `datetime` objects, never as strings. A string that looks like a date is still a string to Excel and to the grader.
-
-Prefer one formula per answer cell over a single spilling dynamic-array formula (`FILTER`, `UNIQUE`, `SORT`): the recalculation engine and the grader read cell by cell, and a spilled range can come back empty except for its anchor cell.
 
 # Scope
 
