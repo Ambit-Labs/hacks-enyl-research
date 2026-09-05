@@ -1,0 +1,91 @@
+// Solver model selection for the A/B experiment in issue #12. Edited by hand
+// per experiment; the run directory name (e.g. runs/r02-ornith-fails) records
+// which value produced it. No env var chooses the model at runtime, per the
+// project's hard rules.
+import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
+import { wrapLanguageModel, type LanguageModel, type LanguageModelMiddleware } from "ai";
+
+export const SOLVER: "deepseek" | "ornith" = "ornith";
+
+// The #13 worker found that at temperature 0 Ornith's reasoning never
+// terminates on non-trivial prompts (it burns the whole output budget and
+// returns empty content). Variant A keeps thinking on with the model card's
+// recommended temperature 0.6; variant B turns thinking off via vLLM's
+// chat_template_kwargs and keeps temperature 0. Smoke-test A first; fall
+// back to B only if tasks still run long or overflow context.
+export const ORNITH_VARIANT: "A" | "B" = "A";
+
+// Same AI Gateway id used by agent/agent.ts before this experiment.
+const DEEPSEEK_MODEL_ID = "deepseek/deepseek-v4-flash-0731";
+
+// Model name is a literal, per the hard rules. Only the endpoint and key
+// come from the environment.
+const ORNITH_MODEL_NAME = "Ornith-1.5-35B-A3B";
+
+// eve strips modelOptions.providerOptions before a provider-authored
+// LanguageModel reaches the wire (it only forwards that field for a gateway
+// model id), so the vLLM extra-body field and the temperature for the
+// non-default variant have to ride on the model object itself. This
+// middleware merges them into every call's params.
+function ornithVariantMiddleware(variant: "A" | "B"): LanguageModelMiddleware {
+  const enableThinking = variant === "A";
+  const temperature = variant === "A" ? 0.6 : 0;
+  return {
+    transformParams: async ({ params }) => ({
+      ...params,
+      temperature,
+      providerOptions: {
+        ...params.providerOptions,
+        ornith: {
+          ...params.providerOptions?.ornith,
+          chat_template_kwargs: { enable_thinking: enableThinking },
+        },
+      },
+    }),
+  };
+}
+
+function ornithModel(): LanguageModel {
+  const baseURL = process.env.ORNITH_BASE_URL;
+  const apiKey = process.env.ORNITH_API_KEY;
+  if (!baseURL) throw new Error("ORNITH_BASE_URL is not set");
+  if (!apiKey) throw new Error("ORNITH_API_KEY is not set");
+  const ornith = createOpenAICompatible({
+    name: "ornith",
+    baseURL,
+    apiKey,
+  });
+  return wrapLanguageModel({
+    model: ornith(ORNITH_MODEL_NAME),
+    middleware: ornithVariantMiddleware(ORNITH_VARIANT),
+  });
+}
+
+// Returns the gateway id string for DeepSeek, or a provider-authored
+// LanguageModel for Ornith, depending on SOLVER.
+export function solverModel(): string | LanguageModel {
+  return SOLVER === "ornith" ? ornithModel() : DEEPSEEK_MODEL_ID;
+}
+
+// The label scripts/traces.ts records as "model" on every trace line. A
+// provider-authored LanguageModel object carries no gateway id string eve
+// can report at runtime, so trace labeling can't follow the model the way
+// it did when agent.ts held one literal; this keeps it a single source
+// instead of a second hand-copied constant in traces.ts.
+export function solverModelLabel(): string {
+  return SOLVER === "ornith" ? ORNITH_MODEL_NAME : DEEPSEEK_MODEL_ID;
+}
+
+// Ornith is not in the AI Gateway catalog, so eve cannot resolve its context
+// window automatically; it must be set explicitly (agent-config.md, "Choose
+// the model dynamically"). ORNITH_BASE_URL now points at a proxy in front of
+// several Runcrate boxes with mixed --max-model-len (65536 on most, 131072
+// on one), so this stays at the smallest common value: it only governs when
+// eve compacts, and understating it costs some context headroom on the
+// bigger boxes, while overstating it would let a request through that a
+// 65536 backend then rejects. Edit by hand alongside ORNITH_BASE_URL.
+// Undefined for DeepSeek lets eve keep resolving that from the Gateway
+// catalog as before.
+export function solverContextWindowTokens(): number | undefined {
+  return SOLVER === "ornith" ? 65536 : undefined;
+}
