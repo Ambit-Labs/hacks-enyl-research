@@ -29,12 +29,11 @@ docker build -t enyl-sandbox:local .
 
 Copy `.env.example` to `.env.local` and fill in:
 
-- `AI_GATEWAY_API_KEY`: the intended path for a headless run against the Vercel AI
-  Gateway. **Unverified as of this draft** — not yet tested on this machine; the
-  coordinator will remove this note once it is.
-- `VERCEL_OIDC_TOKEN`: the alternative that has been proven to work headless on this
-  repo, pulled from a linked Vercel project with `vercel env pull`. Set this if
-  `AI_GATEWAY_API_KEY` isn't available to you yet.
+- `AI_GATEWAY_API_KEY`: the primary path for a headless run against the Vercel AI
+  Gateway. Verified: `npm run predict` and `scripts/score.sh` both ran clean on this
+  key alone, with no `VERCEL_OIDC_TOKEN` in the environment.
+- `VERCEL_OIDC_TOKEN`: an alternative for a linked Vercel project, pulled with
+  `vercel env pull`. Set this only if you don't have an `AI_GATEWAY_API_KEY`.
 - `SB_DATASET_DIR`: path to the SpreadsheetBench dataset directory (a `dataset.json`
   plus per-task init workbooks and prompts).
 - `EVE_TRACES_CONTENT`, `EVE_TRACES_RETAIN_COUNT`, `EVE_TRACES_MAX_AGE_MS`,
