@@ -9,7 +9,7 @@ Gateway; it is not configurable through an environment variable.
 
 ## Requirements
 
-- Node 24
+- Node 24 or newer
 - Docker, or a host that can run [microsandbox](https://github.com/microsandbox/microsandbox) — the agent's code-execution sandbox needs one of the two
 - LibreOffice, only if you want to run `scripts/score.sh` or `scripts/failures.py` outside the sandbox image (the vendored evaluator recalculates formulas with `soffice`)
 - [`uv`](https://docs.astral.sh/uv/), to run the vendored evaluator in `eval/`

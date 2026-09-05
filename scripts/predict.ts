@@ -10,17 +10,46 @@
 // already handles this file's plain type annotations on this Node version,
 // so no extra devDependency is needed).
 
-import { spawn, type ChildProcess } from "node:child_process";
+import { spawn, spawnSync, type ChildProcess } from "node:child_process";
 import { copyFileSync, createWriteStream, existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import { createServer } from "node:net";
 import { dirname, join, resolve } from "node:path";
 import { Client } from "eve/client";
 import { findInitWorkbook, loadDataset, type Task } from "#lib/dataset.ts";
-import { SANDBOX_IDLE_TIMEOUT_MS } from "#sandbox/sandbox.ts";
 import { appendFailureLine, findTurnFailureMessage, writeTaskTrace } from "./traces.ts";
+
+// Label eve stamps on every sandbox container for this project (see
+// agent/sandbox/sandbox.ts and `docker ps -a --filter
+// label=eve.sandbox.tag.agent --format '{{.Labels}}'`). Filtering on it
+// scopes cleanup to this agent's own containers, not every eve sandbox on
+// the host.
+const SANDBOX_LABEL = "eve.sandbox.tag.agent=enyl-research";
 
 const TASK_TIMEOUT_MS = 8 * 60 * 1000;
 const EVE_BIN = resolve(import.meta.dirname, "../node_modules/.bin/eve");
+
+// scripts/score.sh sources .env.local itself; do the same here so a judge
+// running `npm run predict` straight from the README gets SB_DATASET_DIR and
+// friends without exporting them by hand first. Resolved from this script's
+// own location, not cwd, so it still finds the repo root when invoked from
+// elsewhere. process.loadEnvFile never overrides a variable already set in
+// the environment, so an explicit `export` or shell env still wins.
+function loadEnvLocal(): void {
+  const envPath = resolve(import.meta.dirname, "../.env.local");
+  if (!existsSync(envPath)) {
+    process.stderr.write("predict: no .env.local found, using process environment as-is\n");
+    return;
+  }
+  try {
+    process.loadEnvFile(envPath);
+    process.stderr.write(`predict: loaded env from ${envPath}\n`);
+  } catch (err) {
+    process.stderr.write(
+      `predict: failed to load ${envPath}: ${err instanceof Error ? err.message : String(err)}\n`,
+    );
+  }
+}
+loadEnvLocal();
 
 interface Args {
   datasetDir: string;
@@ -179,9 +208,18 @@ async function startServer(env: NodeJS.ProcessEnv, log: NodeJS.WritableStream): 
 
   return {
     url,
-    stop: () => {
-      startChild.kill("SIGTERM");
-    },
+    // Resolves once the child has actually exited, so callers can run
+    // cleanup (e.g. sweeping leaked sandbox containers) only after the
+    // server that created them is gone.
+    stop: () =>
+      new Promise<void>((resolveStop) => {
+        if (startChild.exitCode !== null || startChild.signalCode !== null) {
+          resolveStop();
+          return;
+        }
+        startChild.once("exit", () => resolveStop());
+        startChild.kill("SIGTERM");
+      }),
   };
 }
 
@@ -190,6 +228,54 @@ function formatElapsed(ms: number): string {
   const m = Math.floor(totalSeconds / 60);
   const s = totalSeconds % 60;
   return `${m}m${s.toString().padStart(2, "0")}s`;
+}
+
+/** Runs `docker`, returning stdout or null if the binary is missing or the command failed. */
+function runDocker(args: string[]): string | null {
+  const result = spawnSync("docker", args, { encoding: "utf-8" });
+  if (result.error || result.status !== 0) return null;
+  return result.stdout;
+}
+
+/**
+ * Best-effort sweep for sandbox containers this run leaked. `submit` now
+ * stops or deletes the sandbox itself on the success path, and the idle
+ * timeout in agent/sandbox/sandbox.ts is a safety net for tasks that never
+ * submit, so this is a backstop for whatever slips past both: a killed
+ * worker, a crashed `eve start`, or a task that timed out mid-write. Scoped
+ * to this project's label and to containers created at or after the run's
+ * start, so it never touches another project's sandboxes or containers
+ * that predate this run. Never throws: cleanup failing is not a reason to
+ * fail the run.
+ */
+function cleanupLeakedSandboxes(runStartedAt: Date): void {
+  const listing = runDocker(["ps", "-a", "--filter", `label=${SANDBOX_LABEL}`, "--format", "{{.ID}} {{.CreatedAt}}"]);
+  if (listing === null) {
+    process.stderr.write("predict: docker unavailable or `docker ps` failed, skipping sandbox cleanup\n");
+    return;
+  }
+  const ids: string[] = [];
+  for (const line of listing.split("\n")) {
+    if (!line.trim()) continue;
+    const spaceIndex = line.indexOf(" ");
+    if (spaceIndex === -1) continue;
+    const id = line.slice(0, spaceIndex);
+    const createdAt = new Date(line.slice(spaceIndex + 1).trim());
+    if (Number.isNaN(createdAt.getTime())) continue;
+    if (createdAt.getTime() >= runStartedAt.getTime()) ids.push(id);
+  }
+  if (ids.length === 0) {
+    process.stderr.write("predict: no leaked sandbox containers found\n");
+    return;
+  }
+  const batchSize = 50;
+  let removed = 0;
+  for (let i = 0; i < ids.length; i += batchSize) {
+    const batch = ids.slice(i, i + batchSize);
+    const removal = runDocker(["rm", "-f", ...batch]);
+    if (removal !== null) removed += batch.length;
+  }
+  process.stderr.write(`predict: removed ${removed}/${ids.length} leaked sandbox container(s)\n`);
 }
 
 async function runTask(client: Client, task: Task, outputsDir: string, outDir: string, log: NodeJS.WritableStream): Promise<Prediction> {
@@ -213,13 +299,11 @@ async function runTask(client: Client, task: Task, outputsDir: string, outDir: s
 
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), TASK_TIMEOUT_MS);
-  // Docker and microsandbox sandboxes stay up for the life of the eve
-  // process once a durable session opens one; nothing tears the container
-  // down when a turn finishes (see agent/sandbox/sandbox.ts and issue #8).
-  // The client's only session-lifecycle control is `reset`, which
-  // terminally retires the session so it can never reopen its sandbox
-  // again; call it once this task's result, trace, and output are all
-  // handled so a batch run doesn't strand one container per task.
+  // agent/tools/submit.ts now stops or deletes the task's sandbox itself on
+  // the success path, so cleanup no longer depends on this call. Keep it
+  // anyway: reset terminally retires the session ID, so a task that already
+  // tore down its own sandbox can't have it reopened by a stray retry or
+  // reused handle later in the run.
   let session: Awaited<ReturnType<typeof client.sessions.create>>["session"] | null = null;
   try {
     const created = await client.sessions.create({
@@ -272,6 +356,7 @@ async function runTask(client: Client, task: Task, outputsDir: string, outDir: s
 }
 
 async function main(): Promise<void> {
+  const runStartedAt = new Date();
   const args = parseArgs(process.argv.slice(2));
   const datasetDir = resolve(args.datasetDir);
   const outDir = resolve(args.outDir);
@@ -312,7 +397,7 @@ async function main(): Promise<void> {
   process.stderr.write(startupLine);
   log.write(startupLine);
 
-  let stopServer: (() => void) | null = null;
+  let stopServer: (() => Promise<void>) | null = null;
   let baseUrl = args.url;
   if (!baseUrl) {
     // EVE_DEV=1 marks this process as a local development server, the same
@@ -338,7 +423,7 @@ async function main(): Promise<void> {
   });
 
   let interrupted = false;
-  const onSigint = () => {
+  const onSigint = async () => {
     if (interrupted) return;
     interrupted = true;
     const msg =
@@ -347,7 +432,8 @@ async function main(): Promise<void> {
       "(a task only counts as done if its output file is still on disk).\n";
     process.stderr.write(msg);
     log.write(msg);
-    stopServer?.();
+    await stopServer?.();
+    cleanupLeakedSandboxes(runStartedAt);
     process.exit(130);
   };
   process.on("SIGINT", onSigint);
@@ -388,17 +474,13 @@ async function main(): Promise<void> {
 
   process.off("SIGINT", onSigint);
   if (stopServer) {
-    // agent/sandbox/sandbox.ts stops each sandbox after an idle window,
-    // but that timer lives in the `eve start` process's memory; killing
-    // the process sooner drops the stop for whichever task finished last
-    // and leaks its container. Wait out one full idle window first.
-    const graceMs = SANDBOX_IDLE_TIMEOUT_MS + 5_000;
-    const graceLine = `predict: waiting ${formatElapsed(graceMs)} for idle sandboxes to stop before shutting down the server\n`;
-    process.stderr.write(graceLine);
-    log.write(graceLine);
-    await new Promise((r) => setTimeout(r, graceMs));
-    stopServer();
+    await stopServer();
   }
+  // agent/tools/submit.ts stops or deletes each task's sandbox on the
+  // success path now, and the idle timeout in agent/sandbox/sandbox.ts is
+  // a safety net for tasks that never submit, so no fixed wait belongs
+  // here. This sweep only catches what both of those missed.
+  cleanupLeakedSandboxes(runStartedAt);
 
   const missing = allTasks.filter((t) => !records.has(t.id));
   const exitCode = missing.length === 0 ? 0 : 1;

@@ -73,6 +73,31 @@ export default defineTool({
     mkdirSync(outputsDir, { recursive: true });
     writeFileSync(join(outputsDir, `${id}.xlsx`), bytes);
 
+    // The task is done with the sandbox: this is the one point in a task's
+    // lifecycle where we know for certain no further sandbox I/O is coming
+    // (the model's closing message after submit is text-only). Free the
+    // container now instead of leaving it to the idle-stop safety net,
+    // which is a last resort for sessions that never reach submit (see
+    // agent/sandbox/sandbox.ts).
+    //
+    // delete() over stop(): per node_modules/eve/docs/sandbox.mdx ("Delete
+    // a sandbox"), "eve stops compute first, deletes the physical sandbox
+    // and its disposable backend state, and clears the saved reconnect
+    // state," and "the durable eve session remains active" so a stray
+    // later sandbox call would just provision a fresh workspace rather
+    // than fail. node_modules/eve/dist/src/execution/sandbox/ensure.js's
+    // `delete()` also resets its cached handle (`a=void 0`) so a
+    // subsequent `captureState()` for this callback skips calling into
+    // the backend at all, unlike `stop()`, which leaves the handle
+    // cached and would still be pointed at compute we just tore down.
+    // A cleanup failure here must not turn a successful submit into an
+    // error, so log and swallow it.
+    try {
+      await sandbox.delete();
+    } catch (error) {
+      console.error(`submit: failed to delete sandbox for task ${id}:`, error);
+    }
+
     return { ok: true as const };
   },
 });

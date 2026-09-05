@@ -25,12 +25,35 @@ const SANDBOX_IMAGE = "enyl-sandbox:local";
 // finished task's container kept running until this host ran out of
 // capacity (issue #8: 34 -> 454 containers over one 400-task run).
 //
-// Fix it here, at the one lifecycle hook this file owns: wrap the chosen
-// backend so each live handle stops itself after a period with no
-// sandbox I/O. `stop()` preserves the durable session and its
-// `/workspace` state; eve reopens the same container from persisted
-// state on the next call, so an idle-timeout stop costs a resume, not
-// task progress.
+// The real fix is `agent/tools/submit.ts` calling `sandbox.delete()`
+// once a task's workbook is safely on the host: that is the only point
+// where the task is provably done with the sandbox. `withIdleStop`
+// below is a safety net for sessions that never reach submit (the model
+// gives up, errors out, or the run is killed) — not the primary cleanup
+// path.
+//
+// A stop is not free to fire mid-turn. Checked against
+// node_modules/eve/dist/src/execution/sandbox/bindings/docker.js: the
+// Docker backend only runs `docker start` inside the backend's
+// `create()`, when a session's sandbox handle is (re)built. The `run`/
+// `readFile`/`writeFile`/etc. methods on an already-created handle never
+// check or restart container state. And
+// node_modules/eve/dist/src/execution/sandbox/ensure.js caches that
+// handle for the scope it was built in — `stop()` does not clear the
+// cache, only `delete()` does. So a handle stopped mid-turn stays
+// pointed at a stopped container for any later sandbox call sharing
+// that scope: those `docker exec`-backed calls fail outright, not just
+// slow down. The doc comment previously here ("eve reopens the same
+// container on the next call") describes the cross-turn case, where a
+// fresh callback gets a fresh handle and its own `create()`; it does
+// not hold for two sandbox calls inside one live model turn.
+//
+// The timeout below only needs to be long enough that it can't fire
+// during a live turn: the per-task timeout is 8 minutes, the session
+// timeout is 10 minutes, and normal gaps between one tool call and the
+// next are well under a minute. 5 minutes gives comfortable headroom
+// over both while still reclaiming containers left by a session that
+// stalls or dies without calling submit.
 //
 // scripts/predict.ts imports this value so it can wait out one idle
 // window before it tears down the `eve start` process it spawned: the
@@ -38,7 +61,7 @@ const SANDBOX_IMAGE = "enyl-sandbox:local";
 // before the timer fires (the common case right after the last task in
 // a batch finishes) drops the stop on the floor and leaks exactly the
 // last-active container. Keep the two in sync.
-export const SANDBOX_IDLE_TIMEOUT_MS = 30_000;
+export const SANDBOX_IDLE_TIMEOUT_MS = 300_000;
 
 const SANDBOX_IO_METHODS = [
   "run",
