@@ -37,7 +37,20 @@ one the model never finishes.
 
 ## Scores on the 400
 
-<!-- paste runs/final/results.json summary here -->
+<!-- scores:start -->
+```json
+{
+  "items": 400,
+  "graded": 400,
+  "missing": 0,
+  "errors": 0,
+  "pass_rate": 0.855,
+  "cell_accuracy": 0.8273,
+  "pass_rate_cell_level": 0.8764,
+  "pass_rate_sheet_level": 0.808
+}
+```
+<!-- scores:end -->
 
 ## Your run on the 400
 
