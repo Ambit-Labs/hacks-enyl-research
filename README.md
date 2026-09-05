@@ -188,6 +188,26 @@ can find `ninja`.
 `create` to `serve`-ready took about 22 minutes end to end. `ornith-serve` is running
 now, left up for #12 and #13.
 
+### Load-balancing across multiple Ornith boxes
+
+`scripts/runcrate/ornith_proxy.mjs` is a dependency-free reverse proxy that spreads
+requests across every box that has an env file in `runs/boxes/*.env`, so the agent can
+keep pointing at one `ORNITH_BASE_URL` while boxes come and go. It re-reads
+`runs/boxes/*.env` every 30s (no restart needed for a new box), health-checks each
+backend's `/models` on the same interval, and load-balances chat completions and
+`/models` with least-in-flight-requests, retrying once on a different backend if a
+connection fails before any response byte arrives. Streaming responses are piped
+through unbuffered, so SSE works normally.
+
+```bash
+nohup node scripts/runcrate/ornith_proxy.mjs > runs/boxes/proxy.log 2>&1 &
+```
+
+On startup it generates a random bearer key and writes it to `runs/boxes/proxy.env`
+(mode 0600) alongside `ORNITH_BASE_URL=http://127.0.0.1:8100/v1`; source that file the
+same way you would a single box's env file. `GET /healthz` lists each backend's base
+URL, health, and request counters. The proxy never logs keys or request bodies.
+
 ## Things to look at
 
 - `runs/*/failures.md`: per-run failure breakdowns from past dev and verification
