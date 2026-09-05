@@ -11,7 +11,7 @@
 // so no extra devDependency is needed).
 
 import { spawn, spawnSync, type ChildProcess } from "node:child_process";
-import { copyFileSync, createWriteStream, existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
+import { copyFileSync, createWriteStream, existsSync, mkdirSync, readFileSync, renameSync, writeFileSync, rmSync } from "node:fs";
 import { createServer } from "node:net";
 import { dirname, join, resolve } from "node:path";
 import { Client } from "eve/client";
@@ -299,6 +299,15 @@ async function runTaskAttempt(client: Client, task: Task, outputsDir: string, ou
   const outputPath = join(outputsDir, `${task.id}.xlsx`);
   const outputRel = `outputs/${task.id}.xlsx`;
   const firstMessage = `task ${task.id}`;
+  // A failed attempt leaves a fallback copy of the init workbook at
+  // outputPath. Remove it before the next attempt, otherwise a second garbled
+  // turn that never calls submit looks like "ok" because the file exists
+  // (r07 lost 21 tasks this way) and the remaining attempts never run.
+  try {
+    rmSync(outputPath, { force: true });
+  } catch {
+    // Leave it; the existsSync check below then behaves as before.
+  }
   const taskStartedAt = Date.now();
   const elapsed = () => Date.now() - taskStartedAt;
 
