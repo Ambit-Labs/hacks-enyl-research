@@ -105,6 +105,29 @@ characters of its instruction. It only reports on tasks present in
 task this run never attempted isn't a bucket-worthy failure. Plain `python3` works
 too if `openpyxl` is already on your `PATH`.
 
+## Packaging the final run
+
+```bash
+scripts/finalize.sh <run-dir>
+```
+
+Copies `predictions.jsonl`, `outputs/`, `traces/`, `run.log`, and `results.json` from a
+scored run directory to the repo root, and rewrites the scores block in
+`SUBMISSION.md` between `<!-- scores:start -->` and `<!-- scores:end -->` markers with
+the `summary` from `results.json`. Refuses to run unless `results.json` already shows
+`summary.items == 400` and `predictions.jsonl` has at least 400 lines, so it never
+overwrites the root artifacts with a partial run. `predictions.jsonl`'s `output` paths
+are already relative to its own directory (`outputs/<id>.xlsx`), so no path rewriting
+is needed once both land at the repo root together. Copies
+`traces/<id>.attempt1.jsonl` files too, alongside the final `traces/<id>.jsonl`, for
+any task that needed a retry: the submission rules value honest traces, and a retried
+task's first attempt is as real a model call as its second. Add `--dry-run` to see
+what it would copy without writing anything, and it warns if `outputs/` plus `traces/`
+exceed 100 MB with the `git lfs track` command to run.
+
+Run this once, right before submitting, against the run directory that holds the final
+scored 400-task run.
+
 ## Where outputs land
 
 Under `<out-dir>`:
