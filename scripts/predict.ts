@@ -4,7 +4,7 @@
 //
 // Usage:
 //   npm run predict -- --dataset-dir <dir> --out-dir <dir> [--ids 13-1,51-12]
-//     [--concurrency 4] [--url http://127.0.0.1:2000] [--force]
+//     [--concurrency 4] [--url http://127.0.0.1:2000] [--force] [--no-retry]
 //
 // Run with `node --experimental-strip-types` (chosen over tsx: the flag
 // already handles this file's plain type annotations on this Node version,
@@ -26,6 +26,15 @@ import { appendFailureLine, findTurnFailureMessage, writeTaskTrace } from "./tra
 const SANDBOX_LABEL = "eve.sandbox.tag.agent=enyl-research";
 
 const TASK_TIMEOUT_MS = 8 * 60 * 1000;
+// A task whose first attempt ends missing_output, model_failed, or error gets
+// one retry in a brand-new session (see runTask): the model's degeneration
+// into incoherent output is a per-session fluke, not a property of the task,
+// so a second independent sample usually recovers it. timeout is excluded:
+// it already spent the full per-task budget once, and a second full timeout
+// would just double the wall-clock cost of a task that is unlikely to be
+// fixed by resampling. --no-retry sets this to 1 to reproduce a run without
+// retries.
+const MAX_ATTEMPTS = 2;
 const EVE_BIN = resolve(import.meta.dirname, "../node_modules/.bin/eve");
 
 // scripts/score.sh sources .env.local itself; do the same here so a judge
@@ -58,6 +67,7 @@ interface Args {
   concurrency: number;
   url: string | null;
   force: boolean;
+  maxAttempts: number;
 }
 
 function parseArgs(argv: string[]): Args {
@@ -68,6 +78,7 @@ function parseArgs(argv: string[]): Args {
     concurrency: 4,
     url: null,
     force: false,
+    maxAttempts: MAX_ATTEMPTS,
   };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
@@ -97,6 +108,9 @@ function parseArgs(argv: string[]): Args {
         break;
       case "--force":
         args.force = true;
+        break;
+      case "--no-retry":
+        args.maxAttempts = 1;
         break;
       default:
         throw new Error(`Unknown argument: ${arg}`);
@@ -278,7 +292,10 @@ function cleanupLeakedSandboxes(runStartedAt: Date): void {
   process.stderr.write(`predict: removed ${removed}/${ids.length} leaked sandbox container(s)\n`);
 }
 
-async function runTask(client: Client, task: Task, outputsDir: string, outDir: string, log: NodeJS.WritableStream): Promise<Prediction> {
+/** Statuses worth a fresh-session retry: the model degenerated or the turn errored out, not a timeout that already spent the full per-task budget. */
+const RETRYABLE_STATUSES: readonly Status[] = ["missing_output", "model_failed", "error"];
+
+async function runTaskAttempt(client: Client, task: Task, outputsDir: string, outDir: string, log: NodeJS.WritableStream): Promise<Prediction> {
   const outputPath = join(outputsDir, `${task.id}.xlsx`);
   const outputRel = `outputs/${task.id}.xlsx`;
   const firstMessage = `task ${task.id}`;
@@ -353,6 +370,54 @@ async function runTask(client: Client, task: Task, outputsDir: string, outDir: s
       }
     }
   }
+}
+
+/**
+ * Runs a task, retrying once more in a brand-new session (same first
+ * message, same per-task timeout) when the first attempt ends
+ * missing_output, model_failed, or error. `maxAttempts` bounds the loop, so
+ * it can never run more than `maxAttempts` attempts regardless of how many
+ * consecutive attempts come back retryable. Before a retry starts, the prior
+ * attempt's trace is renamed out of the way (traces/<id>.jsonl ->
+ * traces/<id>.attemptN.jsonl) so the next attempt's writeTaskTrace call,
+ * which truncates rather than appends, doesn't clobber it — the judges'
+ * trace path (traces/<id>.jsonl) always ends up holding the final attempt.
+ * The final attempt's result is taken whatever its status, per the retry
+ * policy: one extra sample, not a search for a passing one.
+ */
+async function runTask(
+  client: Client,
+  task: Task,
+  outputsDir: string,
+  outDir: string,
+  log: NodeJS.WritableStream,
+  maxAttempts: number,
+): Promise<{ prediction: Prediction; retried: number }> {
+  let attempt = 1;
+  let prediction = await runTaskAttempt(client, task, outputsDir, outDir, log);
+
+  while (attempt < maxAttempts && RETRYABLE_STATUSES.includes(prediction.status)) {
+    const tracePath = join(outDir, "traces", `${task.id}.jsonl`);
+    const preservedPath = join(outDir, "traces", `${task.id}.attempt${attempt}.jsonl`);
+    if (existsSync(tracePath)) {
+      try {
+        renameSync(tracePath, preservedPath);
+      } catch (renameErr) {
+        const msg =
+          `predict: ${task.id} failed to preserve attempt ${attempt} trace: ` +
+          `${renameErr instanceof Error ? renameErr.message : String(renameErr)}\n`;
+        process.stderr.write(msg);
+        log.write(msg);
+      }
+    }
+    attempt++;
+    const retryLine = `predict: ${task.id} retrying (attempt ${attempt}/${maxAttempts}) after ${prediction.status}\n`;
+    process.stderr.write(retryLine);
+    log.write(retryLine);
+    prediction = await runTaskAttempt(client, task, outputsDir, outDir, log);
+  }
+
+  return { prediction, retried: attempt - 1 };
 }
 
 async function main(): Promise<void> {
@@ -442,6 +507,7 @@ async function main(): Promise<void> {
   let done = 0;
   let ok = 0;
   let err = 0;
+  let retried = 0;
   const total = toRun.length;
   const startedAt = Date.now();
 
@@ -452,18 +518,19 @@ async function main(): Promise<void> {
       const index = cursor++;
       if (index >= toRun.length) return;
       const task = toRun[index];
-      const prediction = await runTask(client, task, outputsDir, outDir, log);
+      const { prediction, retried: taskRetried } = await runTask(client, task, outputsDir, outDir, log, args.maxAttempts);
       records.set(prediction.id, prediction);
       writePredictions(predictionsPath, records);
 
       done++;
+      retried += taskRetried;
       if (prediction.status === "ok") ok++;
       else err++;
       const elapsedMs = Date.now() - startedAt;
       const etaMs = done > 0 ? (elapsedMs / done) * (total - done) : 0;
       const line =
         `predict: ${task.id} ${prediction.status} ` +
-        `(${done}/${total} ok=${ok} err=${err} elapsed=${formatElapsed(elapsedMs)} eta=${formatElapsed(etaMs)})\n`;
+        `(${done}/${total} ok=${ok} err=${err} retried=${retried} elapsed=${formatElapsed(elapsedMs)} eta=${formatElapsed(etaMs)})\n`;
       process.stderr.write(line);
       log.write(line);
     }
@@ -486,7 +553,7 @@ async function main(): Promise<void> {
   const exitCode = missing.length === 0 ? 0 : 1;
   const summary =
     `predict: done. ${records.size}/${allTasks.length} tasks have a prediction line. ` +
-    `exit=${exitCode}\n`;
+    `retried=${retried} exit=${exitCode}\n`;
   process.stderr.write(summary);
   log.write(summary);
   log.end();

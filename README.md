@@ -55,11 +55,19 @@ npm run predict -- --dataset-dir /path/to/data --out-dir /path/to/out
   port. Without `--url`, it stops the server it started when the run ends.
 - `--force`: rerun a task even if `predictions.jsonl` already has an `ok` line for it
   with an output file that still exists on disk.
+- `--no-retry`: disable the one-retry-per-task behavior below, for a reproducible run.
 
 Each task runs as its own session with an 8-minute timeout. On timeout, a model
 failure, or a missing output file, the init workbook is copied to
 `outputs/<id>.xlsx` and the failure reason is recorded as that task's status, so every
 task always gets a `predictions.jsonl` line.
+
+A first attempt that ends `missing_output`, `model_failed`, or `error` (not `timeout`)
+gets one retry in a brand-new session with the same first message; the final attempt's
+result is what lands in `predictions.jsonl`, whatever its status. The first attempt's
+trace is kept as `traces/<id>.attempt1.jsonl`, and `traces/<id>.jsonl` holds the last
+attempt, so the judges still see one trace file per task. Pass `--no-retry` to turn
+this off.
 
 Rerunning the same command resumes: it skips any id already recorded with status `ok`
 whose output file is still present, and reruns everything else. Ctrl-C stops cleanly
