@@ -25,3 +25,6 @@ runs/final/*
 !runs/*/failures.md
 !runs/*/results.json
 eval/.venv/
+
+# worker git worktrees created by the coordinator session
+.claude/worktrees/
