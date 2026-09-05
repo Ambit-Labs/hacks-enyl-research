@@ -171,22 +171,22 @@ an OpenAI-compatible endpoint. Not needed for `npm run predict`, which stays fix
 
 ```bash
 scripts/runcrate/serve_ornith.sh create   # pick the cheapest single H100, launch the box
-scripts/runcrate/serve_ornith.sh setup    # install uv + a 3.12 venv + vLLM, pull the weights
+scripts/runcrate/serve_ornith.sh setup    # install uv + a venv + vLLM, pull the weights,
+                                           #   plus a CUDA forward-compat fix (see below)
 scripts/runcrate/serve_ornith.sh serve    # start vLLM, wait for readiness, write .env.local, smoke test
 scripts/runcrate/serve_ornith.sh status   # print the public IP and a one-line curl check
 scripts/runcrate/serve_ornith.sh delete   # terminate the box
 ```
+Named `ornith-serve`; delete it once nothing needs it (bills per minute, currently
+$2.75/hr in montreal-canada-2). `serve` writes `ORNITH_API_KEY` and `ORNITH_BASE_URL`
+to `.env.local`; the key is generated locally, sent over `rc ssh` stdin, and never
+appears anywhere else. `ubuntu-inference`'s driver only speaks CUDA 12.8, older than
+pip's default vLLM/torch build, so `setup` installs `cuda-compat-13-0` for forward
+compatibility, and `serve` puts the venv on `PATH` so flashinfer's first-request JIT
+can find `ninja`.
 
-The instance is named `ornith-serve`; `rc instances delete ornith-serve` (or the
-script's `delete` subcommand) tears it down. Runcrate bills per minute, so delete it
-once nothing needs it. A single H100 currently runs about $3.60-4.80/hr depending on
-region; `create` always picks whichever single-GPU H100 type is cheapest at the time.
-
-`serve` writes `ORNITH_API_KEY` and `ORNITH_BASE_URL` into `.env.local`. The key never
-appears anywhere else: it is generated locally with `openssl rand -hex 24` and sent to
-the box over `rc ssh` stdin, not argv.
-
-As of this writing, `ornith-serve` is running and left up for #12 and #13.
+`create` to `serve`-ready took about 22 minutes end to end. `ornith-serve` is running
+now, left up for #12 and #13.
 
 ## Things to look at
 
