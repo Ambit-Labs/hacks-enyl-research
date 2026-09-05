@@ -1,0 +1,16 @@
+[project]
+name = "encode-hackathon-research"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "openpyxl>=3.1",
+    "opentelemetry-exporter-otlp>=1.44.0",
+    "opentelemetry-sdk>=1.44.0",
+    "pydantic-ai-slim[openrouter]>=2.38.0",
+]
+
+[project.optional-dependencies]
+tinker = [
+    "tinker>=0.27.1",
+    "tinker-cookbook>=0.5.7",
+]

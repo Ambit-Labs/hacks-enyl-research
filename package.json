@@ -11,6 +11,7 @@
     "deploy": "eve deploy",
     "dev": "eve dev",
     "eval": "eve eval",
+    "predict": "node --experimental-strip-types scripts/predict.ts",
     "start": "eve start",
     "typecheck": "tsc"
   },
