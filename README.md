@@ -247,7 +247,7 @@ solved; "SB2" is SpreadsheetBench 2, a harder, unrelated held-out benchmark (see
 | DeepSeek r09 | 349 | 44 | 95 | 24 | 58 | 52 | 15 |
 | Claude Sonnet 4.5 | not run | not run | not run | 31 | not run | not run | not run |
 | Ornith 35B | not run | 31 | 70 | not run | not run | not run | not run |
-| Ornith 9B base | BASE9B_FULL400 | 14 | not run | 14 | 31 | not run | 3 |
+| Ornith 9B base | in progress at the deadline, see issue #16 | 14 | not run | 14 | 31 | not run | 3 |
 | Ornith 9B fine-tuned | 136 (0.34) | 11 | not run | 11 | 18 | not run | 3 |
 
 What raised the score: issue #16 found that 7 of the 33 tasks DeepSeek never passed
