@@ -1,0 +1,8222 @@
+{
+  "summary": {
+    "items": 282,
+    "graded": 282,
+    "missing": 0,
+    "errors": 0,
+    "pass_rate": 0.1844,
+    "cell_accuracy": 0.9906,
+    "pass_rate_cell_level": null,
+    "pass_rate_sheet_level": null
+  },
+  "items": [
+    {
+      "status": "graded",
+      "cells": 20735,
+      "correct": 20372,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DCF Valuation!D7",
+          "expected": 742.668789237362,
+          "actual": 675.870868104676
+        },
+        {
+          "cell": "DCF Valuation!E7",
+          "expected": 1022.74776308138,
+          "actual": 943.408017882465
+        },
+        {
+          "cell": "DCF Valuation!F7",
+          "expected": 1428.12616169525,
+          "actual": 1320.17297715167
+        },
+        {
+          "cell": "DCF Valuation!G7",
+          "expected": 1934.58075088432,
+          "actual": 1788.75670735538
+        },
+        {
+          "cell": "DCF Valuation!H7",
+          "expected": 2565.45941834785,
+          "actual": 2370.75411313771
+        }
+      ],
+      "id": "fm-01_01",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 20735,
+      "correct": 20734,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Working Capital Schedule!M3",
+          "expected": "2031-03-31 00:00:00",
+          "actual": null
+        }
+      ],
+      "id": "fm-01_02",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 20735,
+      "correct": 20501,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DCF Valuation!D7",
+          "expected": 742.668789237362,
+          "actual": 742.525481039587
+        },
+        {
+          "cell": "DCF Valuation!E7",
+          "expected": 1022.74776308138,
+          "actual": 1022.40866208954
+        },
+        {
+          "cell": "DCF Valuation!F7",
+          "expected": 1428.12616169525,
+          "actual": 1427.53326607721
+        },
+        {
+          "cell": "DCF Valuation!G7",
+          "expected": 1934.58075088432,
+          "actual": 1933.64015201891
+        },
+        {
+          "cell": "DCF Valuation!H7",
+          "expected": 2565.45941834785,
+          "actual": 2564.07409129833
+        }
+      ],
+      "id": "fm-01_03",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 20735,
+      "correct": 20735,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-01_04",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 20735,
+      "correct": 20735,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-01_05",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 4394,
+      "correct": 4138,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "IS,BS,CF!H19",
+          "expected": 24605.9880112328,
+          "actual": 24594.6913082847
+        },
+        {
+          "cell": "IS,BS,CF!I19",
+          "expected": 27066.5868123561,
+          "actual": 27054.1604391131
+        },
+        {
+          "cell": "IS,BS,CF!J19",
+          "expected": 29773.2454935917,
+          "actual": 29759.5764830245
+        },
+        {
+          "cell": "IS,BS,CF!K19",
+          "expected": 32750.5700429509,
+          "actual": 32735.5341313269
+        },
+        {
+          "cell": "IS,BS,CF!H21",
+          "expected": 24605.9880112328,
+          "actual": 24594.6913082847
+        }
+      ],
+      "id": "fm-02_01",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 4394,
+      "correct": 4380,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "IS,BS,CF!E95",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "IS,BS,CF!F95",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "IS,BS,CF!G95",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "IS,BS,CF!H95",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "IS,BS,CF!I95",
+          "expected": 0,
+          "actual": null
+        }
+      ],
+      "id": "fm-02_02",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 4394,
+      "correct": 4275,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "IS,BS,CF!I60",
+          "expected": 4206.86524031661,
+          "actual": 3974.1262931328
+        },
+        {
+          "cell": "IS,BS,CF!J60",
+          "expected": 4110.13031182706,
+          "actual": 4371.53892244608
+        },
+        {
+          "cell": "IS,BS,CF!K60",
+          "expected": 4806.71436616118,
+          "actual": 4808.69281469069
+        },
+        {
+          "cell": "IS,BS,CF!J62",
+          "expected": 4269.56296225485,
+          "actual": 4364.08303372449
+        },
+        {
+          "cell": "IS,BS,CF!K62",
+          "expected": 4971.08097274707,
+          "actual": 4800.49133709694
+        }
+      ],
+      "id": "fm-02_03",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 4394,
+      "correct": 4390,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Ratios!F24",
+          "expected": 5.72764474029077,
+          "actual": 8.27840358324698
+        },
+        {
+          "cell": "Ratios!G24",
+          "expected": 4.8171464255047,
+          "actual": 6.64567916141979
+        },
+        {
+          "cell": "Ratios!H24",
+          "expected": 4.12211083008121,
+          "actual": 5.72764474029077
+        },
+        {
+          "cell": "Ratios!I24",
+          "expected": 3.54820372902391,
+          "actual": 4.8171464255047
+        }
+      ],
+      "id": "fm-02_04",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 4394,
+      "correct": 4394,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-02_05",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 92052,
+      "correct": 91484,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Final Output!E33",
+          "expected": 0.139543185180618,
+          "actual": "#DIV/0!"
+        },
+        {
+          "cell": "Final Output!E34",
+          "expected": 0.156922553612259,
+          "actual": "#DIV/0!"
+        },
+        {
+          "cell": "Final Output!D63",
+          "expected": 7.25848438285781,
+          "actual": "#DIV/0!"
+        },
+        {
+          "cell": "Final Output!D67",
+          "expected": 0.137769808027923,
+          "actual": 0
+        },
+        {
+          "cell": "Final Output!D72",
+          "expected": 0.0720143988172011,
+          "actual": 0
+        }
+      ],
+      "id": "fm-03_01",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 92052,
+      "correct": 85204,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Final Output!E8",
+          "expected": 19.1343311058242,
+          "actual": -51.9423085214301
+        },
+        {
+          "cell": "Final Output!E10",
+          "expected": 0.00179744009550764,
+          "actual": -3.71949259274503
+        },
+        {
+          "cell": "Final Output!E11",
+          "expected": "HOLD",
+          "actual": "SELL"
+        },
+        {
+          "cell": "Introduction!I2",
+          "expected": 19.1343311058242,
+          "actual": -51.9423085214301
+        },
+        {
+          "cell": "Introduction!I3",
+          "expected": "HOLD",
+          "actual": "SELL"
+        }
+      ],
+      "id": "fm-03_02",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 92052,
+      "correct": 91978,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Final Output!E14",
+          "expected": 57300,
+          "actual": null
+        },
+        {
+          "cell": "Final Output!E15",
+          "expected": 1771007,
+          "actual": null
+        },
+        {
+          "cell": "Final Output!E16",
+          "expected": 19.25,
+          "actual": null
+        },
+        {
+          "cell": "Final Output!E17",
+          "expected": 12.25,
+          "actual": null
+        },
+        {
+          "cell": "Industry Benchmark!E16",
+          "expected": 0.80331563615713,
+          "actual": null
+        }
+      ],
+      "id": "fm-03_03",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 92052,
+      "correct": 89775,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Final Output!E8",
+          "expected": 19.1343311058242,
+          "actual": 3.42861206654953
+        },
+        {
+          "cell": "Final Output!E10",
+          "expected": 0.00179744009550764,
+          "actual": -0.820491514840339
+        },
+        {
+          "cell": "Final Output!E11",
+          "expected": "HOLD",
+          "actual": "SELL"
+        },
+        {
+          "cell": "Final Output!E25",
+          "expected": 11.4309459516931,
+          "actual": 0
+        },
+        {
+          "cell": "Final Output!E26",
+          "expected": 1.47385140661503,
+          "actual": 0.702409399207093
+        }
+      ],
+      "id": "fm-03_04",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 92052,
+      "correct": 91967,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Final Output!E8",
+          "expected": 19.1343311058242,
+          "actual": 12.8690892860459
+        },
+        {
+          "cell": "Final Output!E10",
+          "expected": 0.00179744009550764,
+          "actual": -0.326225691830056
+        },
+        {
+          "cell": "Final Output!E11",
+          "expected": "HOLD",
+          "actual": "SELL"
+        },
+        {
+          "cell": "Final Output!D68",
+          "expected": 0.0759162303664921,
+          "actual": 0
+        },
+        {
+          "cell": "Final Output!E68",
+          "expected": 0.0375385625695318,
+          "actual": 0
+        }
+      ],
+      "id": "fm-03_05",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 178643,
+      "correct": 178522,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Final Output!D9",
+          "expected": 97.6827021092784,
+          "actual": 97.4744575946379
+        },
+        {
+          "cell": "Final Output!P26",
+          "expected": 22681.9383613338,
+          "actual": 22562.1789129792
+        },
+        {
+          "cell": "Final Output!Q26",
+          "expected": 25635.1579833153,
+          "actual": 25451.3383112901
+        },
+        {
+          "cell": "Assumptions!N140",
+          "expected": 6664.21857509835,
+          "actual": 6783.97802345298
+        },
+        {
+          "cell": "Assumptions!O140",
+          "expected": 6674.504617182,
+          "actual": 6858.32428920723
+        }
+      ],
+      "id": "fm-04_01",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 178643,
+      "correct": 178630,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Financials!E133",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Financials!F133",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Financials!G133",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Financials!H133",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Financials!I133",
+          "expected": 0,
+          "actual": null
+        }
+      ],
+      "id": "fm-04_02",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 178643,
+      "correct": 178465,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Final Output!D8",
+          "expected": 80.65,
+          "actual": null
+        },
+        {
+          "cell": "Final Output!D9",
+          "expected": 97.6827021092784,
+          "actual": null
+        },
+        {
+          "cell": "Final Output!D10",
+          "expected": 86.9499969482422,
+          "actual": null
+        },
+        {
+          "cell": "Final Output!D28",
+          "expected": 20.9329613466668,
+          "actual": 0
+        },
+        {
+          "cell": "Final Output!D29",
+          "expected": 12.8595407957427,
+          "actual": "#DIV/0!"
+        }
+      ],
+      "id": "fm-04_03",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 178643,
+      "correct": 178513,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Final Output!D8",
+          "expected": 80.65,
+          "actual": 0
+        },
+        {
+          "cell": "Final Output!D9",
+          "expected": 97.6827021092784,
+          "actual": 0
+        },
+        {
+          "cell": "Final Output!D10",
+          "expected": 86.9499969482422,
+          "actual": 0
+        },
+        {
+          "cell": "Final Output!D28",
+          "expected": 20.9329613466668,
+          "actual": 0
+        },
+        {
+          "cell": "Final Output!D29",
+          "expected": 12.8595407957427,
+          "actual": 1.08337533266574
+        }
+      ],
+      "id": "fm-04_04",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 178643,
+      "correct": 178643,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-04_05",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 53004,
+      "correct": 52989,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Dashboard!I45",
+          "expected": null,
+          "actual": 2
+        },
+        {
+          "cell": "Dashboard!G46",
+          "expected": null,
+          "actual": 2
+        },
+        {
+          "cell": "Dashboard!I46",
+          "expected": null,
+          "actual": 2
+        },
+        {
+          "cell": "Dashboard!G47",
+          "expected": null,
+          "actual": 2
+        },
+        {
+          "cell": "Dashboard!I47",
+          "expected": null,
+          "actual": 2
+        }
+      ],
+      "id": "fm-05_01",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 53004,
+      "correct": 47858,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "IRR Calculation!E11",
+          "expected": -0.0583333333333333,
+          "actual": 0
+        },
+        {
+          "cell": "IRR Calculation!F11",
+          "expected": -0.0583333333333333,
+          "actual": 0
+        },
+        {
+          "cell": "IRR Calculation!G11",
+          "expected": -0.0583333333333333,
+          "actual": 0
+        },
+        {
+          "cell": "IRR Calculation!H11",
+          "expected": -0.0583333333333333,
+          "actual": 0
+        },
+        {
+          "cell": "IRR Calculation!I11",
+          "expected": -0.0583333333333333,
+          "actual": 0
+        }
+      ],
+      "id": "fm-05_02",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 53004,
+      "correct": 48241,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Dashboard!D13",
+          "expected": 0.0175,
+          "actual": null
+        },
+        {
+          "cell": "Dashboard!D14",
+          "expected": 0.0175,
+          "actual": null
+        },
+        {
+          "cell": "Dashboard!D15",
+          "expected": 0.0175,
+          "actual": null
+        },
+        {
+          "cell": "Dashboard!D16",
+          "expected": 0.0175,
+          "actual": null
+        },
+        {
+          "cell": "Dashboard!D17",
+          "expected": 0.0175,
+          "actual": null
+        }
+      ],
+      "id": "fm-05_03",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 53004,
+      "correct": 48523,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Dashboard!H15",
+          "expected": 20,
+          "actual": null
+        },
+        {
+          "cell": "Dashboard!H16",
+          "expected": 10,
+          "actual": null
+        },
+        {
+          "cell": "Dashboard!H17",
+          "expected": 10,
+          "actual": null
+        },
+        {
+          "cell": "Dashboard!E57",
+          "expected": 50,
+          "actual": null
+        },
+        {
+          "cell": "Dashboard!G57",
+          "expected": 20,
+          "actual": null
+        }
+      ],
+      "id": "fm-05_04",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 53004,
+      "correct": 48925,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "IRR Calculation!F6",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "IRR Calculation!G6",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "IRR Calculation!H6",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "IRR Calculation!I6",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "IRR Calculation!J6",
+          "expected": 0,
+          "actual": null
+        }
+      ],
+      "id": "fm-05_05",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 44982,
+      "correct": 41454,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DCF!C6",
+          "expected": 6832117.61048782,
+          "actual": -2388500.31228455
+        },
+        {
+          "cell": "DCF!D6",
+          "expected": 6913910.6484018,
+          "actual": -4971662.63225252
+        },
+        {
+          "cell": "DCF!E6",
+          "expected": 8684711.46867405,
+          "actual": -6635616.33164083
+        },
+        {
+          "cell": "DCF!F6",
+          "expected": 9508073.00604615,
+          "actual": -9279355.89354151
+        },
+        {
+          "cell": "DCF!G6",
+          "expected": 4643006.12533553,
+          "actual": 6352113.6443786
+        }
+      ],
+      "id": "fm-06_01",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 44982,
+      "correct": 43176,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DCF!C6",
+          "expected": 6832117.61048782,
+          "actual": 6832116.72857188
+        },
+        {
+          "cell": "DCF!D6",
+          "expected": 6913910.6484018,
+          "actual": 6913909.75105828
+        },
+        {
+          "cell": "DCF!E6",
+          "expected": 8684711.46867405,
+          "actual": 8684710.55880674
+        },
+        {
+          "cell": "DCF!F6",
+          "expected": 9508073.00604615,
+          "actual": 9508072.08621747
+        },
+        {
+          "cell": "DCF!G6",
+          "expected": 4643006.12533553,
+          "actual": 4643005.19780542
+        }
+      ],
+      "id": "fm-06_02",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 44982,
+      "correct": 44700,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DCF!H13",
+          "expected": 38784899.4162857,
+          "actual": null
+        },
+        {
+          "cell": "DCF!H14",
+          "expected": 42464361.8534084,
+          "actual": 3679462.4371227
+        },
+        {
+          "cell": "DCF!H16",
+          "expected": 42464361.8534084,
+          "actual": 3679462.4371227
+        },
+        {
+          "cell": "DCF!M17",
+          "expected": 44371232.5722673,
+          "actual": 21715303.9161691
+        },
+        {
+          "cell": "DCF!H19",
+          "expected": 24805260.9922094,
+          "actual": 2149332.33611125
+        }
+      ],
+      "id": "fm-06_03",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 44982,
+      "correct": 44922,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DCF!H13",
+          "expected": 38784899.4162857,
+          "actual": 94075250.877418
+        },
+        {
+          "cell": "DCF!H14",
+          "expected": 42464361.8534084,
+          "actual": 97754713.3145407
+        },
+        {
+          "cell": "DCF!H16",
+          "expected": 42464361.8534084,
+          "actual": 97754713.3145407
+        },
+        {
+          "cell": "DCF!M17",
+          "expected": 44371232.5722673,
+          "actual": null
+        },
+        {
+          "cell": "DCF!C18",
+          "expected": 0.968949750849697,
+          "actual": 0.981196583091718
+        }
+      ],
+      "id": "fm-06_04",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 44982,
+      "correct": 43183,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DCF!C6",
+          "expected": 6832117.61048782,
+          "actual": 6832117.77962465
+        },
+        {
+          "cell": "DCF!D6",
+          "expected": 6913910.6484018,
+          "actual": 6913910.83974529
+        },
+        {
+          "cell": "DCF!E6",
+          "expected": 8684711.46867405,
+          "actual": 8684711.68200315
+        },
+        {
+          "cell": "DCF!F6",
+          "expected": 9508073.00604615,
+          "actual": 10022349.8623043
+        },
+        {
+          "cell": "DCF!G6",
+          "expected": 4643006.12533553,
+          "actual": 4643006.26690438
+        }
+      ],
+      "id": "fm-06_05",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 38045,
+      "correct": 35667,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Executive Summary!M7",
+          "expected": 0,
+          "actual": 274.493518728221
+        },
+        {
+          "cell": "Executive Summary!M9",
+          "expected": 254.879852019083,
+          "actual": 16.8206532039192
+        },
+        {
+          "cell": "Executive Summary!R9",
+          "expected": 122.13,
+          "actual": 62.84
+        },
+        {
+          "cell": "Executive Summary!R13",
+          "expected": 0,
+          "actual": 95.7243199130577
+        },
+        {
+          "cell": "Executive Summary!M14",
+          "expected": 314.879852019083,
+          "actual": 351.31417193214
+        }
+      ],
+      "id": "fm-07_01",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 38045,
+      "correct": 35791,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Executive Summary!M7",
+          "expected": 0,
+          "actual": 274.493518728221
+        },
+        {
+          "cell": "Executive Summary!D9",
+          "expected": 25000,
+          "actual": 250000
+        },
+        {
+          "cell": "Executive Summary!M9",
+          "expected": 254.879852019083,
+          "actual": 18.4920755848716
+        },
+        {
+          "cell": "Executive Summary!R9",
+          "expected": 122.13,
+          "actual": 62.84
+        },
+        {
+          "cell": "Executive Summary!D10",
+          "expected": 250000,
+          "actual": 25000
+        }
+      ],
+      "id": "fm-07_02",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 38045,
+      "correct": 35625,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Executive Summary!M7",
+          "expected": 0,
+          "actual": 274.493518728221
+        },
+        {
+          "cell": "Executive Summary!M9",
+          "expected": 254.879852019083,
+          "actual": 18.1093224310842
+        },
+        {
+          "cell": "Executive Summary!R9",
+          "expected": 122.13,
+          "actual": 62.84
+        },
+        {
+          "cell": "Executive Summary!R10",
+          "expected": 20.8798520190826,
+          "actual": 18.9816836537115
+        },
+        {
+          "cell": "Executive Summary!R13",
+          "expected": 0,
+          "actual": 98.9111575055938
+        }
+      ],
+      "id": "fm-07_03",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 38045,
+      "correct": 35932,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Executive Summary!M7",
+          "expected": 0,
+          "actual": 274.493518728221
+        },
+        {
+          "cell": "Executive Summary!R8",
+          "expected": 6.07,
+          "actual": 0
+        },
+        {
+          "cell": "Executive Summary!M9",
+          "expected": 254.879852019083,
+          "actual": 0
+        },
+        {
+          "cell": "Executive Summary!R9",
+          "expected": 122.13,
+          "actual": 120.78
+        },
+        {
+          "cell": "Executive Summary!R13",
+          "expected": 0,
+          "actual": 27.0336667091383
+        }
+      ],
+      "id": "fm-07_04",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 38045,
+      "correct": 35945,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Executive Summary!M7",
+          "expected": 0,
+          "actual": 274.493518728221
+        },
+        {
+          "cell": "Executive Summary!M9",
+          "expected": 254.879852019083,
+          "actual": 18.4920755848716
+        },
+        {
+          "cell": "Executive Summary!R9",
+          "expected": 122.13,
+          "actual": 62.84
+        },
+        {
+          "cell": "Executive Summary!R13",
+          "expected": 0,
+          "actual": 97.39574229401
+        },
+        {
+          "cell": "Executive Summary!M14",
+          "expected": 314.879852019083,
+          "actual": 352.985594313093
+        }
+      ],
+      "id": "fm-07_05",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 200362,
+      "correct": 199388,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DCF Valuation!F8",
+          "expected": -17647944.1306176,
+          "actual": -33880506.6306176
+        },
+        {
+          "cell": "DCF Valuation!G8",
+          "expected": 7779188.12502025,
+          "actual": 3315233.43752027
+        },
+        {
+          "cell": "DCF Valuation!H8",
+          "expected": 11651438.3565625,
+          "actual": -9045078.83093747
+        },
+        {
+          "cell": "DCF Valuation!I8",
+          "expected": 35674757.9753125,
+          "actual": 12492814.2253126
+        },
+        {
+          "cell": "DCF Valuation!J8",
+          "expected": 58004987.8212326,
+          "actual": 41721883.1337328
+        }
+      ],
+      "id": "fm-08_01",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 200362,
+      "correct": 200249,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DCF Valuation!D35",
+          "expected": 0.143833422543056,
+          "actual": null
+        },
+        {
+          "cell": "Income Statement!V37",
+          "expected": 668693.125,
+          "actual": 668693.125000001
+        },
+        {
+          "cell": "Income Statement!X37",
+          "expected": 668693.125,
+          "actual": 668693.125000001
+        },
+        {
+          "cell": "Income Statement!BG37",
+          "expected": 3202688.125,
+          "actual": 3202688.12500001
+        },
+        {
+          "cell": "Income Statement!BR37",
+          "expected": 3343465.625,
+          "actual": 3343465.62500001
+        }
+      ],
+      "id": "fm-08_02",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 200362,
+      "correct": 200262,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Income Statement!V37",
+          "expected": 668693.125,
+          "actual": 668693.125000001
+        },
+        {
+          "cell": "Income Statement!X37",
+          "expected": 668693.125,
+          "actual": 668693.125000001
+        },
+        {
+          "cell": "Income Statement!BG37",
+          "expected": 3202688.125,
+          "actual": 3202688.12500001
+        },
+        {
+          "cell": "Income Statement!BR37",
+          "expected": 3343465.625,
+          "actual": 3343465.62500001
+        },
+        {
+          "cell": "Income Statement!BT37",
+          "expected": 3343465.625,
+          "actual": 3343465.62500001
+        }
+      ],
+      "id": "fm-08_03",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 200362,
+      "correct": 200268,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Income Statement!V37",
+          "expected": 668693.125,
+          "actual": 668693.125000001
+        },
+        {
+          "cell": "Income Statement!X37",
+          "expected": 668693.125,
+          "actual": 668693.125000001
+        },
+        {
+          "cell": "Income Statement!BG37",
+          "expected": 3202688.125,
+          "actual": 3202688.12500001
+        },
+        {
+          "cell": "Income Statement!BR37",
+          "expected": 3343465.625,
+          "actual": 3343465.62500001
+        },
+        {
+          "cell": "Income Statement!BT37",
+          "expected": 3343465.625,
+          "actual": 3343465.62500001
+        }
+      ],
+      "id": "fm-08_04",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 200362,
+      "correct": 198792,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DCF Valuation!F8",
+          "expected": -17647944.1306176,
+          "actual": -26261673.4532738
+        },
+        {
+          "cell": "DCF Valuation!G8",
+          "expected": 7779188.12502025,
+          "actual": 19588491.077339
+        },
+        {
+          "cell": "DCF Valuation!H8",
+          "expected": 11651438.3565625,
+          "actual": 14269167.5571875
+        },
+        {
+          "cell": "DCF Valuation!I8",
+          "expected": 35674757.9753125,
+          "actual": 38601799.2459202
+        },
+        {
+          "cell": "DCF Valuation!J8",
+          "expected": 58004987.8212326,
+          "actual": 59743680.1808074
+        }
+      ],
+      "id": "fm-08_05",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 199872,
+      "correct": 199872,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-09_01",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 199872,
+      "correct": 199872,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-09_02",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 199872,
+      "correct": 199872,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-09_03",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 199872,
+      "correct": 199849,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Valuation!G59",
+          "expected": 99.0365089055261,
+          "actual": null
+        },
+        {
+          "cell": "Financials!E105",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Financials!F105",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Financials!G105",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Financials!H105",
+          "expected": 0,
+          "actual": null
+        }
+      ],
+      "id": "fm-09_04",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 199872,
+      "correct": 199848,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Financials!J66",
+          "expected": 0.518456973293769,
+          "actual": 0.512142433234421
+        },
+        {
+          "cell": "Financials!K66",
+          "expected": 0.538173457654482,
+          "actual": 0.531618780926639
+        },
+        {
+          "cell": "Financials!N66",
+          "expected": 0.639394504870221,
+          "actual": 0.63160700769552
+        },
+        {
+          "cell": "Financials!O66",
+          "expected": 0.662591541357079,
+          "actual": 0.654521516173883
+        },
+        {
+          "cell": "Ratio_Analysis !F31",
+          "expected": 10.785622593068,
+          "actual": 11.1951219512195
+        }
+      ],
+      "id": "fm-09_05",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 198821,
+      "correct": 198780,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Valuation!H58",
+          "expected": "Terminal Growth Rate",
+          "actual": 0.005
+        },
+        {
+          "cell": "Valuation!I58",
+          "expected": null,
+          "actual": 0.01
+        },
+        {
+          "cell": "Valuation!J58",
+          "expected": null,
+          "actual": 0.015
+        },
+        {
+          "cell": "Valuation!K58",
+          "expected": null,
+          "actual": 0.02
+        },
+        {
+          "cell": "Valuation!L58",
+          "expected": null,
+          "actual": 0.025
+        }
+      ],
+      "id": "fm-10_01",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 198821,
+      "correct": 198557,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Valuation!K19",
+          "expected": 8.60882351163991,
+          "actual": -74.1780092554441
+        },
+        {
+          "cell": "Valuation!L19",
+          "expected": 74.1728656384507,
+          "actual": -39.2517378202133
+        },
+        {
+          "cell": "Valuation!M19",
+          "expected": 93.461325936195,
+          "actual": -36.9810283144502
+        },
+        {
+          "cell": "Valuation!N19",
+          "expected": 194.270190102313,
+          "actual": 61.3378500066247
+        },
+        {
+          "cell": "Valuation!O19",
+          "expected": 145.887213311903,
+          "actual": 10.6464824469699
+        }
+      ],
+      "id": "fm-10_02",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 198821,
+      "correct": 198820,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Valuation!G93",
+          "expected": -0.274195536404241,
+          "actual": 0.495683899468825
+        }
+      ],
+      "id": "fm-10_03",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 198821,
+      "correct": 198337,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Valuation!K8",
+          "expected": 8997.25233692937,
+          "actual": 9068.21177814846
+        },
+        {
+          "cell": "Valuation!L8",
+          "expected": 9239.03219716472,
+          "actual": 9359.47679569773
+        },
+        {
+          "cell": "Valuation!M8",
+          "expected": 9570.15345328029,
+          "actual": 9670.6399212558
+        },
+        {
+          "cell": "Valuation!N8",
+          "expected": 9967.83953868295,
+          "actual": 9991.24190627426
+        },
+        {
+          "cell": "Valuation!O8",
+          "expected": 10391.8953654812,
+          "actual": 10303.1042934783
+        }
+      ],
+      "id": "fm-10_04",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 198821,
+      "correct": 198540,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Financials!E47",
+          "expected": 4313.2,
+          "actual": null
+        },
+        {
+          "cell": "Financials!F47",
+          "expected": 4551,
+          "actual": null
+        },
+        {
+          "cell": "Financials!G47",
+          "expected": 4946.3,
+          "actual": null
+        },
+        {
+          "cell": "Financials!H47",
+          "expected": 5503.1,
+          "actual": null
+        },
+        {
+          "cell": "Financials!I47",
+          "expected": 5464.8,
+          "actual": null
+        }
+      ],
+      "id": "fm-10_05",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 39959,
+      "correct": 39925,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Summary Valuation!D5",
+          "expected": 442.743005847681,
+          "actual": 454.213251361712
+        },
+        {
+          "cell": "Summary Valuation!E5",
+          "expected": 397.902805847681,
+          "actual": 409.373051361712
+        },
+        {
+          "cell": "Summary Valuation!D7",
+          "expected": 432.862426095886,
+          "actual": 441.465110231409
+        },
+        {
+          "cell": "Summary Valuation!E7",
+          "expected": 388.022226095886,
+          "actual": 396.624910231409
+        },
+        {
+          "cell": "Summary Valuation!C16",
+          "expected": 2.80137580327888,
+          "actual": 2.85705019247886
+        }
+      ],
+      "id": "fm-11_01",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 39959,
+      "correct": 39417,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Summary Valuation!D5",
+          "expected": 442.743005847681,
+          "actual": 489.014130939534
+        },
+        {
+          "cell": "Summary Valuation!E5",
+          "expected": 397.902805847681,
+          "actual": 444.173930939534
+        },
+        {
+          "cell": "Summary Valuation!D7",
+          "expected": 432.862426095886,
+          "actual": 467.565769914776
+        },
+        {
+          "cell": "Summary Valuation!E7",
+          "expected": 388.022226095886,
+          "actual": 422.725569914776
+        },
+        {
+          "cell": "Summary Valuation!C16",
+          "expected": 2.80137580327888,
+          "actual": 3.02596704013891
+        }
+      ],
+      "id": "fm-11_02",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 39959,
+      "correct": 39959,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-11_03",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 39959,
+      "correct": 39959,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-11_04",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 39959,
+      "correct": 39528,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Summary Valuation!D12",
+          "expected": 14.9167622155193,
+          "actual": 14.6782642311443
+        },
+        {
+          "cell": "Summary Valuation!E12",
+          "expected": 22.4058200515831,
+          "actual": 22.1928248857081
+        },
+        {
+          "cell": "Summary Valuation!D18",
+          "expected": 26.0124965786604,
+          "actual": 26.4351574536028
+        },
+        {
+          "cell": "Summary Valuation!E18",
+          "expected": 17.3179212009458,
+          "actual": 17.4841295821591
+        },
+        {
+          "cell": "DCF!D29",
+          "expected": 26.6748775705297,
+          "actual": 27.1083010621523
+        }
+      ],
+      "id": "fm-11_05",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 8259,
+      "correct": 8238,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Valuation!H10",
+          "expected": -0.289803674274223,
+          "actual": 0
+        },
+        {
+          "cell": "Valuation!H11",
+          "expected": 14.9232266822994,
+          "actual": 15.2130303565737
+        },
+        {
+          "cell": "Valuation!H12",
+          "expected": 102.62825131949,
+          "actual": 104.621254907112
+        },
+        {
+          "cell": "Valuation!H13",
+          "expected": 102.62825131949,
+          "actual": 104.621254907112
+        },
+        {
+          "cell": "Valuation!H16",
+          "expected": 42.1914343092135,
+          "actual": 43.0107767306626
+        }
+      ],
+      "id": "fm-12_01",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 8259,
+      "correct": 8016,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Valuation!C5",
+          "expected": 7.41408055511761,
+          "actual": 7.69366000424704
+        },
+        {
+          "cell": "Valuation!D5",
+          "expected": 11.3441400111807,
+          "actual": 11.6699679080374
+        },
+        {
+          "cell": "Valuation!E5",
+          "expected": 16.2673526437559,
+          "actual": 16.6421597522836
+        },
+        {
+          "cell": "Valuation!F5",
+          "expected": 18.501182879857,
+          "actual": 18.9116944103869
+        },
+        {
+          "cell": "Valuation!G5",
+          "expected": 19.764395002038,
+          "actual": 20.1872009728432
+        }
+      ],
+      "id": "fm-12_02",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 8259,
+      "correct": 8259,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-12_03",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 8259,
+      "correct": 8259,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-12_04",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 8259,
+      "correct": 8259,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-12_05",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 17121,
+      "correct": 17121,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-13_01",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 17121,
+      "correct": 17116,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Revenue Drivers!H8",
+          "expected": 179.982674358702,
+          "actual": null
+        },
+        {
+          "cell": "Revenue Drivers!H10",
+          "expected": 6.89983885504,
+          "actual": null
+        },
+        {
+          "cell": "Revenue Drivers!H11",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Revenue Drivers!H12",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Revenue Drivers!H13",
+          "expected": 186.882513213742,
+          "actual": 0
+        }
+      ],
+      "id": "fm-13_02",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 17121,
+      "correct": 17121,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-13_03",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 17121,
+      "correct": 17121,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-13_04",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 17121,
+      "correct": 16704,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Summary Valuation!D5",
+          "expected": 75.1029358686627,
+          "actual": 77.0704077271269
+        },
+        {
+          "cell": "Summary Valuation!E5",
+          "expected": 67.2397435686627,
+          "actual": 69.2072154271269
+        },
+        {
+          "cell": "Summary Valuation!D6",
+          "expected": 88.0734369763526,
+          "actual": 89.0799461611849
+        },
+        {
+          "cell": "Summary Valuation!E6",
+          "expected": 74.6539064763527,
+          "actual": 75.6604156611849
+        },
+        {
+          "cell": "Summary Valuation!D7",
+          "expected": 78.3455611455852,
+          "actual": 80.0727923356414
+        }
+      ],
+      "id": "fm-13_05",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 32858,
+      "correct": 30664,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Work Sheet!V5",
+          "expected": 21977.25,
+          "actual": -258.75
+        },
+        {
+          "cell": "Work Sheet!Y5",
+          "expected": 6058.45,
+          "actual": -32.55
+        },
+        {
+          "cell": "Work Sheet!Z5",
+          "expected": 6518.0303267,
+          "actual": -16.78225
+        },
+        {
+          "cell": "Work Sheet!AA5",
+          "expected": 25161.5403267,
+          "actual": -109.27225
+        },
+        {
+          "cell": "Work Sheet!AB5",
+          "expected": 6864.267467469,
+          "actual": -2.25
+        }
+      ],
+      "id": "fm-15_01",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 32858,
+      "correct": 32238,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Work Sheet!U9",
+          "expected": 1564,
+          "actual": null
+        },
+        {
+          "cell": "Work Sheet!V9",
+          "expected": 5766,
+          "actual": null
+        },
+        {
+          "cell": "Work Sheet!W9",
+          "expected": 1547,
+          "actual": null
+        },
+        {
+          "cell": "Work Sheet!X9",
+          "expected": 1766,
+          "actual": null
+        },
+        {
+          "cell": "Work Sheet!Y9",
+          "expected": 1504,
+          "actual": null
+        }
+      ],
+      "id": "fm-15_02",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 32858,
+      "correct": 30649,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Work Sheet!Z5",
+          "expected": 6518.0303267,
+          "actual": 6534.8125767
+        },
+        {
+          "cell": "Work Sheet!AA5",
+          "expected": 25161.5403267,
+          "actual": 25178.3225767
+        },
+        {
+          "cell": "Work Sheet!AB5",
+          "expected": 6864.267467469,
+          "actual": 6884.601889572
+        },
+        {
+          "cell": "Work Sheet!AC5",
+          "expected": 6990.999701727,
+          "actual": 7011.33412383
+        },
+        {
+          "cell": "Work Sheet!AD5",
+          "expected": 6773.565791649,
+          "actual": 6793.900213752
+        }
+      ],
+      "id": "fm-15_03",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 32858,
+      "correct": 32492,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Consol_annual!S43",
+          "expected": -0.0204423577344799,
+          "actual": -0.0710698523816771
+        },
+        {
+          "cell": "Consol_annual!T43",
+          "expected": 0.0428712261915784,
+          "actual": -0.0520378429311388
+        },
+        {
+          "cell": "Consol_annual!N44",
+          "expected": null,
+          "actual": 0
+        },
+        {
+          "cell": "Consol_annual!O44",
+          "expected": null,
+          "actual": 0
+        },
+        {
+          "cell": "Consol_annual!P44",
+          "expected": null,
+          "actual": 0
+        }
+      ],
+      "id": "fm-15_04",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 32858,
+      "correct": 31278,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Work Sheet!AB5",
+          "expected": 6864.267467469,
+          "actual": 6882.351889572
+        },
+        {
+          "cell": "Work Sheet!AC5",
+          "expected": 6990.999701727,
+          "actual": 7009.08412383
+        },
+        {
+          "cell": "Work Sheet!AD5",
+          "expected": 6773.565791649,
+          "actual": 6791.650213752
+        },
+        {
+          "cell": "Work Sheet!AE5",
+          "expected": 7291.25627877804,
+          "actual": 7309.34070088104
+        },
+        {
+          "cell": "Work Sheet!AF5",
+          "expected": 27920.0892396231,
+          "actual": 27992.426928035
+        }
+      ],
+      "id": "fm-15_05",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 15239,
+      "correct": 15237,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Income Statement!C54",
+          "expected": null,
+          "actual": 733158.13
+        },
+        {
+          "cell": "Income Statement!D54",
+          "expected": null,
+          "actual": 1826125.72
+        }
+      ],
+      "id": "fm-16_01",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 15239,
+      "correct": 15172,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Valuation Summary and Football!D13",
+          "expected": 35154690.3296019,
+          "actual": null
+        },
+        {
+          "cell": "Valuation Summary and Football!F13",
+          "expected": 4394336.29120024,
+          "actual": 0
+        },
+        {
+          "cell": "Valuation Summary and Football!G13",
+          "expected": 10.0119130225349,
+          "actual": 0
+        },
+        {
+          "cell": "Valuation Summary and Football!H13",
+          "expected": 2.62746039465261,
+          "actual": 0
+        },
+        {
+          "cell": "Valuation Summary and Football!F16",
+          "expected": 40356345.241478,
+          "actual": 35962008.9502777
+        }
+      ],
+      "id": "fm-16_02",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 15239,
+      "correct": 15220,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Balance Sheet!C37",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Balance Sheet!D37",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Balance Sheet!E37",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Balance Sheet!F37",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Balance Sheet!G37",
+          "expected": 0,
+          "actual": null
+        }
+      ],
+      "id": "fm-16_03",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 15239,
+      "correct": 15237,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Synergies and Intgn Exp!F13",
+          "expected": 0,
+          "actual": 625165.678159231
+        },
+        {
+          "cell": "Synergies and Intgn Exp!F34",
+          "expected": 0,
+          "actual": 625165.678159231
+        }
+      ],
+      "id": "fm-16_04",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 15239,
+      "correct": 15201,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Balance Sheet!F11",
+          "expected": 338133.9145,
+          "actual": null
+        },
+        {
+          "cell": "Balance Sheet!G11",
+          "expected": 343728.07025,
+          "actual": null
+        },
+        {
+          "cell": "Balance Sheet!H11",
+          "expected": 362481.36725,
+          "actual": null
+        },
+        {
+          "cell": "Balance Sheet!I11",
+          "expected": 392668.8055,
+          "actual": null
+        },
+        {
+          "cell": "Balance Sheet!J11",
+          "expected": 432940.385,
+          "actual": null
+        }
+      ],
+      "id": "fm-16_05",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 222448,
+      "correct": 222020,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Financials!E17",
+          "expected": 5790,
+          "actual": 4834
+        },
+        {
+          "cell": "Financials!F17",
+          "expected": 5020,
+          "actual": 3988
+        },
+        {
+          "cell": "Financials!G17",
+          "expected": 6627,
+          "actual": 5634
+        },
+        {
+          "cell": "Financials!H17",
+          "expected": 6420,
+          "actual": 5391
+        },
+        {
+          "cell": "Financials!I17",
+          "expected": 7977,
+          "actual": 6778
+        }
+      ],
+      "id": "fm-17_01",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 222448,
+      "correct": 222448,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-17_02",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 222448,
+      "correct": 222194,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Financials!U32",
+          "expected": "#VALUE!",
+          "actual": 0
+        },
+        {
+          "cell": "Financials!Q116",
+          "expected": "#DIV/0!",
+          "actual": 0
+        },
+        {
+          "cell": "Technical Analysis!AF14",
+          "expected": null,
+          "actual": 0
+        },
+        {
+          "cell": "Technical Analysis!AG14",
+          "expected": null,
+          "actual": 0
+        },
+        {
+          "cell": "Technical Analysis!Q15",
+          "expected": "#N/A",
+          "actual": 0
+        }
+      ],
+      "id": "fm-17_03",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 222448,
+      "correct": 222448,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-17_04",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 222448,
+      "correct": 222438,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Ratio_Analysis!F19",
+          "expected": 0.100965783664459,
+          "actual": 0.092991169977925
+        },
+        {
+          "cell": "Ratio_Analysis!G19",
+          "expected": 0.120536884601269,
+          "actual": 0.111256750380119
+        },
+        {
+          "cell": "Ratio_Analysis!H19",
+          "expected": 0.105426247403078,
+          "actual": 0.0967170205523669
+        },
+        {
+          "cell": "Ratio_Analysis!I19",
+          "expected": 0.13027803511435,
+          "actual": 0.119830790351925
+        },
+        {
+          "cell": "Ratio_Analysis!J19",
+          "expected": 0.24299629993204,
+          "actual": 0.233913334268239
+        }
+      ],
+      "id": "fm-17_05",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 5959,
+      "correct": 5940,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "P&L!A13",
+          "expected": "Esc. %",
+          "actual": null
+        },
+        {
+          "cell": "P&L!J35",
+          "expected": "NM",
+          "actual": -0.00899561727786774
+        },
+        {
+          "cell": "P&L!Q35",
+          "expected": "NM",
+          "actual": -0.0247171560771282
+        },
+        {
+          "cell": "BS!E26",
+          "expected": 0.0118685416666722,
+          "actual": -0.0118685416666722
+        },
+        {
+          "cell": "BS!F26",
+          "expected": 0.0118685416667859,
+          "actual": -0.0118685416667859
+        }
+      ],
+      "id": "fm-18_01",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 5959,
+      "correct": 5939,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Milestones!C14",
+          "expected": null,
+          "actual": 268
+        },
+        {
+          "cell": "Milestones!D14",
+          "expected": null,
+          "actual": 251.750521875
+        },
+        {
+          "cell": "Milestones!C15",
+          "expected": null,
+          "actual": 399
+        },
+        {
+          "cell": "Milestones!D15",
+          "expected": null,
+          "actual": 352.450730625
+        },
+        {
+          "cell": "Milestones!C18",
+          "expected": 268,
+          "actual": null
+        }
+      ],
+      "id": "fm-18_02",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 5959,
+      "correct": 5957,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "P&L!A13",
+          "expected": "Esc. %",
+          "actual": null
+        },
+        {
+          "cell": "Ratio Analysis!R7",
+          "expected": "NM",
+          "actual": 1.13688990161163e-05
+        }
+      ],
+      "id": "fm-18_03",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 5959,
+      "correct": 5958,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "P&L!A13",
+          "expected": "Esc. %",
+          "actual": null
+        }
+      ],
+      "id": "fm-18_04",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 5959,
+      "correct": 5958,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "P&L!A13",
+          "expected": "Esc. %",
+          "actual": null
+        }
+      ],
+      "id": "fm-18_05",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 12882,
+      "correct": 12882,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-19_01",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 12882,
+      "correct": 12822,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Summary Valuation!D5",
+          "expected": 397.578228672416,
+          "actual": 407.032842032656
+        },
+        {
+          "cell": "Summary Valuation!E5",
+          "expected": 374.164328672416,
+          "actual": 383.618942032656
+        },
+        {
+          "cell": "Summary Valuation!D6",
+          "expected": 397.578228672416,
+          "actual": 407.032842032656
+        },
+        {
+          "cell": "Summary Valuation!E6",
+          "expected": 374.164328672416,
+          "actual": 383.618942032656
+        },
+        {
+          "cell": "Summary Valuation!C15",
+          "expected": 4.22626004054727,
+          "actual": 4.32676266307928
+        }
+      ],
+      "id": "fm-19_02",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 12882,
+      "correct": 12882,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-19_03",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 12882,
+      "correct": 12876,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Trading Comps!E50",
+          "expected": 39.9981339189851,
+          "actual": 52.6284671096316
+        },
+        {
+          "cell": "Trading Comps!F50",
+          "expected": 20.93616,
+          "actual": 27.5472353333714
+        },
+        {
+          "cell": "Trading Comps!G50",
+          "expected": 9.78787646339264,
+          "actual": 12.8786241770718
+        },
+        {
+          "cell": "Trading Comps!E51",
+          "expected": 104.819262129263,
+          "actual": 140.698561884659
+        },
+        {
+          "cell": "Trading Comps!F51",
+          "expected": 39.6643742356674,
+          "actual": 53.2413632728226
+        }
+      ],
+      "id": "fm-19_04",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 12882,
+      "correct": 12858,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DCF!M8",
+          "expected": 391.223742387886,
+          "actual": "#DIV/0!"
+        },
+        {
+          "cell": "DCF!N8",
+          "expected": 414.477798910751,
+          "actual": "#DIV/0!"
+        },
+        {
+          "cell": "DCF!O8",
+          "expected": 441.607531520761,
+          "actual": "#DIV/0!"
+        },
+        {
+          "cell": "DCF!P8",
+          "expected": 473.669942787137,
+          "actual": "#DIV/0!"
+        },
+        {
+          "cell": "DCF!L9",
+          "expected": 338.041986877743,
+          "actual": "#DIV/0!"
+        }
+      ],
+      "id": "fm-19_05",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 36122,
+      "correct": 36079,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Cashflow!H31",
+          "expected": 0,
+          "actual": 1205606.102185
+        },
+        {
+          "cell": "Cashflow!I31",
+          "expected": 0,
+          "actual": -90821.8658333332
+        },
+        {
+          "cell": "Cashflow!J31",
+          "expected": 0,
+          "actual": -30475.0979708333
+        },
+        {
+          "cell": "Cashflow!K31",
+          "expected": 0,
+          "actual": -29581.1368808334
+        },
+        {
+          "cell": "Cashflow!L31",
+          "expected": 0,
+          "actual": -28873.3422758334
+        }
+      ],
+      "id": "fm-20_01",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 36122,
+      "correct": 36122,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-20_02",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 36122,
+      "correct": 36122,
+      "pass": true,
+      "mismatches": [],
+      "id": "fm-20_03",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 36122,
+      "correct": 34607,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Summary!C51",
+          "expected": -208832.203601667,
+          "actual": -236489.6051975
+        },
+        {
+          "cell": "Summary!D51",
+          "expected": -571085.443775,
+          "actual": -593205.4662875
+        },
+        {
+          "cell": "Summary!E51",
+          "expected": -304161.212883334,
+          "actual": -329724.850800001
+        },
+        {
+          "cell": "Summary!F51",
+          "expected": 440343.519097875,
+          "actual": 414242.480214541
+        },
+        {
+          "cell": "Summary!H51",
+          "expected": -1440,
+          "actual": -91247.6333333333
+        }
+      ],
+      "id": "fm-20_04",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 36122,
+      "correct": 33053,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Summary!C17",
+          "expected": -12308.91255,
+          "actual": 12308.91255
+        },
+        {
+          "cell": "Summary!D17",
+          "expected": -224353.53675,
+          "actual": 224353.53675
+        },
+        {
+          "cell": "Summary!E17",
+          "expected": -870759.504,
+          "actual": 870759.504
+        },
+        {
+          "cell": "Summary!F17",
+          "expected": -1883805.876,
+          "actual": 1883805.876
+        },
+        {
+          "cell": "Summary!H17",
+          "expected": -324,
+          "actual": 324
+        }
+      ],
+      "id": "fm-20_05",
+      "type": "Financial_Model"
+    },
+    {
+      "status": "graded",
+      "cells": 468,
+      "correct": 357,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "BondAccounting!N3",
+          "expected": 22150,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!N4",
+          "expected": -1000,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!N5",
+          "expected": -1000,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!N6",
+          "expected": -1000,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!C7",
+          "expected": 405.064555233701,
+          "actual": null
+        }
+      ],
+      "id": "tpl-01_01",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 280,
+      "correct": 278,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "OID_Bond!F35",
+          "expected": 0,
+          "actual": 630
+        },
+        {
+          "cell": "OID_Bond!F36",
+          "expected": 0,
+          "actual": 630
+        }
+      ],
+      "id": "tpl-01_02",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 390,
+      "correct": 390,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-01_03",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 468,
+      "correct": 331,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "OID_Bond!N4",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "OID_Bond!N5",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "OID_Bond!N6",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "OID_Bond!D7",
+          "expected": 647.318551382901,
+          "actual": null
+        },
+        {
+          "cell": "OID_Bond!E7",
+          "expected": 691.800643417344,
+          "actual": null
+        }
+      ],
+      "id": "tpl-01_04",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 486,
+      "correct": 373,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "BondAccounting!J6",
+          "expected": 12480,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!J7",
+          "expected": -600,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!J8",
+          "expected": -600,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!J9",
+          "expected": -600,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!J10",
+          "expected": -12600,
+          "actual": null
+        }
+      ],
+      "id": "tpl-01_05",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 456,
+      "correct": 296,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "BondAccounting!C8",
+          "expected": -129.34358158332,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!D8",
+          "expected": -132.416420782964,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!E8",
+          "expected": -135.562261987278,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!F8",
+          "expected": -138.782839518282,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!G8",
+          "expected": -142.079928900603,
+          "actual": null
+        }
+      ],
+      "id": "tpl-01_06",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 396,
+      "correct": 269,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "BondAccounting!C7",
+          "expected": -212.984835930406,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!D7",
+          "expected": -217.652262150536,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!E7",
+          "expected": -222.421972025862,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!F7",
+          "expected": -227.296207037155,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!G7",
+          "expected": -232.2772577858,
+          "actual": null
+        }
+      ],
+      "id": "tpl-01_07",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 360,
+      "correct": 276,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "BondAccounting!C7",
+          "expected": -192.930198292082,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!D7",
+          "expected": -201.550426857634,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!E7",
+          "expected": -210.555812029979,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!F7",
+          "expected": -219.963562820531,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!C8",
+          "expected": 900,
+          "actual": null
+        }
+      ],
+      "id": "tpl-01_08",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 494,
+      "correct": 420,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "BondAccounting!N3",
+          "expected": 31200,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!N4",
+          "expected": -1500,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!N5",
+          "expected": -1500,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!N6",
+          "expected": -1500,
+          "actual": null
+        },
+        {
+          "cell": "BondAccounting!C7",
+          "expected": -283.006689585718,
+          "actual": null
+        }
+      ],
+      "id": "tpl-01_09",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 140,
+      "correct": 137,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Revenue_Analysis!D13",
+          "expected": 0.31752,
+          "actual": null
+        },
+        {
+          "cell": "Revenue_Analysis!E13",
+          "expected": 0.31879008,
+          "actual": null
+        },
+        {
+          "cell": "Revenue_Analysis!F13",
+          "expected": 0.31879008,
+          "actual": null
+        }
+      ],
+      "id": "tpl-02_01",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 258,
+      "correct": 214,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DebtWaterfall!B13",
+          "expected": -600,
+          "actual": 600
+        },
+        {
+          "cell": "DebtWaterfall!B16",
+          "expected": 0,
+          "actual": 18
+        },
+        {
+          "cell": "DebtWaterfall!B17",
+          "expected": 711.6,
+          "actual": 693.6
+        },
+        {
+          "cell": "DebtWaterfall!C19",
+          "expected": 1788.4,
+          "actual": 1806.4
+        },
+        {
+          "cell": "DebtWaterfall!D19",
+          "expected": 863.4,
+          "actual": 881.4
+        }
+      ],
+      "id": "tpl-02_02",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 166,
+      "correct": 166,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-02_03",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 130,
+      "correct": 130,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-02_04",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 185,
+      "correct": 113,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DebtWaterfall!D6",
+          "expected": 48,
+          "actual": null
+        },
+        {
+          "cell": "DebtWaterfall!E6",
+          "expected": 50,
+          "actual": null
+        },
+        {
+          "cell": "DebtWaterfall!F6",
+          "expected": 52,
+          "actual": null
+        },
+        {
+          "cell": "DebtWaterfall!C9",
+          "expected": 1582,
+          "actual": null
+        },
+        {
+          "cell": "DebtWaterfall!D9",
+          "expected": 1208,
+          "actual": null
+        }
+      ],
+      "id": "tpl-02_05",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 200,
+      "correct": 200,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-02_06",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 312,
+      "correct": 275,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "M&A_Consolidation!C14",
+          "expected": null,
+          "actual": 3400
+        },
+        {
+          "cell": "M&A_Consolidation!D14",
+          "expected": null,
+          "actual": 330
+        },
+        {
+          "cell": "M&A_Consolidation!C18",
+          "expected": null,
+          "actual": 0
+        },
+        {
+          "cell": "M&A_Consolidation!D18",
+          "expected": null,
+          "actual": 0
+        },
+        {
+          "cell": "M&A_Consolidation!E18",
+          "expected": null,
+          "actual": 0
+        }
+      ],
+      "id": "tpl-03_01",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 265,
+      "correct": 256,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "M&A_Consolidation!E13",
+          "expected": 8.125,
+          "actual": 0
+        },
+        {
+          "cell": "M&A_Consolidation!F13",
+          "expected": 1753.125,
+          "actual": 1745
+        },
+        {
+          "cell": "M&A_Consolidation!C14",
+          "expected": null,
+          "actual": 3500
+        },
+        {
+          "cell": "M&A_Consolidation!D14",
+          "expected": null,
+          "actual": 360
+        },
+        {
+          "cell": "M&A_Consolidation!E15",
+          "expected": null,
+          "actual": 0
+        }
+      ],
+      "id": "tpl-03_02",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 348,
+      "correct": 336,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Consolidation!C15",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Consolidation!D15",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Consolidation!C19",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Consolidation!D19",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Consolidation!C21",
+          "expected": 0,
+          "actual": null
+        }
+      ],
+      "id": "tpl-03_03",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 288,
+      "correct": 288,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-03_04",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 282,
+      "correct": 254,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "FCF_Calculation!C12",
+          "expected": null,
+          "actual": 0.24
+        },
+        {
+          "cell": "FCF_Calculation!D12",
+          "expected": null,
+          "actual": 0.24
+        },
+        {
+          "cell": "FCF_Calculation!F15",
+          "expected": 76.1455905,
+          "actual": 75.835077817419
+        },
+        {
+          "cell": "FCF_Calculation!G15",
+          "expected": 77.427419238,
+          "actual": 76.8246972173287
+        },
+        {
+          "cell": "FCF_Calculation!C28",
+          "expected": null,
+          "actual": 0.5
+        }
+      ],
+      "id": "tpl-04_03",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 174,
+      "correct": 174,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-04_04",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 400,
+      "correct": 382,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DeferredTax!C10",
+          "expected": null,
+          "actual": 0
+        },
+        {
+          "cell": "DeferredTax!C11",
+          "expected": null,
+          "actual": 0
+        },
+        {
+          "cell": "DeferredTax!C12",
+          "expected": null,
+          "actual": 0
+        },
+        {
+          "cell": "DeferredTax!C13",
+          "expected": null,
+          "actual": 0
+        },
+        {
+          "cell": "DeferredTax!C14",
+          "expected": null,
+          "actual": 0
+        }
+      ],
+      "id": "tpl-05_01",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 330,
+      "correct": 328,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DeferredTax!D32",
+          "expected": -21,
+          "actual": 21
+        },
+        {
+          "cell": "DeferredTax!F32",
+          "expected": 21,
+          "actual": -21
+        }
+      ],
+      "id": "tpl-05_02",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 348,
+      "correct": 342,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "IncomeStmt!E18",
+          "expected": "#REF!",
+          "actual": 65090
+        },
+        {
+          "cell": "IncomeStmt!F18",
+          "expected": "#REF!",
+          "actual": 71070
+        },
+        {
+          "cell": "IncomeStmt!G18",
+          "expected": "#REF!",
+          "actual": 79695
+        },
+        {
+          "cell": "IncomeStmt!E19",
+          "expected": "#REF!",
+          "actual": 0.435384615384615
+        },
+        {
+          "cell": "IncomeStmt!F19",
+          "expected": "#REF!",
+          "actual": 0.432167832167832
+        }
+      ],
+      "id": "tpl-06_01",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 279,
+      "correct": 254,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "WC_Forecast!C29",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "WC_Forecast!D29",
+          "expected": -250,
+          "actual": 250
+        },
+        {
+          "cell": "WC_Forecast!E29",
+          "expected": -150,
+          "actual": 150
+        },
+        {
+          "cell": "WC_Forecast!F29",
+          "expected": -300,
+          "actual": 300
+        },
+        {
+          "cell": "WC_Forecast!G29",
+          "expected": -272.602739726027,
+          "actual": 272.602739726028
+        }
+      ],
+      "id": "tpl-06_02",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 423,
+      "correct": 423,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-06_03",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 168,
+      "correct": 168,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-06_04",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 140,
+      "correct": 140,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-06_05",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 246,
+      "correct": 246,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-06_06",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 540,
+      "correct": 379,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "WC_Forecast!F7",
+          "expected": 6413.33333333333,
+          "actual": null
+        },
+        {
+          "cell": "WC_Forecast!G7",
+          "expected": 1707.16438356164,
+          "actual": null
+        },
+        {
+          "cell": "WC_Forecast!H7",
+          "expected": 1734.7397260274,
+          "actual": null
+        },
+        {
+          "cell": "WC_Forecast!I7",
+          "expected": 1734.24657534247,
+          "actual": null
+        },
+        {
+          "cell": "WC_Forecast!J7",
+          "expected": 1725.38356164384,
+          "actual": null
+        }
+      ],
+      "id": "tpl-06_07",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 162,
+      "correct": 153,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "WorkingCapital_Forecast!C17",
+          "expected": 493.150684931507,
+          "actual": null
+        },
+        {
+          "cell": "WorkingCapital_Forecast!D17",
+          "expected": 621.369863013699,
+          "actual": null
+        },
+        {
+          "cell": "WorkingCapital_Forecast!E17",
+          "expected": 739.72602739726,
+          "actual": null
+        },
+        {
+          "cell": "WorkingCapital_Forecast!F17",
+          "expected": 863.561643835617,
+          "actual": null
+        },
+        {
+          "cell": "WorkingCapital_Forecast!G17",
+          "expected": 962.876712328767,
+          "actual": null
+        }
+      ],
+      "id": "tpl-06_08",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 396,
+      "correct": 391,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "OpEx_Forecast!H8",
+          "expected": 0.401596302003082,
+          "actual": null
+        },
+        {
+          "cell": "OpEx_Forecast!I8",
+          "expected": 0.282113017360154,
+          "actual": null
+        },
+        {
+          "cell": "OpEx_Forecast!J8",
+          "expected": 0.248636481432319,
+          "actual": null
+        },
+        {
+          "cell": "OpEx_Forecast!K8",
+          "expected": 0.169094290364,
+          "actual": null
+        },
+        {
+          "cell": "OpEx_Forecast!L8",
+          "expected": 0.26793132628012,
+          "actual": null
+        }
+      ],
+      "id": "tpl-06_09",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 217,
+      "correct": 215,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "WC_Forecast!H12",
+          "expected": 0.533999681210785,
+          "actual": null
+        },
+        {
+          "cell": "WC_Forecast!H15",
+          "expected": 3463.80054875,
+          "actual": -2876.19945125
+        }
+      ],
+      "id": "tpl-06_11",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 416,
+      "correct": 406,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "CashFlow_Build!I12",
+          "expected": -570,
+          "actual": -345
+        },
+        {
+          "cell": "CashFlow_Build!J12",
+          "expected": 465,
+          "actual": 960
+        },
+        {
+          "cell": "CashFlow_Build!K12",
+          "expected": -739.9995,
+          "actual": -1279.9995
+        },
+        {
+          "cell": "CashFlow_Build!L12",
+          "expected": -5740.0005,
+          "actual": -5075.001
+        },
+        {
+          "cell": "CashFlow_Build!M12",
+          "expected": -6585,
+          "actual": -5740.0005
+        }
+      ],
+      "id": "tpl-06_12",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 486,
+      "correct": 421,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "CashFlowBuild!B26",
+          "expected": "CASH FLOW STATEMENT (To Complete)",
+          "actual": "\u2022 Asset increases (AR, Inventory) reduce cash (subtract from cash flow)"
+        },
+        {
+          "cell": "CashFlowBuild!B27",
+          "expected": null,
+          "actual": "\u2022 Liability increases (AP) increase cash (add to cash flow)"
+        },
+        {
+          "cell": "CashFlowBuild!C31",
+          "expected": -2.9,
+          "actual": 2.9
+        },
+        {
+          "cell": "CashFlowBuild!D31",
+          "expected": -1.2,
+          "actual": 1.2
+        },
+        {
+          "cell": "CashFlowBuild!E31",
+          "expected": -15.3,
+          "actual": 15.3
+        }
+      ],
+      "id": "tpl-06_13",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 264,
+      "correct": 234,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "SegmentRevenue!C11",
+          "expected": 606.25,
+          "actual": 606250
+        },
+        {
+          "cell": "SegmentRevenue!D11",
+          "expected": 544.32,
+          "actual": 544320
+        },
+        {
+          "cell": "SegmentRevenue!E11",
+          "expected": 541.62,
+          "actual": 541620
+        },
+        {
+          "cell": "SegmentRevenue!F11",
+          "expected": 438.96,
+          "actual": 438960
+        },
+        {
+          "cell": "SegmentRevenue!G11",
+          "expected": 2131.15,
+          "actual": 2131150
+        }
+      ],
+      "id": "tpl-06_14",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 189,
+      "correct": 159,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "WorkingCapital!C17",
+          "expected": 2893.33333333333,
+          "actual": 713.424657534247
+        },
+        {
+          "cell": "WorkingCapital!D17",
+          "expected": 3052.22222222222,
+          "actual": 752.602739726027
+        },
+        {
+          "cell": "WorkingCapital!E17",
+          "expected": 3535.55555555556,
+          "actual": 871.780821917808
+        },
+        {
+          "cell": "WorkingCapital!F17",
+          "expected": 4116.66666666667,
+          "actual": 1015.06849315069
+        },
+        {
+          "cell": "WorkingCapital!G17",
+          "expected": 3097.77777777778,
+          "actual": 763.835616438356
+        }
+      ],
+      "id": "tpl-06_15",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 306,
+      "correct": 295,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "QuarterlyPL_Forecast!H8",
+          "expected": 339.2,
+          "actual": 339.207
+        },
+        {
+          "cell": "QuarterlyPL_Forecast!I8",
+          "expected": 346,
+          "actual": 345.99114
+        },
+        {
+          "cell": "QuarterlyPL_Forecast!J8",
+          "expected": 351.2,
+          "actual": 351.1810071
+        },
+        {
+          "cell": "QuarterlyPL_Forecast!J9",
+          "expected": 0.0150289017341041,
+          "actual": 0.0149999999999999
+        },
+        {
+          "cell": "QuarterlyPL_Forecast!H10",
+          "expected": null,
+          "actual": 0.211453571428571
+        }
+      ],
+      "id": "tpl-06_16",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 224,
+      "correct": 224,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-06_17",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 161,
+      "correct": 161,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-06_18",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 558,
+      "correct": 549,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "IncomeStatement!C9",
+          "expected": 0.0915378356387307,
+          "actual": 22.5
+        },
+        {
+          "cell": "IncomeStatement!D9",
+          "expected": 0.0868430860976519,
+          "actual": 23.3
+        },
+        {
+          "cell": "IncomeStatement!E9",
+          "expected": 0.085,
+          "actual": 24.786
+        },
+        {
+          "cell": "IncomeStatement!B10",
+          "expected": 0.0761821366024519,
+          "actual": 17.4
+        },
+        {
+          "cell": "IncomeStatement!C10",
+          "expected": 0.0809830781627721,
+          "actual": 20.1
+        }
+      ],
+      "id": "tpl-06_19",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 294,
+      "correct": 258,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "RevenueBuild!C8",
+          "expected": null,
+          "actual": "2022-03-31 00:00:00"
+        },
+        {
+          "cell": "RevenueBuild!D8",
+          "expected": null,
+          "actual": "2023-03-31 00:00:00"
+        },
+        {
+          "cell": "RevenueBuild!E8",
+          "expected": null,
+          "actual": "2024-03-31 00:00:00"
+        },
+        {
+          "cell": "RevenueBuild!F8",
+          "expected": null,
+          "actual": "2025-03-31 00:00:00"
+        },
+        {
+          "cell": "RevenueBuild!G8",
+          "expected": null,
+          "actual": "2026-03-31 00:00:00"
+        }
+      ],
+      "id": "tpl-06_20",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 198,
+      "correct": 198,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-06_21",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 370,
+      "correct": 346,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "RevenueBuild!D43",
+          "expected": 5891763.9723,
+          "actual": 5683219.83747312
+        },
+        {
+          "cell": "RevenueBuild!E43",
+          "expected": 6664203.12852,
+          "actual": 6871497.38978318
+        },
+        {
+          "cell": "RevenueBuild!F43",
+          "expected": 5930419.894224,
+          "actual": 6031630.28990557
+        },
+        {
+          "cell": "RevenueBuild!D45",
+          "expected": 21984.1939264925,
+          "actual": 21206.0441696758
+        },
+        {
+          "cell": "RevenueBuild!E45",
+          "expected": 24773.9893253532,
+          "actual": 25544.5999620193
+        }
+      ],
+      "id": "tpl-06_22",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 357,
+      "correct": 348,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "WorkingCapital!D34",
+          "expected": 0,
+          "actual": 591.780821917808
+        },
+        {
+          "cell": "WorkingCapital!D35",
+          "expected": 0,
+          "actual": 887.671232876712
+        },
+        {
+          "cell": "WorkingCapital!D36",
+          "expected": 0,
+          "actual": 591.780821917808
+        },
+        {
+          "cell": "WorkingCapital!C37",
+          "expected": null,
+          "actual": "Use cash flow convention: \u0394AP - \u0394AR - \u0394Inv (sources minus uses)"
+        },
+        {
+          "cell": "WorkingCapital!D37",
+          "expected": 0,
+          "actual": -887.671232876712
+        }
+      ],
+      "id": "tpl-06_23",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 216,
+      "correct": 204,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "RevenueBuild!G11",
+          "expected": null,
+          "actual": 142
+        },
+        {
+          "cell": "RevenueBuild!G12",
+          "expected": null,
+          "actual": 12
+        },
+        {
+          "cell": "RevenueBuild!G13",
+          "expected": null,
+          "actual": 1
+        },
+        {
+          "cell": "RevenueBuild!G14",
+          "expected": null,
+          "actual": 153
+        },
+        {
+          "cell": "RevenueBuild!G16",
+          "expected": null,
+          "actual": 147.5
+        }
+      ],
+      "id": "tpl-06_24",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 343,
+      "correct": 332,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "RevenueDrivers!B31",
+          "expected": "Same-Store Sales Growth (ex-Gas)",
+          "actual": "Same-Store Sales Growth (ex-Gas) %"
+        },
+        {
+          "cell": "RevenueDrivers!D32",
+          "expected": 5533,
+          "actual": 5532.8
+        },
+        {
+          "cell": "RevenueDrivers!F32",
+          "expected": 5890,
+          "actual": 5890.35
+        },
+        {
+          "cell": "RevenueDrivers!G32",
+          "expected": 7521,
+          "actual": 7520.8
+        },
+        {
+          "cell": "RevenueDrivers!D36",
+          "expected": 5678,
+          "actual": 5677.8
+        }
+      ],
+      "id": "tpl-06_25",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 360,
+      "correct": 349,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "EquityDRD!D25",
+          "expected": null,
+          "actual": 0
+        },
+        {
+          "cell": "EquityDRD!D28",
+          "expected": null,
+          "actual": 0
+        },
+        {
+          "cell": "EquityDRD!E30",
+          "expected": 2537.27,
+          "actual": 2547.27
+        },
+        {
+          "cell": "EquityDRD!E31",
+          "expected": 4292.4,
+          "actual": 4302.4
+        },
+        {
+          "cell": "EquityDRD!C48",
+          "expected": -5.13,
+          "actual": 5.13
+        }
+      ],
+      "id": "tpl-07_01",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 531,
+      "correct": 516,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "EquityMethod!G21",
+          "expected": 71500,
+          "actual": 65500
+        },
+        {
+          "cell": "EquityMethod!E22",
+          "expected": 6000,
+          "actual": null
+        },
+        {
+          "cell": "EquityMethod!F22",
+          "expected": 6000,
+          "actual": null
+        },
+        {
+          "cell": "EquityMethod!H22",
+          "expected": 6000,
+          "actual": null
+        },
+        {
+          "cell": "EquityMethod!D23",
+          "expected": null,
+          "actual": 0
+        }
+      ],
+      "id": "tpl-07_02",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 324,
+      "correct": 272,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "EquityMethod!C11",
+          "expected": 4.5,
+          "actual": 0
+        },
+        {
+          "cell": "EquityMethod!C12",
+          "expected": 7.5,
+          "actual": 0
+        },
+        {
+          "cell": "EquityMethod!C17",
+          "expected": 3.3,
+          "actual": 0
+        },
+        {
+          "cell": "EquityMethod!D22",
+          "expected": 138,
+          "actual": 0
+        },
+        {
+          "cell": "EquityMethod!E22",
+          "expected": -12,
+          "actual": 0
+        }
+      ],
+      "id": "tpl-07_03",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 663,
+      "correct": 643,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DebtSchedule!C7",
+          "expected": 1370.93573264782,
+          "actual": 1771.96401028278
+        },
+        {
+          "cell": "DebtSchedule!D7",
+          "expected": 727.759861486509,
+          "actual": 1559.18048387203
+        },
+        {
+          "cell": "DebtSchedule!E7",
+          "expected": 13.6331698482141,
+          "actual": 1276.39377601904
+        },
+        {
+          "cell": "DebtSchedule!F7",
+          "expected": -659.518681728494,
+          "actual": 988.79650885302
+        },
+        {
+          "cell": "DebtSchedule!G7",
+          "expected": -1404.03130640208,
+          "actual": 594.831272849849
+        }
+      ],
+      "id": "tpl-08_01",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 252,
+      "correct": 242,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DebtSchedule!E15",
+          "expected": -1245.88,
+          "actual": -1245.89209810304
+        },
+        {
+          "cell": "DebtSchedule!F15",
+          "expected": -1491.08,
+          "actual": -1491.09069756514
+        },
+        {
+          "cell": "DebtSchedule!G15",
+          "expected": -2150.19,
+          "actual": -2150.20200874536
+        },
+        {
+          "cell": "DebtSchedule!C16",
+          "expected": -1713.73,
+          "actual": -1713.74527112232
+        },
+        {
+          "cell": "DebtSchedule!G17",
+          "expected": -2121.57,
+          "actual": -2121.58010221627
+        }
+      ],
+      "id": "tpl-08_02",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 190,
+      "correct": 190,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-08_03",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 456,
+      "correct": 447,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DebtSchedule!C8",
+          "expected": 55,
+          "actual": null
+        },
+        {
+          "cell": "DebtSchedule!F19",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "DebtSchedule!H19",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "DebtSchedule!J19",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "DebtSchedule!L19",
+          "expected": 0,
+          "actual": null
+        }
+      ],
+      "id": "tpl-09_01",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 422,
+      "correct": 329,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DebtSchedule!C10",
+          "expected": -5.4,
+          "actual": 5.4
+        },
+        {
+          "cell": "DebtSchedule!D10",
+          "expected": -4.494375,
+          "actual": 4.449375
+        },
+        {
+          "cell": "DebtSchedule!E10",
+          "expected": -3.46908515625,
+          "actual": 3.37756640625
+        },
+        {
+          "cell": "DebtSchedule!F10",
+          "expected": -2.31474578027344,
+          "actual": 2.17513827246094
+        },
+        {
+          "cell": "DebtSchedule!G10",
+          "expected": -1.02133469035767,
+          "actual": 0.832015429156493
+        }
+      ],
+      "id": "tpl-09_02",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 245,
+      "correct": 220,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Sheet!D10",
+          "expected": -11.7,
+          "actual": 11.7
+        },
+        {
+          "cell": "Sheet!E10",
+          "expected": -10.296,
+          "actual": 10.296
+        },
+        {
+          "cell": "Sheet!F10",
+          "expected": -7.870032,
+          "actual": 7.870032
+        },
+        {
+          "cell": "Sheet!G10",
+          "expected": -5.844973344,
+          "actual": 5.844973344
+        },
+        {
+          "cell": "Sheet!H10",
+          "expected": -3.115073705744,
+          "actual": 3.115073705744
+        }
+      ],
+      "id": "tpl-09_03",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 408,
+      "correct": 386,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DebtSchedule!C19",
+          "expected": -1.8,
+          "actual": 1.8
+        },
+        {
+          "cell": "DebtSchedule!D19",
+          "expected": -2.4,
+          "actual": 2.4
+        },
+        {
+          "cell": "DebtSchedule!E19",
+          "expected": -2.8,
+          "actual": 2.8
+        },
+        {
+          "cell": "DebtSchedule!F19",
+          "expected": -3.2,
+          "actual": 3.2
+        },
+        {
+          "cell": "DebtSchedule!G19",
+          "expected": -3.7,
+          "actual": 3.7
+        }
+      ],
+      "id": "tpl-09_04",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 153,
+      "correct": 151,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "EPS_Accretion!D39",
+          "expected": null,
+          "actual": 88.8157894736842
+        },
+        {
+          "cell": "EPS_Accretion!D40",
+          "expected": null,
+          "actual": 288.815789473684
+        }
+      ],
+      "id": "tpl-10_01",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 164,
+      "correct": 159,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "EPS_Accretion!E10",
+          "expected": 265.521333333333,
+          "actual": null
+        },
+        {
+          "cell": "EPS_Accretion!C31",
+          "expected": -4.95,
+          "actual": 4.95
+        },
+        {
+          "cell": "EPS_Accretion!D31",
+          "expected": -4.95,
+          "actual": 4.95
+        },
+        {
+          "cell": "EPS_Accretion!C32",
+          "expected": -4.33875,
+          "actual": 4.33875
+        },
+        {
+          "cell": "EPS_Accretion!D32",
+          "expected": -4.33875,
+          "actual": 4.33875
+        }
+      ],
+      "id": "tpl-10_02",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 210,
+      "correct": 209,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DebtSchedule!K8",
+          "expected": 0.142857142857143,
+          "actual": 1
+        }
+      ],
+      "id": "tpl-11_01",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 280,
+      "correct": 246,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "PPA!D13",
+          "expected": -147,
+          "actual": 147
+        },
+        {
+          "cell": "PPA!F22",
+          "expected": 116,
+          "actual": 117.45
+        },
+        {
+          "cell": "PPA!G22",
+          "expected": 101.5,
+          "actual": 105.705
+        },
+        {
+          "cell": "PPA!H22",
+          "expected": 87,
+          "actual": 95.1345
+        },
+        {
+          "cell": "PPA!E23",
+          "expected": -14.5,
+          "actual": -13.05
+        }
+      ],
+      "id": "tpl-11_02",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 318,
+      "correct": 317,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "MergerPremium!F35",
+          "expected": null,
+          "actual": "Starting Rate:"
+        }
+      ],
+      "id": "tpl-11_03",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 252,
+      "correct": 210,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "PPA!B18",
+          "expected": "Deferred Tax Liability on FV Adjustments",
+          "actual": -131.6
+        },
+        {
+          "cell": "PPA!C18",
+          "expected": -131.6,
+          "actual": null
+        },
+        {
+          "cell": "PPA!B19",
+          "expected": "Fair Value of Net Assets",
+          "actual": 733.4
+        },
+        {
+          "cell": "PPA!C19",
+          "expected": 733.4,
+          "actual": null
+        },
+        {
+          "cell": "PPA!B20",
+          "expected": "Goodwill Created",
+          "actual": 1116.6
+        }
+      ],
+      "id": "tpl-11_04",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 360,
+      "correct": 360,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-12_01",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 494,
+      "correct": 453,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Normalization!L8",
+          "expected": 450.51879645,
+          "actual": 450.510994612283
+        },
+        {
+          "cell": "Normalization!M8",
+          "expected": 475.162174615815,
+          "actual": 475.149831771893
+        },
+        {
+          "cell": "Normalization!N8",
+          "expected": 501.1535455673,
+          "actual": 501.136188312466
+        },
+        {
+          "cell": "Normalization!K9",
+          "expected": 209.2731784875,
+          "actual": 209.276095390073
+        },
+        {
+          "cell": "Normalization!N9",
+          "expected": 245.52765081206,
+          "actual": 245.524695107337
+        }
+      ],
+      "id": "tpl-13_01",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 210,
+      "correct": 182,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Financial_Normalization!E12",
+          "expected": 56.8,
+          "actual": 20.2
+        },
+        {
+          "cell": "Financial_Normalization!F12",
+          "expected": 58.0570952703515,
+          "actual": 44.712165972355
+        },
+        {
+          "cell": "Financial_Normalization!G12",
+          "expected": 63.5055599696631,
+          "actual": 48.9082535788003
+        },
+        {
+          "cell": "Financial_Normalization!H12",
+          "expected": 69.4653449036747,
+          "actual": 53.498130007998
+        },
+        {
+          "cell": "Financial_Normalization!E13",
+          "expected": 142.7,
+          "actual": 179.3
+        }
+      ],
+      "id": "tpl-13_02",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 287,
+      "correct": 253,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "FinancialNormalization!B25",
+          "expected": "Normalized Revenue",
+          "actual": "Revenue"
+        },
+        {
+          "cell": "FinancialNormalization!H25",
+          "expected": 477.485929131439,
+          "actual": 479.785200816833
+        },
+        {
+          "cell": "FinancialNormalization!B26",
+          "expected": "Normalized COGS",
+          "actual": "Cost of Goods Sold"
+        },
+        {
+          "cell": "FinancialNormalization!H26",
+          "expected": 224.101769134222,
+          "actual": 221.702939520631
+        },
+        {
+          "cell": "FinancialNormalization!H27",
+          "expected": 253.384159997217,
+          "actual": 258.082261296202
+        }
+      ],
+      "id": "tpl-13_03",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 280,
+      "correct": 255,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Normalize_Adjustments!C20",
+          "expected": 0,
+          "actual": 0.105357142857143
+        },
+        {
+          "cell": "Normalize_Adjustments!D20",
+          "expected": 0.125,
+          "actual": null
+        },
+        {
+          "cell": "Normalize_Adjustments!E20",
+          "expected": 0.0857142857142856,
+          "actual": null
+        },
+        {
+          "cell": "Normalize_Adjustments!F20",
+          "expected": 0.105357142857143,
+          "actual": null
+        },
+        {
+          "cell": "Normalize_Adjustments!G20",
+          "expected": 0.105357142857143,
+          "actual": null
+        }
+      ],
+      "id": "tpl-13_04",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 272,
+      "correct": 271,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Normalize!C21",
+          "expected": 0,
+          "actual": null
+        }
+      ],
+      "id": "tpl-13_05",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 500,
+      "correct": 498,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "FinancialNormalization!J42",
+          "expected": null,
+          "actual": 0.094431643625192
+        },
+        {
+          "cell": "FinancialNormalization!J44",
+          "expected": null,
+          "actual": 0.165570885999925
+        }
+      ],
+      "id": "tpl-13_06",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 272,
+      "correct": 223,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Normalization!H8",
+          "expected": 446.3,
+          "actual": 446.291990452595
+        },
+        {
+          "cell": "Normalization!I8",
+          "expected": 488.2,
+          "actual": 488.173271540446
+        },
+        {
+          "cell": "Normalization!G9",
+          "expected": 195.5,
+          "actual": 195.467102593947
+        },
+        {
+          "cell": "Normalization!H9",
+          "expected": 213.8,
+          "actual": 213.810278905184
+        },
+        {
+          "cell": "Normalization!I9",
+          "expected": 233.9,
+          "actual": 233.874829875992
+        }
+      ],
+      "id": "tpl-13_07",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 320,
+      "correct": 320,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-13_08",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 768,
+      "correct": 604,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DCF_Analysis!C32",
+          "expected": 2489018,
+          "actual": 2361018
+        },
+        {
+          "cell": "DCF_Analysis!C33",
+          "expected": 45254872.7272727,
+          "actual": 42927600
+        },
+        {
+          "cell": "DCF_Analysis!C34",
+          "expected": 46386244.5454545,
+          "actual": 44000790
+        },
+        {
+          "cell": "DCF_Analysis!C37",
+          "expected": 3437142.34604648,
+          "actual": 3311815.62576245
+        },
+        {
+          "cell": "DCF_Analysis!C38",
+          "expected": 57285705.7674413,
+          "actual": 55196927.0960408
+        }
+      ],
+      "id": "tpl-14_01",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 286,
+      "correct": 286,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-14_02",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 288,
+      "correct": 283,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "NOI_Projection!C35",
+          "expected": -342402.12,
+          "actual": 342402.12
+        },
+        {
+          "cell": "NOI_Projection!D35",
+          "expected": -353358.98784,
+          "actual": 353358.98784
+        },
+        {
+          "cell": "NOI_Projection!E35",
+          "expected": -364666.47545088,
+          "actual": 364666.47545088
+        },
+        {
+          "cell": "NOI_Projection!F35",
+          "expected": -376335.802665308,
+          "actual": 376335.802665308
+        },
+        {
+          "cell": "NOI_Projection!C48",
+          "expected": -1940739.89709336,
+          "actual": 1940739.89709336
+        }
+      ],
+      "id": "tpl-14_03",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 276,
+      "correct": 276,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-14_04",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 560,
+      "correct": 545,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "NOI_Projection!M35",
+          "expected": 194185.2,
+          "actual": -194185.2
+        },
+        {
+          "cell": "NOI_Projection!N35",
+          "expected": 2044185.2,
+          "actual": 1655814.8
+        },
+        {
+          "cell": "NOI_Projection!O35",
+          "expected": 2810444.8,
+          "actual": 6510444.8
+        },
+        {
+          "cell": "NOI_Projection!M36",
+          "expected": 199466.167,
+          "actual": -199466.167
+        },
+        {
+          "cell": "NOI_Projection!N36",
+          "expected": 2100003.667,
+          "actual": 1701071.333
+        }
+      ],
+      "id": "tpl-14_05",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 284,
+      "correct": 268,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "OpEx_Projection!H28",
+          "expected": 2921000,
+          "actual": 2508000
+        },
+        {
+          "cell": "OpEx_Projection!G29",
+          "expected": 90200,
+          "actual": 88000
+        },
+        {
+          "cell": "OpEx_Projection!H29",
+          "expected": 2995950,
+          "actual": 2568500
+        },
+        {
+          "cell": "OpEx_Projection!I29",
+          "expected": 4877286,
+          "actual": 4875086
+        },
+        {
+          "cell": "OpEx_Projection!G30",
+          "expected": 92455,
+          "actual": 88000
+        }
+      ],
+      "id": "tpl-14_06",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 126,
+      "correct": 105,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "RentRoll!B4",
+          "expected": "2026-05-27 00:00:00",
+          "actual": "2026-09-06 00:00:00"
+        },
+        {
+          "cell": "RentRoll!C17",
+          "expected": 1287600,
+          "actual": 107300
+        },
+        {
+          "cell": "RentRoll!D17",
+          "expected": 2704800,
+          "actual": 225400
+        },
+        {
+          "cell": "RentRoll!E17",
+          "expected": 4554000,
+          "actual": 379500
+        },
+        {
+          "cell": "RentRoll!F17",
+          "expected": 1228800,
+          "actual": 102400
+        }
+      ],
+      "id": "tpl-14_07",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 390,
+      "correct": 388,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "OpEx_Projection!B10",
+          "expected": "Effective Gross Income (Year 1)",
+          "actual": 8217500
+        },
+        {
+          "cell": "OpEx_Projection!C10",
+          "expected": 8217500,
+          "actual": null
+        }
+      ],
+      "id": "tpl-14_08",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 360,
+      "correct": 360,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-14_09",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 180,
+      "correct": 180,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-15_01",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 348,
+      "correct": 322,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LoanSizing!B11",
+          "expected": null,
+          "actual": "NOI Growth Rate (Annual)"
+        },
+        {
+          "cell": "LoanSizing!C11",
+          "expected": null,
+          "actual": 0.03
+        },
+        {
+          "cell": "LoanSizing!D19",
+          "expected": 182195.77,
+          "actual": null
+        },
+        {
+          "cell": "LoanSizing!C22",
+          "expected": 68283470.48,
+          "actual": 66812654.3251727
+        },
+        {
+          "cell": "LoanSizing!C26",
+          "expected": 6887000,
+          "actual": 6686407.76699029
+        }
+      ],
+      "id": "tpl-15_02",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 1008,
+      "correct": 1003,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LoanSizing!D38",
+          "expected": null,
+          "actual": "$/Unit"
+        },
+        {
+          "cell": "LoanSizing!D39",
+          "expected": null,
+          "actual": "$/Unit"
+        },
+        {
+          "cell": "LoanSizing!C44",
+          "expected": 369551.282051282,
+          "actual": 0.00615717200426395
+        },
+        {
+          "cell": "LoanSizing!D45",
+          "expected": null,
+          "actual": "$/Unit"
+        },
+        {
+          "cell": "LoanSizing!D49",
+          "expected": null,
+          "actual": "$/Unit"
+        }
+      ],
+      "id": "tpl-15_03",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 210,
+      "correct": 210,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-15_04",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 188,
+      "correct": 165,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DirectCap!D10",
+          "expected": 15369750,
+          "actual": null
+        },
+        {
+          "cell": "DirectCap!D11",
+          "expected": -356400,
+          "actual": null
+        },
+        {
+          "cell": "DirectCap!D12",
+          "expected": -534600,
+          "actual": null
+        },
+        {
+          "cell": "DirectCap!C15",
+          "expected": 0.0953984287317621,
+          "actual": null
+        },
+        {
+          "cell": "DirectCap!C16",
+          "expected": 0.0415263748597082,
+          "actual": null
+        }
+      ],
+      "id": "tpl-16_01",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 532,
+      "correct": 528,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "RentRoll!B4",
+          "expected": "2026-05-27 00:00:00",
+          "actual": "2026-09-06 00:00:00"
+        },
+        {
+          "cell": "RentRoll!M6",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "DirectCap!C16",
+          "expected": null,
+          "actual": 0
+        },
+        {
+          "cell": "DirectCap!C22",
+          "expected": null,
+          "actual": 11765184
+        }
+      ],
+      "id": "tpl-16_02",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 182,
+      "correct": 182,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-16_03",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 238,
+      "correct": 238,
+      "pass": true,
+      "mismatches": [],
+      "id": "tpl-16_04",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 912,
+      "correct": 893,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DirectCap!H11",
+          "expected": 2.95635080645161,
+          "actual": 35.4476228847704
+        },
+        {
+          "cell": "DirectCap!H12",
+          "expected": -0.0322983870967742,
+          "actual": 0.38726833199033
+        },
+        {
+          "cell": "DirectCap!I12",
+          "expected": -96120,
+          "actual": 96120
+        },
+        {
+          "cell": "DirectCap!H13",
+          "expected": -0.0739087701612903,
+          "actual": 0.886190572119259
+        },
+        {
+          "cell": "DirectCap!I13",
+          "expected": -219952.5,
+          "actual": 219952.5
+        }
+      ],
+      "id": "tpl-16_05",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 489,
+      "correct": 471,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "RentRoll!O8",
+          "expected": -82800,
+          "actual": -62100
+        },
+        {
+          "cell": "RentRoll!P8",
+          "expected": 854910,
+          "actual": 875610
+        },
+        {
+          "cell": "RentRoll!O13",
+          "expected": -622500,
+          "actual": -601800
+        },
+        {
+          "cell": "RentRoll!P13",
+          "expected": 10852245,
+          "actual": 10872945
+        },
+        {
+          "cell": "Valuation!D23",
+          "expected": 3.11627952867669,
+          "actual": 1048642
+        }
+      ],
+      "id": "tpl-16_06",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 630,
+      "correct": 622,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "ValuationModel!C42",
+          "expected": null,
+          "actual": 8004
+        },
+        {
+          "cell": "ValuationModel!C44",
+          "expected": null,
+          "actual": 1024.28145
+        },
+        {
+          "cell": "ValuationModel!C45",
+          "expected": null,
+          "actual": 15278.28145
+        },
+        {
+          "cell": "ValuationModel!C47",
+          "expected": null,
+          "actual": 2545425.34355
+        },
+        {
+          "cell": "ValuationModel!C51",
+          "expected": null,
+          "actual": 0.0535
+        }
+      ],
+      "id": "tpl-16_07",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 276,
+      "correct": 273,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "NOI_Analysis!C43",
+          "expected": 1196.85628631579,
+          "actual": 0.112571133024435
+        },
+        {
+          "cell": "NOI_Analysis!C45",
+          "expected": 12657.294882807,
+          "actual": 11460.5511676243
+        },
+        {
+          "cell": "NOI_Analysis!C47",
+          "expected": 21538.5990119298,
+          "actual": -11457.3348495378
+        }
+      ],
+      "id": "tpl-16_08",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 879,
+      "correct": 851,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Valuation!H10",
+          "expected": 3.21928460342146,
+          "actual": null
+        },
+        {
+          "cell": "Valuation!H11",
+          "expected": -0.0425327704954455,
+          "actual": null
+        },
+        {
+          "cell": "Valuation!H12",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Valuation!H13",
+          "expected": -0.0804821150855365,
+          "actual": null
+        },
+        {
+          "cell": "Valuation!H14",
+          "expected": 3.09626971784048,
+          "actual": null
+        }
+      ],
+      "id": "tpl-16_09",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 879,
+      "correct": 849,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DCF!G10",
+          "expected": 3.13911764705882,
+          "actual": null
+        },
+        {
+          "cell": "DCF!I10",
+          "expected": null,
+          "actual": "Use Market Rent from SharedData M12"
+        },
+        {
+          "cell": "DCF!G11",
+          "expected": -0.0412783613445378,
+          "actual": null
+        },
+        {
+          "cell": "DCF!I11",
+          "expected": null,
+          "actual": "Use Loss-to-Lease from SharedData N12"
+        },
+        {
+          "cell": "DCF!G12",
+          "expected": 0,
+          "actual": null
+        }
+      ],
+      "id": "tpl-16_10",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 412,
+      "correct": 389,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "RentRoll!M7",
+          "expected": 831600,
+          "actual": 69300
+        },
+        {
+          "cell": "RentRoll!N7",
+          "expected": -10296,
+          "actual": -858
+        },
+        {
+          "cell": "RentRoll!O7",
+          "expected": -59400,
+          "actual": -4950
+        },
+        {
+          "cell": "RentRoll!P7",
+          "expected": 761904,
+          "actual": 63492
+        },
+        {
+          "cell": "RentRoll!M8",
+          "expected": 4024800,
+          "actual": 335400
+        }
+      ],
+      "id": "tpl-16_11",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 333,
+      "correct": 305,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "RentRoll!J10",
+          "expected": -14040,
+          "actual": -15120
+        },
+        {
+          "cell": "RentRoll!L10",
+          "expected": 898560,
+          "actual": 897480
+        },
+        {
+          "cell": "RentRoll!J11",
+          "expected": -46200,
+          "actual": -48300
+        },
+        {
+          "cell": "RentRoll!L11",
+          "expected": 3451800,
+          "actual": 3449700
+        },
+        {
+          "cell": "RentRoll!J12",
+          "expected": -33480,
+          "actual": -35280
+        }
+      ],
+      "id": "tpl-16_12",
+      "type": "Template"
+    },
+    {
+      "status": "graded",
+      "cells": 8668,
+      "correct": 8211,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Ex 1 - LBO!J17",
+          "expected": 0.052,
+          "actual": 0.0551817950414908
+        },
+        {
+          "cell": "Ex 1 - LBO!K17",
+          "expected": 0.0640000000000001,
+          "actual": 0.0732150619850422
+        },
+        {
+          "cell": "Ex 1 - LBO!L17",
+          "expected": 0.0780000000000001,
+          "actual": 0.09217723789928
+        },
+        {
+          "cell": "Ex 1 - LBO!M17",
+          "expected": 0.0920000000000001,
+          "actual": 0.109689956648646
+        },
+        {
+          "cell": "Ex 1 - LBO!R17",
+          "expected": 4959.46464,
+          "actual": 4974.46464
+        }
+      ],
+      "id": "dbg-01_01",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 8668,
+      "correct": 8221,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Ex 1 - LBO!J17",
+          "expected": 0.052,
+          "actual": 0.0587454054879601
+        },
+        {
+          "cell": "Ex 1 - LBO!K17",
+          "expected": 0.0640000000000001,
+          "actual": 0.0707279141504307
+        },
+        {
+          "cell": "Ex 1 - LBO!M17",
+          "expected": 0.0920000000000001,
+          "actual": 0.0979431016228212
+        },
+        {
+          "cell": "Ex 1 - LBO!U17",
+          "expected": 6467.7861448546,
+          "actual": 6211.80516286827
+        },
+        {
+          "cell": "Ex 1 - LBO!Z17",
+          "expected": 875.380027113876,
+          "actual": 880.861955754105
+        }
+      ],
+      "id": "dbg-01_02",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 8668,
+      "correct": 6906,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Ex 1 - LBO!C9",
+          "expected": 1,
+          "actual": 3
+        },
+        {
+          "cell": "Ex 1 - LBO!C11",
+          "expected": 18.2034,
+          "actual": 10.2034
+        },
+        {
+          "cell": "Ex 1 - LBO!I17",
+          "expected": 0.04,
+          "actual": 0.03
+        },
+        {
+          "cell": "Ex 1 - LBO!J17",
+          "expected": 0.052,
+          "actual": 0.03
+        },
+        {
+          "cell": "Ex 1 - LBO!K17",
+          "expected": 0.0640000000000001,
+          "actual": 0.03
+        }
+      ],
+      "id": "dbg-01_03",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 8668,
+      "correct": 8503,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Ex 1 - LBO!C11",
+          "expected": 18.2034,
+          "actual": 14.2033949536391
+        },
+        {
+          "cell": "Ex 1 - LBO!U17",
+          "expected": 6467.7861448546,
+          "actual": 6211.80516286827
+        },
+        {
+          "cell": "Ex 1 - LBO!AG18",
+          "expected": "2.4x/19%",
+          "actual": "2.3x/19%"
+        },
+        {
+          "cell": "Ex 1 - LBO!AH18",
+          "expected": "2.4x/19%",
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Ex 1 - LBO!AI18",
+          "expected": "2.4x/19%",
+          "actual": "#VALUE!"
+        }
+      ],
+      "id": "dbg-01_04",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 8668,
+      "correct": 8168,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Ex 1 - LBO!J17",
+          "expected": 0.052,
+          "actual": 0.0551817950414908
+        },
+        {
+          "cell": "Ex 1 - LBO!K17",
+          "expected": 0.0640000000000001,
+          "actual": 0.070199662120827
+        },
+        {
+          "cell": "Ex 1 - LBO!M17",
+          "expected": 0.0920000000000001,
+          "actual": 0.0969096672462464
+        },
+        {
+          "cell": "Ex 1 - LBO!R17",
+          "expected": 4959.46464,
+          "actual": 4974.46464
+        },
+        {
+          "cell": "Ex 1 - LBO!S17",
+          "expected": 5276.87037696,
+          "actual": 5323.67037696
+        }
+      ],
+      "id": "dbg-01_05",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 8668,
+      "correct": 8224,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Ex 1 - LBO!J17",
+          "expected": 0.052,
+          "actual": 0.0551817950414908
+        },
+        {
+          "cell": "Ex 1 - LBO!K17",
+          "expected": 0.0640000000000001,
+          "actual": 0.070199662120827
+        },
+        {
+          "cell": "Ex 1 - LBO!M17",
+          "expected": 0.0920000000000001,
+          "actual": 0.0969096672462464
+        },
+        {
+          "cell": "Ex 1 - LBO!R17",
+          "expected": 4959.46464,
+          "actual": 4974.46464
+        },
+        {
+          "cell": "Ex 1 - LBO!S17",
+          "expected": 5276.87037696,
+          "actual": 5323.67037696
+        }
+      ],
+      "id": "dbg-01_06",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 8668,
+      "correct": 8215,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Ex 1 - LBO!J17",
+          "expected": 0.052,
+          "actual": 0.0551817950414908
+        },
+        {
+          "cell": "Ex 1 - LBO!K17",
+          "expected": 0.0640000000000001,
+          "actual": 0.070199662120827
+        },
+        {
+          "cell": "Ex 1 - LBO!M17",
+          "expected": 0.0920000000000001,
+          "actual": 0.0969096672462464
+        },
+        {
+          "cell": "Ex 1 - LBO!R17",
+          "expected": 4959.46464,
+          "actual": 4974.46464
+        },
+        {
+          "cell": "Ex 1 - LBO!S17",
+          "expected": 5276.87037696,
+          "actual": 5323.67037696
+        }
+      ],
+      "id": "dbg-01_07",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 8668,
+      "correct": 7626,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Ex 1 - LBO!C17",
+          "expected": 802.4,
+          "actual": 3884.84
+        },
+        {
+          "cell": "Ex 1 - LBO!I17",
+          "expected": 0.04,
+          "actual": -0.2928
+        },
+        {
+          "cell": "Ex 1 - LBO!J17",
+          "expected": 0.052,
+          "actual": 0.139873420029316
+        },
+        {
+          "cell": "Ex 1 - LBO!K17",
+          "expected": 0.0640000000000001,
+          "actual": 0.148448168083464
+        },
+        {
+          "cell": "Ex 1 - LBO!L17",
+          "expected": 0.0780000000000001,
+          "actual": 0.15681577369738
+        }
+      ],
+      "id": "dbg-01_08",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 8668,
+      "correct": 8166,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Ex 1 - LBO!C11",
+          "expected": 18.2034,
+          "actual": 10.2034
+        },
+        {
+          "cell": "Ex 1 - LBO!J17",
+          "expected": 0.052,
+          "actual": 0.0551817950414908
+        },
+        {
+          "cell": "Ex 1 - LBO!K17",
+          "expected": 0.0640000000000001,
+          "actual": 0.070199662120827
+        },
+        {
+          "cell": "Ex 1 - LBO!M17",
+          "expected": 0.0920000000000001,
+          "actual": 0.0969096672462464
+        },
+        {
+          "cell": "Ex 1 - LBO!R17",
+          "expected": 4959.46464,
+          "actual": 4974.46464
+        }
+      ],
+      "id": "dbg-01_09",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 8668,
+      "correct": 8103,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Ex 1 - LBO!J17",
+          "expected": 0.052,
+          "actual": 0.370179504149061
+        },
+        {
+          "cell": "Ex 1 - LBO!K17",
+          "expected": 0.0640000000000001,
+          "actual": 0.541438947633902
+        },
+        {
+          "cell": "Ex 1 - LBO!L17",
+          "expected": 0.0780000000000001,
+          "actual": 0.379877988384309
+        },
+        {
+          "cell": "Ex 1 - LBO!M17",
+          "expected": 0.0920000000000001,
+          "actual": 0.298151794796666
+        },
+        {
+          "cell": "Ex 1 - LBO!R17",
+          "expected": 4959.46464,
+          "actual": 6459.46464
+        }
+      ],
+      "id": "dbg-01_10",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 6443,
+      "correct": 6419,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DCF!R32",
+          "expected": 15122,
+          "actual": 16069
+        },
+        {
+          "cell": "DCF!R33",
+          "expected": 36001.8670461828,
+          "actual": 35054.8670461828
+        },
+        {
+          "cell": "DCF!R35",
+          "expected": 71.3897819674456,
+          "actual": 69.5119314816236
+        },
+        {
+          "cell": "Merger Model!C29",
+          "expected": 87560.2326628484,
+          "actual": 81949.3919776944
+        },
+        {
+          "cell": "Merger Model!D29",
+          "expected": 17159.6740031417,
+          "actual": 16060.085821238
+        }
+      ],
+      "id": "dbg-02_01",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 6443,
+      "correct": 6423,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Synergies!D11",
+          "expected": 62.3600006103516,
+          "actual": 62.4
+        },
+        {
+          "cell": "Synergies!D12",
+          "expected": 9226.88671350861,
+          "actual": 9232.805088
+        },
+        {
+          "cell": "Synergies!D19",
+          "expected": 38980.5867135086,
+          "actual": 38986.505088
+        },
+        {
+          "cell": "Synergies!D24",
+          "expected": 6710.4288670578,
+          "actual": 6716.3472415492
+        },
+        {
+          "cell": "Merger Model!C42",
+          "expected": 62.3600006103516,
+          "actual": 62.4
+        }
+      ],
+      "id": "dbg-02_02",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 6443,
+      "correct": 6204,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DCF!B9",
+          "expected": "WACC",
+          "actual": "Terminal Value Growth Rate"
+        },
+        {
+          "cell": "DCF!C9",
+          "expected": 0.0869691722391674,
+          "actual": 0.018
+        },
+        {
+          "cell": "DCF!B10",
+          "expected": "Terminal Value Growth Rate",
+          "actual": null
+        },
+        {
+          "cell": "DCF!C10",
+          "expected": 0.018,
+          "actual": null
+        },
+        {
+          "cell": "Synergies!B68",
+          "expected": "(x) Shares Oustanding (Millions)",
+          "actual": "(x) OXY Share Price"
+        }
+      ],
+      "id": "dbg-02_03",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 6443,
+      "correct": 6415,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Berk-Hath Investment Package!G10",
+          "expected": 11515.7128654235,
+          "actual": null
+        },
+        {
+          "cell": "Berk-Hath Investment Package!H10",
+          "expected": 11137.0882047575,
+          "actual": null
+        },
+        {
+          "cell": "Berk-Hath Investment Package!I10",
+          "expected": 10775.6745828438,
+          "actual": null
+        },
+        {
+          "cell": "Berk-Hath Investment Package!J10",
+          "expected": 10430.5805517078,
+          "actual": null
+        },
+        {
+          "cell": "Berk-Hath Investment Package!K10",
+          "expected": 10100.9654686303,
+          "actual": null
+        }
+      ],
+      "id": "dbg-02_04",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 6443,
+      "correct": 6309,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DCF!V9",
+          "expected": 0.076969172239,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "DCF!W9",
+          "expected": 0.081969172239,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "DCF!X9",
+          "expected": 0.086969172239,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "DCF!Y9",
+          "expected": 0.091969172239,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "DCF!Z9",
+          "expected": 0.096969172239,
+          "actual": "#VALUE!"
+        }
+      ],
+      "id": "dbg-02_05",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 6443,
+      "correct": 6256,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DCF!U9",
+          "expected": 51123.8670461828,
+          "actual": 55457.3284416877
+        },
+        {
+          "cell": "DCF!C10",
+          "expected": 0.018,
+          "actual": 0.0254
+        },
+        {
+          "cell": "DCF!V10",
+          "expected": 54647.4402083381,
+          "actual": null
+        },
+        {
+          "cell": "DCF!W10",
+          "expected": 50321.9202166864,
+          "actual": null
+        },
+        {
+          "cell": "DCF!X10",
+          "expected": 46558.1505451767,
+          "actual": null
+        }
+      ],
+      "id": "dbg-02_06",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 6443,
+      "correct": 6415,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Berk-Hath Investment Package!G10",
+          "expected": 11515.7128654235,
+          "actual": 11432.1670414077
+        },
+        {
+          "cell": "Berk-Hath Investment Package!H10",
+          "expected": 11137.0882047575,
+          "actual": 11432.1670414077
+        },
+        {
+          "cell": "Berk-Hath Investment Package!I10",
+          "expected": 10775.6745828438,
+          "actual": 11432.1670414077
+        },
+        {
+          "cell": "Berk-Hath Investment Package!J10",
+          "expected": 10430.5805517078,
+          "actual": 11432.1670414077
+        },
+        {
+          "cell": "Berk-Hath Investment Package!K10",
+          "expected": 10100.9654686303,
+          "actual": 11432.1670414077
+        }
+      ],
+      "id": "dbg-02_07",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 6443,
+      "correct": 6284,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "DCF!U9",
+          "expected": 51123.8670461828,
+          "actual": 368906.488433122
+        },
+        {
+          "cell": "DCF!V10",
+          "expected": 54647.4402083381,
+          "actual": 390570.021817545
+        },
+        {
+          "cell": "DCF!W10",
+          "expected": 50321.9202166864,
+          "actual": 364808.559091314
+        },
+        {
+          "cell": "DCF!X10",
+          "expected": 46558.1505451767,
+          "actual": 342327.915347763
+        },
+        {
+          "cell": "DCF!Y10",
+          "expected": 43255.3979601081,
+          "actual": 322541.427883452
+        }
+      ],
+      "id": "dbg-02_08",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 6443,
+      "correct": 6366,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Synergies!E44",
+          "expected": 120,
+          "actual": 0
+        },
+        {
+          "cell": "Synergies!F44",
+          "expected": 240,
+          "actual": 0
+        },
+        {
+          "cell": "Synergies!G44",
+          "expected": 360,
+          "actual": 0
+        },
+        {
+          "cell": "Synergies!H44",
+          "expected": 480,
+          "actual": 0
+        },
+        {
+          "cell": "Synergies!I44",
+          "expected": 600,
+          "actual": 0
+        }
+      ],
+      "id": "dbg-02_09",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 6443,
+      "correct": 6352,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Berk-Hath Investment Package!F9",
+          "expected": 11432.1670414077,
+          "actual": 558830.564352161
+        },
+        {
+          "cell": "Berk-Hath Investment Package!F10",
+          "expected": 0.07,
+          "actual": 7.99
+        },
+        {
+          "cell": "Berk-Hath Investment Package!G10",
+          "expected": 11515.7128654235,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Berk-Hath Investment Package!H10",
+          "expected": 11137.0882047575,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Berk-Hath Investment Package!I10",
+          "expected": 10775.6745828438,
+          "actual": "#VALUE!"
+        }
+      ],
+      "id": "dbg-02_10",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 4457,
+      "correct": 4435,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LBO!V11",
+          "expected": 352.79733461982,
+          "actual": 355.98509610649
+        },
+        {
+          "cell": "LBO!N13",
+          "expected": 352.79733461982,
+          "actual": 355.98509610649
+        },
+        {
+          "cell": "LBO!V13",
+          "expected": 3637.42942830029,
+          "actual": 3670.29605257485
+        },
+        {
+          "cell": "LBO!V14",
+          "expected": -1554.44105149301,
+          "actual": -1552.050230378
+        },
+        {
+          "cell": "LBO!V16",
+          "expected": 2082.98837680728,
+          "actual": 2118.24582219684
+        }
+      ],
+      "id": "dbg-03_01",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 4457,
+      "correct": 4457,
+      "pass": true,
+      "mismatches": [],
+      "id": "dbg-03_02",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 4457,
+      "correct": 3889,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LBO!B4",
+          "expected": "Master Control",
+          "actual": null
+        },
+        {
+          "cell": "LBO!B5",
+          "expected": "Units Converter",
+          "actual": "BWW - Control"
+        },
+        {
+          "cell": "LBO!C5",
+          "expected": 1000000,
+          "actual": null
+        },
+        {
+          "cell": "LBO!H5",
+          "expected": null,
+          "actual": "BWW - Forecast"
+        },
+        {
+          "cell": "LBO!P5",
+          "expected": null,
+          "actual": "BWW - Returns Analysis"
+        }
+      ],
+      "id": "dbg-03_03",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 4457,
+      "correct": 4453,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Ex 9 - Perf Metrics!F117",
+          "expected": 2017,
+          "actual": null
+        },
+        {
+          "cell": "Ex 9 - Perf Metrics!J117",
+          "expected": 2018,
+          "actual": null
+        },
+        {
+          "cell": "Ex 13 - Transaction Comps!G14",
+          "expected": 10.4,
+          "actual": "10.4\u00d7"
+        },
+        {
+          "cell": "Ex 13 - Transaction Comps!F17",
+          "expected": 15500,
+          "actual": 1550
+        }
+      ],
+      "id": "dbg-03_04",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 4457,
+      "correct": 4457,
+      "pass": true,
+      "mismatches": [],
+      "id": "dbg-03_05",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 4457,
+      "correct": 4434,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LBO!V11",
+          "expected": 352.79733461982,
+          "actual": 355.98509610649
+        },
+        {
+          "cell": "LBO!N13",
+          "expected": 352.79733461982,
+          "actual": 355.98509610649
+        },
+        {
+          "cell": "LBO!V13",
+          "expected": 3637.42942830029,
+          "actual": 3670.29605257485
+        },
+        {
+          "cell": "LBO!V14",
+          "expected": -1554.44105149301,
+          "actual": -1552.050230378
+        },
+        {
+          "cell": "LBO!V16",
+          "expected": 2082.98837680728,
+          "actual": 2118.24582219684
+        }
+      ],
+      "id": "dbg-03_06",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 4457,
+      "correct": 4457,
+      "pass": true,
+      "mismatches": [],
+      "id": "dbg-03_07",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 4457,
+      "correct": 4383,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LBO!R14",
+          "expected": -2085.38616160125,
+          "actual": -1805.52616160125
+        },
+        {
+          "cell": "LBO!S14",
+          "expected": -1979.94320245648,
+          "actual": -1446.67299432675
+        },
+        {
+          "cell": "LBO!T14",
+          "expected": -1848.89085794589,
+          "actual": -1090.17582164437
+        },
+        {
+          "cell": "LBO!U14",
+          "expected": -1694.54585473226,
+          "actual": -739.213258643451
+        },
+        {
+          "cell": "LBO!V14",
+          "expected": -1554.44105149301,
+          "actual": -485
+        }
+      ],
+      "id": "dbg-03_08",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 4457,
+      "correct": 4394,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LBO!V11",
+          "expected": 352.79733461982,
+          "actual": 355.98509610649
+        },
+        {
+          "cell": "LBO!N13",
+          "expected": 352.79733461982,
+          "actual": 355.98509610649
+        },
+        {
+          "cell": "LBO!V13",
+          "expected": 3637.42942830029,
+          "actual": 3670.29605257485
+        },
+        {
+          "cell": "LBO!S14",
+          "expected": -1979.94320245648,
+          "actual": -1978.30804003283
+        },
+        {
+          "cell": "LBO!T14",
+          "expected": -1848.89085794589,
+          "actual": -1847.1906978159
+        }
+      ],
+      "id": "dbg-03_09",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 4457,
+      "correct": 4395,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LBO!I11",
+          "expected": 2077.8,
+          "actual": 2068.6923686
+        },
+        {
+          "cell": "LBO!J11",
+          "expected": 2068.6923686,
+          "actual": 1991.750501403
+        },
+        {
+          "cell": "LBO!K11",
+          "expected": 1991.750501403,
+          "actual": 1904.68637940854
+        },
+        {
+          "cell": "LBO!L11",
+          "expected": 1904.68637940854,
+          "actual": 1813.71091283724
+        },
+        {
+          "cell": "LBO!M11",
+          "expected": 1813.71091283724,
+          "actual": 1759.2923877341
+        }
+      ],
+      "id": "dbg-03_10",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 9955,
+      "correct": 9955,
+      "pass": true,
+      "mismatches": [],
+      "id": "dbg-05_01",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 9955,
+      "correct": 9819,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Model!W19",
+          "expected": -535.835909631309,
+          "actual": -559.044305723187
+        },
+        {
+          "cell": "Model!X19",
+          "expected": -496.612450586631,
+          "actual": -566.630776734696
+        },
+        {
+          "cell": "Model!Y19",
+          "expected": -441.385819426984,
+          "actual": -583.09097719179
+        },
+        {
+          "cell": "Model!Z19",
+          "expected": -369.572333806272,
+          "actual": -604.82845360341
+        },
+        {
+          "cell": "Model!AA19",
+          "expected": -279.731205178554,
+          "actual": -627.082805279771
+        }
+      ],
+      "id": "dbg-05_02",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 9955,
+      "correct": 9690,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Model!W19",
+          "expected": -535.835909631309,
+          "actual": -562.972104292566
+        },
+        {
+          "cell": "Model!X19",
+          "expected": -496.612450586631,
+          "actual": -572.005366283789
+        },
+        {
+          "cell": "Model!Y19",
+          "expected": -441.385819426984,
+          "actual": -589.30751799314
+        },
+        {
+          "cell": "Model!Z19",
+          "expected": -369.572333806272,
+          "actual": -610.815456942288
+        },
+        {
+          "cell": "Model!AA19",
+          "expected": -279.731205178554,
+          "actual": -632.799487021021
+        }
+      ],
+      "id": "dbg-05_03",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 9955,
+      "correct": 9955,
+      "pass": true,
+      "mismatches": [],
+      "id": "dbg-05_04",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 9955,
+      "correct": 9818,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Model!W19",
+          "expected": -535.835909631309,
+          "actual": -559.632305618081
+        },
+        {
+          "cell": "Model!X19",
+          "expected": -496.612450586631,
+          "actual": -567.867029758505
+        },
+        {
+          "cell": "Model!Y19",
+          "expected": -441.385819426984,
+          "actual": -585.12334219607
+        },
+        {
+          "cell": "Model!Z19",
+          "expected": -369.572333806272,
+          "actual": -606.962141267434
+        },
+        {
+          "cell": "Model!AA19",
+          "expected": -279.731205178554,
+          "actual": -629.324819620391
+        }
+      ],
+      "id": "dbg-05_05",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 9955,
+      "correct": 9819,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Model!W19",
+          "expected": -535.835909631309,
+          "actual": -559.016366990822
+        },
+        {
+          "cell": "Model!X19",
+          "expected": -496.612450586631,
+          "actual": -566.579539094052
+        },
+        {
+          "cell": "Model!Y19",
+          "expected": -441.385819426984,
+          "actual": -583.039418284502
+        },
+        {
+          "cell": "Model!Z19",
+          "expected": -369.572333806272,
+          "actual": -604.765789690288
+        },
+        {
+          "cell": "Model!AA19",
+          "expected": -279.731205178554,
+          "actual": -627.013343410472
+        }
+      ],
+      "id": "dbg-05_06",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 9955,
+      "correct": 9955,
+      "pass": true,
+      "mismatches": [],
+      "id": "dbg-05_07",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 9955,
+      "correct": 9818,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Model!W19",
+          "expected": -535.835909631309,
+          "actual": -559.016366990822
+        },
+        {
+          "cell": "Model!X19",
+          "expected": -496.612450586631,
+          "actual": -566.579539094052
+        },
+        {
+          "cell": "Model!Y19",
+          "expected": -441.385819426984,
+          "actual": -583.039418284502
+        },
+        {
+          "cell": "Model!Z19",
+          "expected": -369.572333806272,
+          "actual": -604.765789690288
+        },
+        {
+          "cell": "Model!AA19",
+          "expected": -279.731205178554,
+          "actual": -627.013343410472
+        }
+      ],
+      "id": "dbg-05_08",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 9955,
+      "correct": 9955,
+      "pass": true,
+      "mismatches": [],
+      "id": "dbg-05_09",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 9955,
+      "correct": 9955,
+      "pass": true,
+      "mismatches": [],
+      "id": "dbg-05_10",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 13434,
+      "correct": 13387,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Cover!G10",
+          "expected": 1.63541592509081,
+          "actual": 1.67802984762578
+        },
+        {
+          "cell": "Revenue Build!AC41",
+          "expected": "#NAME?",
+          "actual": 0.379729661461215
+        },
+        {
+          "cell": "Revenue Build!AC43",
+          "expected": "#NAME?",
+          "actual": 0.718771927587479
+        },
+        {
+          "cell": "Operating Model!J32",
+          "expected": -81.4262840981263,
+          "actual": -81.0512840981263
+        },
+        {
+          "cell": "Operating Model!K32",
+          "expected": 25.9203482010462,
+          "actual": 27.2953482010462
+        }
+      ],
+      "id": "dbg-06_01",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 13434,
+      "correct": 13386,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Cover!G10",
+          "expected": 1.63541592509081,
+          "actual": -2.75717434670006
+        },
+        {
+          "cell": "Revenue Build!AC41",
+          "expected": "#NAME?",
+          "actual": 0.379729661461215
+        },
+        {
+          "cell": "Revenue Build!AC43",
+          "expected": "#NAME?",
+          "actual": 0.718771927587479
+        },
+        {
+          "cell": "Operating Model!F20",
+          "expected": 2.2,
+          "actual": "-"
+        },
+        {
+          "cell": "Operating Model!F21",
+          "expected": -437.1,
+          "actual": -434.9
+        }
+      ],
+      "id": "dbg-06_02",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 13434,
+      "correct": 12329,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Revenue Build!F28",
+          "expected": null,
+          "actual": 571.9
+        },
+        {
+          "cell": "Revenue Build!G28",
+          "expected": null,
+          "actual": 758.5
+        },
+        {
+          "cell": "Revenue Build!H28",
+          "expected": null,
+          "actual": 807.2
+        },
+        {
+          "cell": "Revenue Build!I28",
+          "expected": null,
+          "actual": 757.6
+        },
+        {
+          "cell": "Revenue Build!J28",
+          "expected": null,
+          "actual": 874.281
+        }
+      ],
+      "id": "dbg-06_03",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 13434,
+      "correct": 13427,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Revenue Build!AC41",
+          "expected": "#NAME?",
+          "actual": 0.379729661461215
+        },
+        {
+          "cell": "Revenue Build!AC43",
+          "expected": "#NAME?",
+          "actual": 0.718771927587479
+        },
+        {
+          "cell": "Operating Model!F20",
+          "expected": 2.2,
+          "actual": "-"
+        },
+        {
+          "cell": "Operating Model!F21",
+          "expected": -437.1,
+          "actual": -434.9
+        },
+        {
+          "cell": "Operating Model!F23",
+          "expected": -119.7,
+          "actual": -117.5
+        }
+      ],
+      "id": "dbg-06_04",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 13434,
+      "correct": 13327,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Cover!G10",
+          "expected": 1.63541592509081,
+          "actual": 1.04389026886855
+        },
+        {
+          "cell": "Revenue Build!AC41",
+          "expected": "#NAME?",
+          "actual": 0.379729661461215
+        },
+        {
+          "cell": "Revenue Build!AC43",
+          "expected": "#NAME?",
+          "actual": 0.718771927587479
+        },
+        {
+          "cell": "Operating Model!K31",
+          "expected": -47.6215755989537,
+          "actual": -45.1414792109488
+        },
+        {
+          "cell": "Operating Model!L31",
+          "expected": -126.960581183929,
+          "actual": -127.170283455315
+        }
+      ],
+      "id": "dbg-06_05",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 13434,
+      "correct": 13335,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Cover!G10",
+          "expected": 1.63541592509081,
+          "actual": 6.02228577990096
+        },
+        {
+          "cell": "Revenue Build!AC41",
+          "expected": "#NAME?",
+          "actual": 0.379729661461215
+        },
+        {
+          "cell": "Revenue Build!AC43",
+          "expected": "#NAME?",
+          "actual": 0.718771927587479
+        },
+        {
+          "cell": "Operating Model!J7",
+          "expected": -532.233454545455,
+          "actual": -400.1
+        },
+        {
+          "cell": "Operating Model!K7",
+          "expected": -540.133563,
+          "actual": -494.401563
+        }
+      ],
+      "id": "dbg-06_06",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 13434,
+      "correct": 13395,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Cover!G10",
+          "expected": 1.63541592509081,
+          "actual": 1.5752767485436
+        },
+        {
+          "cell": "Revenue Build!AC41",
+          "expected": "#NAME?",
+          "actual": 0.379729661461215
+        },
+        {
+          "cell": "Revenue Build!AC43",
+          "expected": "#NAME?",
+          "actual": 0.718771927587479
+        },
+        {
+          "cell": "Operating Model!J35",
+          "expected": -76.9411340590888,
+          "actual": -76.9000625730166
+        },
+        {
+          "cell": "Operating Model!K35",
+          "expected": 21.058077059523,
+          "actual": 21.0168898041652
+        }
+      ],
+      "id": "dbg-06_07",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 13434,
+      "correct": 13312,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Cover!G10",
+          "expected": 1.63541592509081,
+          "actual": 15.7778721706615
+        },
+        {
+          "cell": "Revenue Build!AC41",
+          "expected": "#NAME?",
+          "actual": 0.379729661461215
+        },
+        {
+          "cell": "Revenue Build!AC43",
+          "expected": "#NAME?",
+          "actual": 0.718771927587479
+        },
+        {
+          "cell": "Operating Model!J12",
+          "expected": 271.806666666667,
+          "actual": -271.806666666667
+        },
+        {
+          "cell": "Operating Model!K12",
+          "expected": 274.973333333333,
+          "actual": -274.973333333333
+        }
+      ],
+      "id": "dbg-06_08",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 13434,
+      "correct": 13326,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Cover!G10",
+          "expected": 1.63541592509081,
+          "actual": 4.69037465589128
+        },
+        {
+          "cell": "Revenue Build!AC41",
+          "expected": "#NAME?",
+          "actual": 0.379729661461215
+        },
+        {
+          "cell": "Revenue Build!AC43",
+          "expected": "#NAME?",
+          "actual": 0.718771927587479
+        },
+        {
+          "cell": "Operating Model!F20",
+          "expected": 2.2,
+          "actual": "-"
+        },
+        {
+          "cell": "Operating Model!F21",
+          "expected": -437.1,
+          "actual": -434.9
+        }
+      ],
+      "id": "dbg-06_09",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 13434,
+      "correct": 13202,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Cover!G10",
+          "expected": 1.63541592509081,
+          "actual": 14.0665891310189
+        },
+        {
+          "cell": "Revenue Build!AC41",
+          "expected": "#NAME?",
+          "actual": 0.379729661461215
+        },
+        {
+          "cell": "Revenue Build!AC43",
+          "expected": "#NAME?",
+          "actual": 0.718771927587479
+        },
+        {
+          "cell": "Operating Model!K7",
+          "expected": -540.133563,
+          "actual": -169.33239075
+        },
+        {
+          "cell": "Operating Model!L7",
+          "expected": -674.473108794546,
+          "actual": -177.209186289545
+        }
+      ],
+      "id": "dbg-06_10",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 10090,
+      "correct": 10019,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LBO & Lenders!X46",
+          "expected": -822.307168971479,
+          "actual": -920.234646775395
+        },
+        {
+          "cell": "LBO & Lenders!X47",
+          "expected": 1773.95399271289,
+          "actual": 1676.02651490898
+        },
+        {
+          "cell": "LBO & Lenders!T49",
+          "expected": 938.685564028813,
+          "actual": 898.882865895045
+        },
+        {
+          "cell": "LBO & Lenders!U49",
+          "expected": 927.514252487556,
+          "actual": 903.733490978331
+        },
+        {
+          "cell": "LBO & Lenders!V49",
+          "expected": 910.961856204175,
+          "actual": 908.274888712558
+        }
+      ],
+      "id": "dbg-07_01",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 10090,
+      "correct": 9872,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Football Field!E5",
+          "expected": 1351.83476611251,
+          "actual": 690.069288062643
+        },
+        {
+          "cell": "Football Field!F5",
+          "expected": 262.015513768533,
+          "actual": 162.723500366898
+        },
+        {
+          "cell": "Football Field!G5",
+          "expected": 1613.85027988105,
+          "actual": 852.792788429541
+        },
+        {
+          "cell": "Football Field!E6",
+          "expected": 1421.99690366983,
+          "actual": 861.789725156193
+        },
+        {
+          "cell": "Football Field!F6",
+          "expected": 171.843095933737,
+          "actual": 104.144118761815
+        }
+      ],
+      "id": "dbg-07_02",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 10090,
+      "correct": 9045,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "BS & CF!D30",
+          "expected": "Cash Flow from Operations",
+          "actual": null
+        },
+        {
+          "cell": "BS & CF!F30",
+          "expected": 249,
+          "actual": null
+        },
+        {
+          "cell": "BS & CF!G30",
+          "expected": 262,
+          "actual": null
+        },
+        {
+          "cell": "BS & CF!D31",
+          "expected": null,
+          "actual": "(-) CapEx"
+        },
+        {
+          "cell": "BS & CF!F31",
+          "expected": null,
+          "actual": -217
+        }
+      ],
+      "id": "dbg-07_03",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 10090,
+      "correct": 10054,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LBO & Lenders!X46",
+          "expected": -822.307168971479,
+          "actual": -873.895606134779
+        },
+        {
+          "cell": "LBO & Lenders!X47",
+          "expected": 1773.95399271289,
+          "actual": 1722.36555554959
+        },
+        {
+          "cell": "LBO & Lenders!U49",
+          "expected": 927.514252487556,
+          "actual": 927.277781669181
+        },
+        {
+          "cell": "LBO & Lenders!V49",
+          "expected": 910.961856204175,
+          "actual": 915.142753377281
+        },
+        {
+          "cell": "LBO & Lenders!W49",
+          "expected": 888.387687782361,
+          "actual": 902.234117031772
+        }
+      ],
+      "id": "dbg-07_04",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 10090,
+      "correct": 9804,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Football Field!E5",
+          "expected": 1351.83476611251,
+          "actual": 1985.33663150391
+        },
+        {
+          "cell": "Football Field!F5",
+          "expected": 262.015513768533,
+          "actual": 300.321355660334
+        },
+        {
+          "cell": "Football Field!G5",
+          "expected": 1613.85027988105,
+          "actual": 2285.65798716425
+        },
+        {
+          "cell": "Football Field!E6",
+          "expected": 1421.99690366983,
+          "actual": 2314.66458954764
+        },
+        {
+          "cell": "Football Field!F6",
+          "expected": 171.843095933737,
+          "actual": 279.709434911647
+        }
+      ],
+      "id": "dbg-07_05",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 10090,
+      "correct": 9886,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Football Field!E5",
+          "expected": 1351.83476611251,
+          "actual": 1418.80388603978
+        },
+        {
+          "cell": "Football Field!F5",
+          "expected": 262.015513768533,
+          "actual": 272.063633493528
+        },
+        {
+          "cell": "Football Field!G5",
+          "expected": 1613.85027988105,
+          "actual": 1690.86751953331
+        },
+        {
+          "cell": "Football Field!E6",
+          "expected": 1421.99690366983,
+          "actual": 567.224317235889
+        },
+        {
+          "cell": "Football Field!F6",
+          "expected": 171.843095933737,
+          "actual": 68.5469725786036
+        }
+      ],
+      "id": "dbg-07_06",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 10090,
+      "correct": 9953,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Football Field!E5",
+          "expected": 1351.83476611251,
+          "actual": 1351.45921335546
+        },
+        {
+          "cell": "Football Field!F5",
+          "expected": 262.015513768533,
+          "actual": 262.010930978723
+        },
+        {
+          "cell": "Football Field!G5",
+          "expected": 1613.85027988105,
+          "actual": 1613.47014433418
+        },
+        {
+          "cell": "DCF Model!F22",
+          "expected": 501,
+          "actual": 534
+        },
+        {
+          "cell": "DCF Model!F29",
+          "expected": 3938,
+          "actual": 3971
+        }
+      ],
+      "id": "dbg-07_07",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 10090,
+      "correct": 9907,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "BS & CF!F25",
+          "expected": 210,
+          "actual": -210
+        },
+        {
+          "cell": "BS & CF!G25",
+          "expected": 248,
+          "actual": -248
+        },
+        {
+          "cell": "BS & CF!F30",
+          "expected": 249,
+          "actual": -171
+        },
+        {
+          "cell": "BS & CF!G30",
+          "expected": 262,
+          "actual": -234
+        },
+        {
+          "cell": "BS & CF!F41",
+          "expected": -42,
+          "actual": -462
+        }
+      ],
+      "id": "dbg-07_08",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 10090,
+      "correct": 10035,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LBO & Lenders!X46",
+          "expected": -822.307168971479,
+          "actual": -873.895606134779
+        },
+        {
+          "cell": "LBO & Lenders!X47",
+          "expected": 1773.95399271289,
+          "actual": 1722.36555554959
+        },
+        {
+          "cell": "LBO & Lenders!U49",
+          "expected": 927.514252487556,
+          "actual": 927.277781669181
+        },
+        {
+          "cell": "LBO & Lenders!V49",
+          "expected": 910.961856204175,
+          "actual": 915.142753377281
+        },
+        {
+          "cell": "LBO & Lenders!W49",
+          "expected": 888.387687782361,
+          "actual": 902.234117031772
+        }
+      ],
+      "id": "dbg-07_09",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 10090,
+      "correct": 10003,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LBO & Lenders!S40",
+          "expected": 145.575519680716,
+          "actual": 249.55803373837
+        },
+        {
+          "cell": "LBO & Lenders!S44",
+          "expected": 77.4440161557781,
+          "actual": 181.426530213432
+        },
+        {
+          "cell": "LBO & Lenders!S45",
+          "expected": -73.7710241302028,
+          "actual": -126.464612794633
+        },
+        {
+          "cell": "LBO & Lenders!X46",
+          "expected": -822.307168971479,
+          "actual": -849.031445431667
+        },
+        {
+          "cell": "LBO & Lenders!S47",
+          "expected": 3.6729920255753,
+          "actual": 54.9619174187991
+        }
+      ],
+      "id": "dbg-07_10",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 13281,
+      "correct": 13200,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Operating Model + DCF!K9",
+          "expected": 0,
+          "actual": 0.838083283457997
+        },
+        {
+          "cell": "Operating Model + DCF!L9",
+          "expected": 0,
+          "actual": 0.830659864889074
+        },
+        {
+          "cell": "Operating Model + DCF!K12",
+          "expected": 0,
+          "actual": 0.342132767653658
+        },
+        {
+          "cell": "Operating Model + DCF!L12",
+          "expected": 0,
+          "actual": 0.345087637176887
+        },
+        {
+          "cell": "Operating Model + DCF!K15",
+          "expected": 0,
+          "actual": 0.505131508731378
+        }
+      ],
+      "id": "dbg-08_01",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 13281,
+      "correct": 13251,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Operating Model + DCF!K9",
+          "expected": 0,
+          "actual": 0.838083283457997
+        },
+        {
+          "cell": "Operating Model + DCF!L9",
+          "expected": 0,
+          "actual": 0.830659864889074
+        },
+        {
+          "cell": "Operating Model + DCF!K12",
+          "expected": 0,
+          "actual": 0.342132767653658
+        },
+        {
+          "cell": "Operating Model + DCF!L12",
+          "expected": 0,
+          "actual": 0.345087637176887
+        },
+        {
+          "cell": "Operating Model + DCF!K15",
+          "expected": 0,
+          "actual": 0.505131508731378
+        }
+      ],
+      "id": "dbg-08_02",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 13281,
+      "correct": 12678,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Operating Model + DCF!N5",
+          "expected": 0.240595471724165,
+          "actual": -0.7174554484264
+        },
+        {
+          "cell": "Operating Model + DCF!O5",
+          "expected": 0.225440514029552,
+          "actual": 0.0698501915499321
+        },
+        {
+          "cell": "Operating Model + DCF!P5",
+          "expected": 0.223414015903107,
+          "actual": 0.0528654247958438
+        },
+        {
+          "cell": "Operating Model + DCF!Q5",
+          "expected": 0.194474783724276,
+          "actual": -0.00377230648065119
+        },
+        {
+          "cell": "Operating Model + DCF!R5",
+          "expected": 0.220145360653952,
+          "actual": 2.84831127189513
+        }
+      ],
+      "id": "dbg-08_03",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 13281,
+      "correct": 13263,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Operating Model + DCF!S6",
+          "expected": null,
+          "actual": "c"
+        },
+        {
+          "cell": "Operating Model + DCF!R84",
+          "expected": -29.6129999999999,
+          "actual": -113.905852275882
+        },
+        {
+          "cell": "Operating Model + DCF!D94",
+          "expected": -29.6129999999999,
+          "actual": -113.905852275882
+        },
+        {
+          "cell": "Operating Model + DCF!D95",
+          "expected": 58.1263925399993,
+          "actual": 142.419244815882
+        },
+        {
+          "cell": "Operating Model + DCF!D100",
+          "expected": 48.3367142094961,
+          "actual": 118.432918916485
+        }
+      ],
+      "id": "dbg-08_04",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 13281,
+      "correct": 13195,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Operating Model + DCF!N17",
+          "expected": 0,
+          "actual": -32.4579851450577
+        },
+        {
+          "cell": "Operating Model + DCF!R17",
+          "expected": 0,
+          "actual": -32.4579851450577
+        },
+        {
+          "cell": "Operating Model + DCF!N18",
+          "expected": 0,
+          "actual": -0.0220269817315004
+        },
+        {
+          "cell": "Operating Model + DCF!R18",
+          "expected": 0,
+          "actual": -0.00510070674899835
+        },
+        {
+          "cell": "Operating Model + DCF!N20",
+          "expected": 0,
+          "actual": 32.4579851450576
+        }
+      ],
+      "id": "dbg-08_05",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 13281,
+      "correct": 13045,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Operating Model + DCF!E4",
+          "expected": 2089.132,
+          "actual": 2802.882
+        },
+        {
+          "cell": "Operating Model + DCF!F4",
+          "expected": 2802.882,
+          "actual": 3322.314
+        },
+        {
+          "cell": "Operating Model + DCF!G4",
+          "expected": 3534.647,
+          "actual": 977.775
+        },
+        {
+          "cell": "Operating Model + DCF!H4",
+          "expected": 4358.603,
+          "actual": 4101.619
+        },
+        {
+          "cell": "Operating Model + DCF!G5",
+          "expected": 0.261075921141168,
+          "actual": 0.185320680642282
+        }
+      ],
+      "id": "dbg-08_06",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 13281,
+      "correct": 13195,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Cover!D8",
+          "expected": null,
+          "actual": 276.628216037548
+        },
+        {
+          "cell": "Cover!D9",
+          "expected": null,
+          "actual": 0.531293750553824
+        },
+        {
+          "cell": "Operating Model + DCF!H4",
+          "expected": 4358.603,
+          "actual": 3534.647
+        },
+        {
+          "cell": "Operating Model + DCF!H5",
+          "expected": 0.233108426386001,
+          "actual": 0
+        },
+        {
+          "cell": "Operating Model + DCF!M5",
+          "expected": 0.196554033482747,
+          "actual": 0.475480861313732
+        }
+      ],
+      "id": "dbg-08_07",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 13281,
+      "correct": 12986,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Operating Model + DCF!N4",
+          "expected": 1473.55573,
+          "actual": 966.47989
+        },
+        {
+          "cell": "Operating Model + DCF!O4",
+          "expected": 1576.48388,
+          "actual": 1068.30668
+        },
+        {
+          "cell": "Operating Model + DCF!P4",
+          "expected": 1659.82537,
+          "actual": 1131.56797
+        },
+        {
+          "cell": "Operating Model + DCF!Q4",
+          "expected": 1653.564,
+          "actual": 1189.699
+        },
+        {
+          "cell": "Operating Model + DCF!R4",
+          "expected": 6363.42898,
+          "actual": 4356.05354
+        }
+      ],
+      "id": "dbg-08_08",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 13281,
+      "correct": 13251,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Operating Model + DCF!K9",
+          "expected": 0,
+          "actual": 0.838083283457997
+        },
+        {
+          "cell": "Operating Model + DCF!L9",
+          "expected": 0,
+          "actual": 0.830659864889074
+        },
+        {
+          "cell": "Operating Model + DCF!K12",
+          "expected": 0,
+          "actual": 0.342132767653658
+        },
+        {
+          "cell": "Operating Model + DCF!L12",
+          "expected": 0,
+          "actual": 0.352114959947402
+        },
+        {
+          "cell": "Operating Model + DCF!K15",
+          "expected": 0,
+          "actual": 0.505131508731378
+        }
+      ],
+      "id": "dbg-08_09",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 13281,
+      "correct": 13222,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Operating Model + DCF!I26",
+          "expected": -19.4,
+          "actual": -77.6
+        },
+        {
+          "cell": "Operating Model + DCF!J26",
+          "expected": -8,
+          "actual": -32
+        },
+        {
+          "cell": "Operating Model + DCF!K26",
+          "expected": -14.8,
+          "actual": -59.2
+        },
+        {
+          "cell": "Operating Model + DCF!L26",
+          "expected": 12.448,
+          "actual": 49.792
+        },
+        {
+          "cell": "Operating Model + DCF!M26",
+          "expected": -29.752,
+          "actual": -119.008
+        }
+      ],
+      "id": "dbg-08_10",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 6466,
+      "correct": 5893,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LBO!D8",
+          "expected": "2026-05-27 00:00:00",
+          "actual": "2026-09-06 00:00:00"
+        },
+        {
+          "cell": "LBO!N20",
+          "expected": 73.35,
+          "actual": 4.89
+        },
+        {
+          "cell": "LBO!H57",
+          "expected": 262.046737222614,
+          "actual": 270.9
+        },
+        {
+          "cell": "LBO!I57",
+          "expected": 283.51978732047,
+          "actual": 292.3
+        },
+        {
+          "cell": "LBO!J57",
+          "expected": 306.752416207179,
+          "actual": 313.053300000001
+        }
+      ],
+      "id": "dbg-09_01",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 6466,
+      "correct": 6119,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LBO!D8",
+          "expected": "2026-05-27 00:00:00",
+          "actual": "2026-09-06 00:00:00"
+        },
+        {
+          "cell": "LBO!H57",
+          "expected": 262.046737222614,
+          "actual": 270.9
+        },
+        {
+          "cell": "LBO!I57",
+          "expected": 283.51978732047,
+          "actual": 292.3
+        },
+        {
+          "cell": "LBO!J57",
+          "expected": 306.752416207179,
+          "actual": 313.053300000001
+        },
+        {
+          "cell": "LBO!K57",
+          "expected": 331.888810083587,
+          "actual": 335.2800843
+        }
+      ],
+      "id": "dbg-09_02",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 6466,
+      "correct": 5573,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LBO!D8",
+          "expected": "2026-05-27 00:00:00",
+          "actual": "2026-09-06 00:00:00"
+        },
+        {
+          "cell": "LBO!E67",
+          "expected": null,
+          "actual": 0
+        },
+        {
+          "cell": "LBO!F67",
+          "expected": null,
+          "actual": 0
+        },
+        {
+          "cell": "LBO!G67",
+          "expected": -137.886821954661,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "LBO!H67",
+          "expected": -144.906062561871,
+          "actual": "#VALUE!"
+        }
+      ],
+      "id": "dbg-09_03",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 6466,
+      "correct": 6119,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LBO!D8",
+          "expected": "2026-05-27 00:00:00",
+          "actual": "2026-09-06 00:00:00"
+        },
+        {
+          "cell": "LBO!H57",
+          "expected": 262.046737222614,
+          "actual": 270.9
+        },
+        {
+          "cell": "LBO!I57",
+          "expected": 283.51978732047,
+          "actual": 292.3
+        },
+        {
+          "cell": "LBO!J57",
+          "expected": 306.752416207179,
+          "actual": 313.053300000001
+        },
+        {
+          "cell": "LBO!K57",
+          "expected": 331.888810083587,
+          "actual": 335.2800843
+        }
+      ],
+      "id": "dbg-09_04",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 6466,
+      "correct": 5948,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LBO!D8",
+          "expected": "2026-05-27 00:00:00",
+          "actual": "2026-09-06 00:00:00"
+        },
+        {
+          "cell": "LBO!G67",
+          "expected": -137.886821954661,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "LBO!H67",
+          "expected": -144.906062561871,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "LBO!I67",
+          "expected": -148.293815465523,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "LBO!J67",
+          "expected": -152.910298687109,
+          "actual": "#VALUE!"
+        }
+      ],
+      "id": "dbg-09_05",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 6466,
+      "correct": 6119,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LBO!D8",
+          "expected": "2026-05-27 00:00:00",
+          "actual": "2026-09-06 00:00:00"
+        },
+        {
+          "cell": "LBO!H57",
+          "expected": 262.046737222614,
+          "actual": 270.9
+        },
+        {
+          "cell": "LBO!I57",
+          "expected": 283.51978732047,
+          "actual": 292.3
+        },
+        {
+          "cell": "LBO!J57",
+          "expected": 306.752416207179,
+          "actual": 313.053300000001
+        },
+        {
+          "cell": "LBO!K57",
+          "expected": 331.888810083587,
+          "actual": 335.2800843
+        }
+      ],
+      "id": "dbg-09_06",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 6466,
+      "correct": 5915,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LBO!D8",
+          "expected": "2026-05-27 00:00:00",
+          "actual": "2026-09-06 00:00:00"
+        },
+        {
+          "cell": "LBO!G67",
+          "expected": -137.886821954661,
+          "actual": null
+        },
+        {
+          "cell": "LBO!H67",
+          "expected": -144.906062561871,
+          "actual": null
+        },
+        {
+          "cell": "LBO!I67",
+          "expected": -148.293815465523,
+          "actual": null
+        },
+        {
+          "cell": "LBO!J67",
+          "expected": -152.910298687109,
+          "actual": null
+        }
+      ],
+      "id": "dbg-09_07",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 6466,
+      "correct": 5963,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LBO!D8",
+          "expected": "2026-05-27 00:00:00",
+          "actual": "2026-09-06 00:00:00"
+        },
+        {
+          "cell": "LBO!G67",
+          "expected": -137.886821954661,
+          "actual": -126.986245867486
+        },
+        {
+          "cell": "LBO!H67",
+          "expected": -144.906062561871,
+          "actual": -112.965152059416
+        },
+        {
+          "cell": "LBO!I67",
+          "expected": -148.293815465523,
+          "actual": -102.401456361408
+        },
+        {
+          "cell": "LBO!J67",
+          "expected": -152.910298687109,
+          "actual": -93.4917662520471
+        }
+      ],
+      "id": "dbg-09_08",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 6466,
+      "correct": 6118,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LBO!D8",
+          "expected": "2026-05-27 00:00:00",
+          "actual": "2026-09-06 00:00:00"
+        },
+        {
+          "cell": "LBO!H57",
+          "expected": 262.046737222614,
+          "actual": 270.9
+        },
+        {
+          "cell": "LBO!I57",
+          "expected": 283.51978732047,
+          "actual": 292.3
+        },
+        {
+          "cell": "LBO!J57",
+          "expected": 306.752416207179,
+          "actual": 313.053300000001
+        },
+        {
+          "cell": "LBO!K57",
+          "expected": 331.888810083587,
+          "actual": 335.2800843
+        }
+      ],
+      "id": "dbg-09_09",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 6466,
+      "correct": 5868,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "LBO!D8",
+          "expected": "2026-05-27 00:00:00",
+          "actual": "2026-09-06 00:00:00"
+        },
+        {
+          "cell": "LBO!H57",
+          "expected": 262.046737222614,
+          "actual": 270.9
+        },
+        {
+          "cell": "LBO!I57",
+          "expected": 283.51978732047,
+          "actual": 292.3
+        },
+        {
+          "cell": "LBO!J57",
+          "expected": 306.752416207179,
+          "actual": 313.053300000001
+        },
+        {
+          "cell": "LBO!K57",
+          "expected": 331.888810083587,
+          "actual": 335.2800843
+        }
+      ],
+      "id": "dbg-09_10",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 294669,
+      "correct": 294428,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Model!D18",
+          "expected": -1.35655848912594,
+          "actual": -4.47524962827957
+        },
+        {
+          "cell": "Model!X20",
+          "expected": "27.0x",
+          "actual": "32.1x"
+        },
+        {
+          "cell": "Model!AW20",
+          "expected": 1.10739149722769,
+          "actual": 1.15654277648525
+        },
+        {
+          "cell": "Model!AW21",
+          "expected": 41.5648404025389,
+          "actual": 46.6434199032685
+        },
+        {
+          "cell": "Model!AW22",
+          "expected": 1.18206454556785,
+          "actual": 1.22513299385644
+        }
+      ],
+      "id": "dbg-10_01",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 294669,
+      "correct": 294294,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Model!D18",
+          "expected": -1.35655848912594,
+          "actual": 3.64473910066931
+        },
+        {
+          "cell": "Model!X20",
+          "expected": "27.0x",
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AV20",
+          "expected": 0,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AW20",
+          "expected": 1.10739149722769,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AX20",
+          "expected": 0,
+          "actual": "#VALUE!"
+        }
+      ],
+      "id": "dbg-10_02",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 294669,
+      "correct": 287887,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Model!D17",
+          "expected": 177.359960324625,
+          "actual": "#NAME?"
+        },
+        {
+          "cell": "Model!D18",
+          "expected": -1.35655848912594,
+          "actual": "#NAME?"
+        },
+        {
+          "cell": "Model!X20",
+          "expected": "27.0x",
+          "actual": "#NAME?"
+        },
+        {
+          "cell": "Model!AV20",
+          "expected": 0,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AW20",
+          "expected": 1.10739149722769,
+          "actual": "#NAME?"
+        }
+      ],
+      "id": "dbg-10_03",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 294669,
+      "correct": 294409,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Model!X20",
+          "expected": "27.0x",
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AV20",
+          "expected": 0,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AW20",
+          "expected": 1.10739149722769,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AX20",
+          "expected": 0,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AV21",
+          "expected": 0,
+          "actual": "#VALUE!"
+        }
+      ],
+      "id": "dbg-10_04",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 294669,
+      "correct": 294409,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Model!X20",
+          "expected": "27.0x",
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AV20",
+          "expected": 0,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AW20",
+          "expected": 1.10739149722769,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AX20",
+          "expected": 0,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AV21",
+          "expected": 0,
+          "actual": "#VALUE!"
+        }
+      ],
+      "id": "dbg-10_05",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 294669,
+      "correct": 292248,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Model!X20",
+          "expected": "27.0x",
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AV20",
+          "expected": 0,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AW20",
+          "expected": 1.10739149722769,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AX20",
+          "expected": 0,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AV21",
+          "expected": 0,
+          "actual": "#VALUE!"
+        }
+      ],
+      "id": "dbg-10_06",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 294669,
+      "correct": 294344,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Model!D2",
+          "expected": "Base Case",
+          "actual": "Upside Case"
+        },
+        {
+          "cell": "Model!X20",
+          "expected": "27.0x",
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AV20",
+          "expected": 0,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AW20",
+          "expected": 1.10739149722769,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AX20",
+          "expected": 0,
+          "actual": "#VALUE!"
+        }
+      ],
+      "id": "dbg-10_07",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 294669,
+      "correct": 294086,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Model!X20",
+          "expected": "27.0x",
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AV20",
+          "expected": 0,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AW20",
+          "expected": 1.10739149722769,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AX20",
+          "expected": 0,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AV21",
+          "expected": 0,
+          "actual": "#VALUE!"
+        }
+      ],
+      "id": "dbg-10_08",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 294669,
+      "correct": 293967,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Model!L9",
+          "expected": 0.0403102779158331,
+          "actual": "#DIV/0!"
+        },
+        {
+          "cell": "Model!E10",
+          "expected": 0.14716637502624,
+          "actual": "#DIV/0!"
+        },
+        {
+          "cell": "Model!L10",
+          "expected": 0.105781156365985,
+          "actual": "#DIV/0!"
+        },
+        {
+          "cell": "Model!E11",
+          "expected": 0.00537470372211108,
+          "actual": "#DIV/0!"
+        },
+        {
+          "cell": "Model!L11",
+          "expected": 0.00537470372211108,
+          "actual": "#DIV/0!"
+        }
+      ],
+      "id": "dbg-10_09",
+      "type": "Debugging"
+    },
+    {
+      "status": "graded",
+      "cells": 294669,
+      "correct": 294328,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Model!D16",
+          "expected": 1.43529152999999,
+          "actual": 0.717645764999997
+        },
+        {
+          "cell": "Model!X20",
+          "expected": "27.0x",
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AV20",
+          "expected": 0,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AW20",
+          "expected": 1.10739149722769,
+          "actual": "#VALUE!"
+        },
+        {
+          "cell": "Model!AX20",
+          "expected": 0,
+          "actual": "#VALUE!"
+        }
+      ],
+      "id": "dbg-10_10",
+      "type": "Debugging"
+    }
+  ]
+}
