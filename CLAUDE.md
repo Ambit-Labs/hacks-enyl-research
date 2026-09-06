@@ -8,7 +8,7 @@ The task brief, dataset, evaluator and submission rules are in the sibling repo 
 
 ## Hard rules
 
-- Model id is a literal in `agent/agent.ts`: `deepseek/deepseek-v4-flash-0731` via the AI Gateway. Never read it from an env var. Temperature 0 where eve allows it.
+- The model id is a literal in `agent/lib/solver.ts`, with `agent/agent.ts` calling `solverModel()`. Default is `deepseek`, resolving to `deepseek/deepseek-v4-flash-0731` via the AI Gateway. No env var chooses the model. Temperature 0 where eve allows it.
 - Model-written code runs only in the eve sandbox. Bridge tools in `agent/tools/` may touch the host filesystem; nothing the model writes may.
 - No golden files, golden values, or answer lookups anywhere in prompts, instructions, tools, or sandbox seeds. A grep for `golden` in `agent/` must only hit the refusal check in `load_task`.
 - Keys come from the environment. `.env.local` is gitignored. `.env.example` lists names only.

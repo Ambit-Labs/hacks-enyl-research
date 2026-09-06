@@ -2,43 +2,43 @@
 
 ## Team
 
-- Team name:
+- Team name: Ambit Labs
 - Members, one GitHub handle per line:
+  - ciocan
 - Repo URL: https://github.com/Ambit-Labs/hacks-enyl-research
 
 ## What we built and why
 
 We built an eve agent that solves SpreadsheetBench tasks end to end: load a task, edit
 the workbook, recalculate, submit. The model is `deepseek/deepseek-v4-flash-0731`,
-called through the Vercel AI Gateway. Its tool loop is four steps: `load_task` returns
-the instruction, the answer range, and a first-look dump of the workbook's sheets and
-formulas; a sandboxed bash tool lets the model write and run Python against the
-workbook with openpyxl; `recalc_and_read` runs the workbook through headless
-LibreOffice and reads back the answer range plus any error-valued cells, so the model
-checks its own work before submitting; `submit` recalculates the workbook once more, refuses if an answer cell
-holds an unconfirmed Excel error, then validates the workbook and writes it to the
-output directory. The sandbox is a Docker (or microsandbox) container built
-from a repo-root Dockerfile with no network egress, since everything the model needs
-is already in the image. We chose an agent over a single model call because
-SpreadsheetBench answers usually need a formula computed from the sheet's own data,
-not a value guessed from the prompt text, and only code execution plus a recalculation
-step can verify that. Instructions also tell the model that an empty cell can be the right answer, to
-copy labels byte for byte from the workbook, and to write display strings as text
-and numbers as numbers, because the grader compares cached values exactly. A
-failed attempt is retried in a fresh session up to two more times, which absorbs
-the model's occasional garbled first turn. Instructions cap the agent at 12 tool calls; most tasks finish well under that, but
-some hit the ceiling and submit their best attempt rather than looping further.
-Traces capture every tool call and token count, with one known gap: the full model
-input for calls after the first is assembled server-side and never reaches the client
-event stream, so `prompt` is populated on step 1 only. A per-task timeout copies the
-init workbook as a fallback output so every task always gets a scored prediction, even
-one the model never finishes.
+called through the Vercel AI Gateway. The tool loop has four steps: `load_task`
+returns the instruction, the answer range, and a first-look dump of the workbook's
+sheets and formulas; a sandboxed bash tool lets the model write and run Python
+against the workbook with openpyxl; `recalc_and_read` runs the workbook through
+headless LibreOffice and reads back the answer range plus any error-valued cells, so
+the model checks its own work before submitting; `submit` recalculates once more,
+refuses if an answer cell holds an unconfirmed Excel error, then validates the
+workbook and writes it out. The sandbox is a Docker (or microsandbox) container built
+from a repo-root Dockerfile with no network egress. An agent beats a single model
+call here because most answers need a formula computed from the sheet's own data,
+not a value guessed from the prompt, and only code execution plus recalculation can
+verify that. Instructions tell the model that an empty cell can be the right answer,
+to copy labels byte for byte from the workbook, and to write display strings as text
+and numbers as numbers, since the grader compares cached values exactly. A failed
+attempt gets up to two more tries in a fresh session, absorbing the model's
+occasional garbled first turn. Instructions cap the agent at 12 tool calls; most
+tasks finish well under that, and the rest submit their best attempt rather than loop
+further. A per-task timeout copies the init workbook as a fallback output, so every
+task gets a scored prediction even when the model never finishes.
 
 ## Models
 
 - `deepseek/deepseek-v4-flash-0731`, called through the Vercel AI Gateway. Fixed as a
   literal in `agent/agent.ts`, not read from an environment variable.
-- No fine-tuning. No training data.
+- The scored submission uses DeepSeek only. As research, we also trained a LoRA
+  fine-tune of Ornith 9B on our own passing trajectories and evaluated it (0.34 on
+  the 400, see the README's Findings section); it is served on a private endpoint
+  supplied separately and was never used for the scored outputs.
 
 ## Scores on the 400
 
@@ -71,10 +71,11 @@ Copied at packaging time from `runs/final/` to the repo root:
 `Dockerfile` (repo root) builds the sandbox the agent executes model-written code in:
 Python, openpyxl, pandas, and headless LibreOffice on top of eve's base image. Build
 it with `docker build -t enyl-sandbox:local .` before running predictions. Environment
-variables the run needs: `AI_GATEWAY_API_KEY` (intended path for judges, unverified as
-of this draft) or `VERCEL_OIDC_TOKEN` (proven headless on our own machine) for model
-auth, and `SB_DATASET_DIR` for the dataset location. See `README.md` for the full
-setup and run commands.
+variables the run needs: `AI_GATEWAY_API_KEY` (the primary path for judges, verified
+headless on a fresh clone with no `VERCEL_OIDC_TOKEN` in the environment) or
+`VERCEL_OIDC_TOKEN` (also verified, for a linked Vercel project) for model auth, and
+`SB_DATASET_DIR` for the dataset location. See `README.md` for the full setup and run
+commands.
 
 ## Things to look at
 

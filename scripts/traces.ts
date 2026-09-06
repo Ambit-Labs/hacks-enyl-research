@@ -41,14 +41,15 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import type { MessageResult, MessageStreamEvent } from "eve/client";
+import { solverModelLabel } from "#lib/solver.ts";
 
 const FIELD_LIMIT = 20_000;
 
-// Mirrors the literal in agent/agent.ts. Not read from that file or from an
-// env var at runtime: the model choice for this agent is a source constant,
-// not a trace-time setting, so a hardcoded copy here can't drift silently
-// out of sync with what actually ran without a human editing both spots.
-const MODEL_ID = "deepseek/deepseek-v4-flash-0731";
+// Issue #12 added a second solver (Ornith), a provider-authored model with
+// no gateway id string eve can report at runtime, so this now reads the
+// label from agent/lib/solver.ts (the same source agent.ts calls for the
+// model itself) instead of holding its own hardcoded copy of the literal.
+const MODEL_ID = solverModelLabel();
 
 function truncateString(value: string): string {
   if (value.length <= FIELD_LIMIT) return value;
