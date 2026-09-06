@@ -53,6 +53,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--epochs", type=float, default=2.0)
     parser.add_argument("--lr", type=float, default=1e-4)
     parser.add_argument("--skip-merge", action="store_true", help="Save the adapter only; skip the merge step.")
+    parser.add_argument("--max-steps", type=int, default=-1, help="Override for a smoke test; -1 uses --epochs.")
     return parser.parse_args()
 
 
@@ -61,17 +62,54 @@ def count_lines(path: str) -> int:
         return sum(1 for line in f if line.strip())
 
 
-def build_completion_collator(tokenizer):
-    """Falls back to response-template masking when the installed TRL has no
-    `assistant_only_loss` support (see main() for the primary path)."""
-    from trl import DataCollatorForCompletionOnlyLM
+class AssistantOnlyCollator:
+    """Masks loss to assistant-turn tokens only, for chat templates with no
+    `{% generation %}` tags (see the long comment in main()).
 
-    # Ornith uses the Qwen3-family chat template; the assistant turn opens
-    # with this marker in every Qwen3-derived template. If the base model's
-    # own chat_template.jinja uses a different literal, inspect
-    # tokenizer.chat_template and adjust this string before relying on it.
-    response_template = "<|im_start|>assistant"
-    return DataCollatorForCompletionOnlyLM(response_template=response_template, tokenizer=tokenizer)
+    TRL dropped `DataCollatorForCompletionOnlyLM` in the 1.x line (checked on
+    the box: `from trl import DataCollatorForCompletionOnlyLM` raises
+    ImportError against trl==1.12.0) in favor of `assistant_only_loss`, which
+    itself needs template support Ornith's chat template doesn't have. This
+    reimplements the same idea directly on token ids: every assistant turn
+    in the rendered text opens with `<|im_start|>assistant` and closes at the
+    next `<|im_start|>` (any role) or end of sequence — label everything in
+    between, mask everything else.
+    """
+
+    def __init__(self, tokenizer, response_marker: str = "<|im_start|>assistant", turn_marker: str = "<|im_start|>"):
+        self.tokenizer = tokenizer
+        self.response_ids = tokenizer.encode(response_marker, add_special_tokens=False)
+        self.turn_ids = tokenizer.encode(turn_marker, add_special_tokens=False)
+        self.pad_id = tokenizer.pad_token_id if tokenizer.pad_token_id is not None else tokenizer.eos_token_id
+
+    @staticmethod
+    def _find_all(seq: list[int], sub: list[int]) -> list[int]:
+        n, m = len(seq), len(sub)
+        return [i for i in range(n - m + 1) if seq[i : i + m] == sub]
+
+    def __call__(self, examples: list[dict]):
+        import torch
+
+        max_len = max(len(e["input_ids"]) for e in examples)
+        input_ids = torch.full((len(examples), max_len), self.pad_id, dtype=torch.long)
+        attention_mask = torch.zeros((len(examples), max_len), dtype=torch.long)
+        labels = torch.full((len(examples), max_len), -100, dtype=torch.long)
+
+        for i, example in enumerate(examples):
+            ids = example["input_ids"]
+            length = len(ids)
+            input_ids[i, :length] = torch.tensor(ids, dtype=torch.long)
+            attention_mask[i, :length] = 1
+
+            response_starts = self._find_all(ids, self.response_ids)
+            turn_starts = self._find_all(ids, self.turn_ids)
+            for start in response_starts:
+                segment_start = start + len(self.response_ids)
+                later_turns = [t for t in turn_starts if t >= segment_start]
+                segment_end = later_turns[0] if later_turns else length
+                labels[i, segment_start:segment_end] = torch.tensor(ids[segment_start:segment_end], dtype=torch.long)
+
+        return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": labels}
 
 
 def main() -> int:
@@ -123,7 +161,7 @@ def main() -> int:
     model.config.use_cache = False  # required alongside gradient checkpointing
 
     log(f"loading dataset from {args.data}")
-    dataset = load_dataset("json", data_files=args.data, split="train")
+    raw_dataset = load_dataset("json", data_files=args.data, split="train")
 
     lora_config = LoraConfig(
         r=32,
@@ -148,22 +186,68 @@ def main() -> int:
         save_strategy="epoch",
         report_to=[],
     )
+    if args.max_steps > 0:
+        sft_config_kwargs["max_steps"] = args.max_steps
+        sft_config_kwargs["save_strategy"] = "no"
     if use_liger:
         sft_config_kwargs["use_liger_kernel"] = True
 
     # TRL's assistant-only-loss support has moved around across versions
     # (SFTConfig(assistant_only_loss=...) in newer releases, no such flag in
-    # older ones that instead expect a DataCollatorForCompletionOnlyLM).
-    # Detect what the installed version actually accepts rather than
-    # assuming — the docstring in the issue calls this out explicitly.
+    # older ones that instead expect a DataCollatorForCompletionOnlyLM). But
+    # having the flag is not sufficient: it works by asking the tokenizer's
+    # chat template for a `return_assistant_tokens_mask`, which only means
+    # anything if the template has `{% generation %}...{% endgeneration %}`
+    # markers around assistant content. Checked directly against Ornith's
+    # template on the box: `assistant_only_loss` exists on this TRL, but the
+    # template has no such tags, so the mask comes back all zero (silently
+    # training on nothing) — confirmed via
+    # `tokenizer.apply_chat_template(..., return_assistant_tokens_mask=True)`
+    # printing "chat template does not contain `{% generation %}` keyword".
+    # So probe the actual rendered mask rather than trusting the flag's mere
+    # presence, and fall back to DataCollatorForCompletionOnlyLM whenever it
+    # would be a no-op.
     sft_config_params = inspect.signature(SFTConfig.__init__).parameters
-    collator = None
+    assistant_mask_works = False
     if "assistant_only_loss" in sft_config_params:
-        log("SFTConfig supports assistant_only_loss; masking loss to assistant turns via the chat template")
+        probe_messages = raw_dataset[0]["messages"]
+        probe_tools = raw_dataset[0].get("tools")
+        try:
+            probe = tokenizer.apply_chat_template(
+                probe_messages, tools=probe_tools, tokenize=True, return_assistant_tokens_mask=True, return_dict=True
+            )
+            assistant_mask_works = bool(probe.get("assistant_masks")) and sum(probe["assistant_masks"]) > 0
+        except Exception as exc:  # noqa: BLE001 - any failure here just means "unsupported"
+            log(f"assistant-mask probe raised {exc!r}, treating as unsupported")
+
+    if assistant_mask_works:
+        log("SFTConfig.assistant_only_loss works on this chat template (probed a nonzero mask); using it")
         sft_config_kwargs["assistant_only_loss"] = True
+        dataset = raw_dataset
+        collator = None
     else:
-        log("installed TRL has no SFTConfig.assistant_only_loss; falling back to DataCollatorForCompletionOnlyLM")
-        collator = build_completion_collator(tokenizer)
+        log(
+            "assistant_only_loss unavailable, or the chat template has no {% generation %} tags "
+            "(probed mask was all-zero) — rendering each sample through the chat template ourselves "
+            "and masking loss with AssistantOnlyCollator (trl.DataCollatorForCompletionOnlyLM was "
+            "removed in the installed TRL 1.x line)"
+        )
+
+        def render_and_tokenize(example: dict) -> dict:
+            text = tokenizer.apply_chat_template(
+                example["messages"], tools=example.get("tools"), tokenize=False, add_generation_prompt=False
+            )
+            input_ids = tokenizer(text, truncation=True, max_length=MAX_SEQ_LENGTH, add_special_tokens=False)[
+                "input_ids"
+            ]
+            return {"input_ids": input_ids}
+
+        dataset = raw_dataset.map(
+            render_and_tokenize,
+            remove_columns=raw_dataset.column_names,
+            desc="rendering chat template and tokenizing",
+        )
+        collator = AssistantOnlyCollator(tokenizer)
 
     sft_config = SFTConfig(**sft_config_kwargs)
 

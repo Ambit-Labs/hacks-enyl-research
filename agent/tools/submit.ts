@@ -1,6 +1,8 @@
-// Submits the model's finished workbook: validates it loads with openpyxl
-// inside the sandbox, then copies its bytes out to
-// $SB_OUT_DIR/outputs/<id>.xlsx on the host.
+// Submits the model's finished workbook: recalculates it the same way
+// recalc_and_read does (shared helper in ../lib/recalc.ts, so the two can
+// never drift), refuses if any answer cell still holds an Excel error,
+// validates it loads with openpyxl inside the sandbox, then copies its
+// bytes out to $SB_OUT_DIR/outputs/<id>.xlsx on the host.
 //
 // Runs in the app runtime. The current task id comes from the enyl.currentTaskId
 // session state slot that load_task sets; submit never accepts an id from the
@@ -10,6 +12,8 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { defineTool } from "eve/tools";
 import { z } from "zod";
+import { answerRanges, findTask } from "../lib/dataset";
+import { recalcAndRead } from "../lib/recalc";
 import { currentTaskId } from "./load_task";
 
 const DEFAULT_PATH = "/workspace/task/output.xlsx";
@@ -38,21 +42,55 @@ function shellQuote(value: string): string {
 
 export default defineTool({
   description:
-    "Submit the finished workbook as the answer for the loaded task. Validates it loads with " +
-    "openpyxl inside the sandbox, then writes it to the output folder on the host.",
+    "Submit the finished workbook as the answer for the loaded task. Recalculates it with " +
+    "LibreOffice and refuses, without writing the output, if any answer-range cell holds an " +
+    "Excel error (#NAME?, #REF!, #VALUE!, #DIV/0!, #N/A, #NUM!, #NULL!); pass confirm_errors: " +
+    "true to submit anyway when the error value is the instruction's actual answer for that " +
+    "cell. Otherwise validates the workbook loads with openpyxl inside the sandbox, then writes " +
+    "it to the output folder on the host.",
   inputSchema: z.object({
     path: z
       .string()
       .min(1)
       .optional()
       .describe(`Workbook to submit. Defaults to ${DEFAULT_PATH}.`),
+    confirm_errors: z
+      .boolean()
+      .optional()
+      .describe(
+        "Set true to submit even though an answer-range cell holds an Excel error. Only use " +
+          "this when the instruction's own logic makes that error value the right answer for " +
+          "that cell, such as a lookup whose miss must show as #N/A.",
+      ),
   }),
-  async execute({ path }, ctx) {
+  async execute({ path, confirm_errors }, ctx) {
     const workbookPath = path ?? DEFAULT_PATH;
     const id = currentTaskId.get();
     if (!id) throw new Error("No task loaded yet. Call load_task first.");
 
+    const task = findTask(requireEnv("SB_DATASET_DIR"), id);
+    const ranges = answerRanges(task);
+
     const sandbox = await ctx.getSandbox();
+    const { values, error_cells } = await recalcAndRead(sandbox, workbookPath, ranges);
+
+    if (error_cells.length > 0 && !confirm_errors) {
+      // Refuse without writing the output or deleting the sandbox: the
+      // model still has the sandbox to fix the cause and retry, or to call
+      // submit again with confirm_errors: true if the error is the actual
+      // answer for that cell.
+      return {
+        ok: false as const,
+        error_cells,
+        values,
+        message:
+          "Refusing to submit: the recalculated workbook holds an Excel error in " +
+          `${error_cells.join(", ")}. Fix the cause and call submit again, or, if the error ` +
+          "value is what the instruction's own logic implies for that cell, call submit again " +
+          "with confirm_errors: true.",
+      };
+    }
+
     const quotedPath = shellQuote(workbookPath);
 
     await sandbox.writeTextFile({ path: VALIDATE_PATH, content: VALIDATE_SCRIPT });
@@ -98,6 +136,6 @@ export default defineTool({
       console.error(`submit: failed to delete sandbox for task ${id}:`, error);
     }
 
-    return { ok: true as const };
+    return { ok: true as const, values };
   },
 });

@@ -4,10 +4,10 @@
     "graded": 400,
     "missing": 0,
     "errors": 0,
-    "pass_rate": 0.855,
-    "cell_accuracy": 0.8273,
-    "pass_rate_cell_level": 0.8764,
-    "pass_rate_sheet_level": 0.808
+    "pass_rate": 0.8725,
+    "cell_accuracy": 0.8123,
+    "pass_rate_cell_level": 0.8945,
+    "pass_rate_sheet_level": 0.824
   },
   "items": [
     {
@@ -22,35 +22,9 @@
     {
       "status": "graded",
       "cells": 1450,
-      "correct": 1445,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "FILTER 5b!I295",
-          "expected": null,
-          "actual": "#N/A"
-        },
-        {
-          "cell": "FILTER 5b!J295",
-          "expected": null,
-          "actual": "#N/A"
-        },
-        {
-          "cell": "FILTER 5b!K295",
-          "expected": null,
-          "actual": "#N/A"
-        },
-        {
-          "cell": "FILTER 5b!L295",
-          "expected": null,
-          "actual": "#N/A"
-        },
-        {
-          "cell": "FILTER 5b!M295",
-          "expected": null,
-          "actual": "#N/A"
-        }
-      ],
+      "correct": 1450,
+      "pass": true,
+      "mismatches": [],
       "id": "17-35",
       "type": "Sheet-Level Manipulation"
     },
@@ -119,35 +93,9 @@
     {
       "status": "graded",
       "cells": 6403,
-      "correct": 6382,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "OUT CAS!B1529",
-          "expected": null,
-          "actual": "TOTAL"
-        },
-        {
-          "cell": "OUT CAS!E586",
-          "expected": "TOTAL",
-          "actual": null
-        },
-        {
-          "cell": "OUT CAS!F586",
-          "expected": null,
-          "actual": "TOTAL"
-        },
-        {
-          "cell": "OUT CAS!I12",
-          "expected": "TOTAL",
-          "actual": null
-        },
-        {
-          "cell": "OUT CAS!J12",
-          "expected": null,
-          "actual": "TOTAL"
-        }
-      ],
+      "correct": 6403,
+      "pass": true,
+      "mismatches": [],
       "id": "41-47",
       "type": "Sheet-Level Manipulation"
     },
@@ -346,35 +294,9 @@
     {
       "status": "graded",
       "cells": 189,
-      "correct": 124,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "Sheet1!B2",
-          "expected": 282,
-          "actual": 417
-        },
-        {
-          "cell": "Sheet1!C2",
-          "expected": 250,
-          "actual": 260
-        },
-        {
-          "cell": "Sheet1!E2",
-          "expected": 490,
-          "actual": 550
-        },
-        {
-          "cell": "Sheet1!F2",
-          "expected": 130,
-          "actual": 215
-        },
-        {
-          "cell": "Sheet1!B3",
-          "expected": 417,
-          "actual": 282
-        }
-      ],
+      "correct": 189,
+      "pass": true,
+      "mismatches": [],
       "id": "433-47",
       "type": "Sheet-Level Manipulation"
     },
@@ -453,33 +375,33 @@
     {
       "status": "graded",
       "cells": 307,
-      "correct": 53,
+      "correct": 49,
       "pass": false,
       "mismatches": [
         {
           "cell": "Sheet1!BD2",
           "expected": "Led,jumped well,urged,dominant win",
-          "actual": "Led, jumped, well, urged, dominant, win"
+          "actual": "Option Explicit"
         },
         {
           "cell": "Sheet1!BD3",
           "expected": "Led,jumped beautifuly,kikd,too good",
-          "actual": "Led, jumped, beautifuly, kikd, too, good"
+          "actual": null
         },
         {
           "cell": "Sheet1!BD4",
           "expected": "Slw,8th,imp wd 600,game finish",
-          "actual": "Slw, 8th, imp, wd, 600, game, finish"
+          "actual": "Sub HighlightPatterns()"
         },
         {
           "cell": "Sheet1!BD5",
           "expected": "10th ot,imp,closer cn,strong finish",
-          "actual": "10th, ot, imp, closer, cn, strong, finish"
+          "actual": "    Dim ws As Worksheet"
         },
         {
           "cell": "Sheet1!BD6",
           "expected": "3rd ot,loomed wd cn,fght,tried hard",
-          "actual": "3rd, ot, loomed, wd, cn, fght, tried, hard"
+          "actual": "    Dim dataRange As Range, cell As Range"
         }
       ],
       "id": "73-45",
@@ -568,9 +490,35 @@
     {
       "status": "graded",
       "cells": 22,
-      "correct": 22,
-      "pass": true,
-      "mismatches": [],
+      "correct": 4,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Sheet1!A1",
+          "expected": "https://www.ladbrokes.com.au/horse-racing/domestic",
+          "actual": "' Delete all rows above the row containing \"domestic\""
+        },
+        {
+          "cell": "Sheet1!A2",
+          "expected": "https://www.ladbrokes.com.au/racing/ballarat/ebaa02b4-e4ba-4427-aa83-db688c34c466",
+          "actual": "Sub DeleteRowsAbove()"
+        },
+        {
+          "cell": "Sheet1!A3",
+          "expected": "https://www.ladbrokes.com.au/racing/ballarat/ebaa02b4-e4ba-4427-aa83-db688c34c466",
+          "actual": "    Dim ws As Worksheet"
+        },
+        {
+          "cell": "Sheet1!A4",
+          "expected": "https://www.ladbrokes.com.au/racing/ballarat/a6009afb-4ac2-41d6-b098-fca06b9d03cf",
+          "actual": "    Dim rng As Range"
+        },
+        {
+          "cell": "Sheet1!A5",
+          "expected": null,
+          "actual": "    Dim found As Range"
+        }
+      ],
       "id": "97-36",
       "type": "Sheet-Level Manipulation"
     },
@@ -595,33 +543,33 @@
     {
       "status": "graded",
       "cells": 9998,
-      "correct": 8064,
+      "correct": 9974,
       "pass": false,
       "mismatches": [
         {
           "cell": "Sheet1!C2",
           "expected": "TAVERING",
-          "actual": "ABEARING"
+          "actual": "TABORING"
         },
         {
           "cell": "Sheet1!D2",
           "expected": "AVERTING",
-          "actual": "RABEAING"
+          "actual": "ABORTING"
         },
         {
           "cell": "Sheet1!C3",
           "expected": "HEARTING",
-          "actual": "ABORDING"
+          "actual": "TAVERING"
         },
         {
           "cell": "Sheet1!D3",
           "expected": "EARTHING",
-          "actual": "DABORING"
+          "actual": "AVERTING"
         },
         {
           "cell": "Sheet1!C4",
           "expected": "SHEARING",
-          "actual": "ABORTING"
+          "actual": "HEARTING"
         }
       ],
       "id": "118-50",
@@ -630,25 +578,9 @@
     {
       "status": "graded",
       "cells": 132,
-      "correct": 129,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "b2b, sez, de!E7",
-          "expected": 5780.83,
-          "actual": "C"
-        },
-        {
-          "cell": "b2b, sez, de!E8",
-          "expected": 24059.15,
-          "actual": "C"
-        },
-        {
-          "cell": "b2b, sez, de!E9",
-          "expected": 12212.82,
-          "actual": "C"
-        }
-      ],
+      "correct": 132,
+      "pass": true,
+      "mismatches": [],
       "id": "130-9",
       "type": "Sheet-Level Manipulation"
     },
@@ -744,9 +676,35 @@
     {
       "status": "graded",
       "cells": 55,
-      "correct": 55,
-      "pass": true,
-      "mismatches": [],
+      "correct": 48,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Statement!A2",
+          "expected": null,
+          "actual": "Sub DeletePrecedingRows()"
+        },
+        {
+          "cell": "Statement!A3",
+          "expected": null,
+          "actual": "    Dim rng As Range"
+        },
+        {
+          "cell": "Statement!A4",
+          "expected": null,
+          "actual": "    Set rng = Columns(\"A\").Find(What:=\"Invoice No.\", LookIn:=xlValues, LookAt:=xlWhole)"
+        },
+        {
+          "cell": "Statement!A5",
+          "expected": null,
+          "actual": "    If Not rng Is Nothing Then"
+        },
+        {
+          "cell": "Statement!A6",
+          "expected": null,
+          "actual": "        Rows(\"1:\" & (rng.Row - 1)).Delete"
+        }
+      ],
       "id": "168-17",
       "type": "Sheet-Level Manipulation"
     },
@@ -849,68 +807,42 @@
     {
       "status": "graded",
       "cells": 222,
-      "correct": 215,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "Q!F7",
-          "expected": "UPL.NS",
-          "actual": "SUNPHARMA.NS"
-        },
-        {
-          "cell": "Q!F12",
-          "expected": "AXISBANK.NS",
-          "actual": "TCS.NS"
-        },
-        {
-          "cell": "Q!F17",
-          "expected": "^NSEI",
-          "actual": "UPL.NS"
-        },
-        {
-          "cell": "Q!F22",
-          "expected": "JUBLFOOD.NS",
-          "actual": "LT.NS"
-        },
-        {
-          "cell": "Q!F27",
-          "expected": "SUNPHARMA.NS",
-          "actual": "JUBLFOOD.NS"
-        }
-      ],
+      "correct": 222,
+      "pass": true,
+      "mismatches": [],
       "id": "208-20",
       "type": "Sheet-Level Manipulation"
     },
     {
       "status": "graded",
       "cells": 12,
-      "correct": 7,
+      "correct": 2,
       "pass": false,
       "mismatches": [
         {
+          "cell": "Before!A1",
+          "expected": "data",
+          "actual": "Sub SplitSubstrings()"
+        },
+        {
+          "cell": "Before!A2",
+          "expected": "2020-02-21 09:58:34.595555",
+          "actual": "    Dim r As Long, p As Long, t As String"
+        },
+        {
+          "cell": "Before!A3",
+          "expected": "2020-02-22 14:35:59.356666",
+          "actual": "    For r = 1 To Cells(Rows.Count, 1).End(xlUp).Row"
+        },
+        {
+          "cell": "Before!A4",
+          "expected": "2020-02-23 14:41:01.412",
+          "actual": "        t = Cells(r, 1).Value"
+        },
+        {
           "cell": "Before!A5",
           "expected": "2020-02-23 14:40:11.618",
-          "actual": "2020-02-23 14:40:11.618 "
-        },
-        {
-          "cell": "Before!A6",
-          "expected": "2020-02-23 14:40:11.184",
-          "actual": "2020-02-23 14:40:11.184 "
-        },
-        {
-          "cell": "Before!A7",
-          "expected": "2020-02-23 14:40:11.141",
-          "actual": "2020-02-23 14:40:11.141 "
-        },
-        {
-          "cell": "Before!A8",
-          "expected": "2020-02-23 14:40:10.997",
-          "actual": "2020-02-23 14:40:10.997 "
-        },
-        {
-          "cell": "Before!A9",
-          "expected": "2020-02-23 14:40:10.431",
-          "actual": "2020-02-23 14:40:10.431 "
+          "actual": "        If Len(t) Then"
         }
       ],
       "id": "230-16",
@@ -919,9 +851,35 @@
     {
       "status": "graded",
       "cells": 35,
-      "correct": 35,
-      "pass": true,
-      "mismatches": [],
+      "correct": 17,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Sheet1!A3",
+          "expected": null,
+          "actual": "Line No"
+        },
+        {
+          "cell": "Sheet1!B3",
+          "expected": null,
+          "actual": "SLAccount"
+        },
+        {
+          "cell": "Sheet1!C3",
+          "expected": null,
+          "actual": "TransType"
+        },
+        {
+          "cell": "Sheet1!D3",
+          "expected": null,
+          "actual": "Reference"
+        },
+        {
+          "cell": "Sheet1!E3",
+          "expected": null,
+          "actual": "Other"
+        }
+      ],
       "id": "236-22",
       "type": "Sheet-Level Manipulation"
     },
@@ -1009,53 +967,79 @@
     {
       "status": "graded",
       "cells": 6066,
-      "correct": 6066,
-      "pass": true,
-      "mismatches": [],
+      "correct": 0,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Data to Import!C1",
+          "expected": "Location",
+          "actual": "The bug is in the line: c.Value = (\"C2\") = Left(ws.Range(\"C2\"), Len(ws.Range(\"C2\")) - 3). Here (\"C2\") is the literal text string \"C2\", not a reference to cell C2, so the expression (\"C2\") = Left(...) is a comparison that returns a Boolean (TRUE/FALSE). Since the string \"C2\" never equals the trimmed postcode, every cell is set to FALSE. The code also hard-codes ws.Range(\"C2\") instead of using the loop variable c, so it would only act on row 2. The correct line is: c.Value = Left(c.Value, Len(c.Value) - 3)"
+        },
+        {
+          "cell": "Data to Import!C2",
+          "expected": "DY8 ",
+          "actual": "DY8 3NQ"
+        },
+        {
+          "cell": "Data to Import!C3",
+          "expected": "DY8 ",
+          "actual": "DY8 3NQ"
+        },
+        {
+          "cell": "Data to Import!C4",
+          "expected": "DY8 ",
+          "actual": "DY8 3NQ"
+        },
+        {
+          "cell": "Data to Import!C5",
+          "expected": "DY8 ",
+          "actual": "DY8 3NQ"
+        }
+      ],
       "id": "209-30",
       "type": "Sheet-Level Manipulation"
     },
     {
       "status": "graded",
       "cells": 20,
-      "correct": 3,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "Sheet1!A14",
-          "expected": "Site Name",
-          "actual": "New York"
-        },
-        {
-          "cell": "Sheet1!B14",
-          "expected": "Worker1",
-          "actual": "Adam"
-        },
-        {
-          "cell": "Sheet1!C14",
-          "expected": "Worker2",
-          "actual": "Martin"
-        },
-        {
-          "cell": "Sheet1!D14",
-          "expected": "Worker3",
-          "actual": "Alex"
-        },
-        {
-          "cell": "Sheet1!E14",
-          "expected": "Worker4",
-          "actual": "Bob"
-        }
-      ],
+      "correct": 20,
+      "pass": true,
+      "mismatches": [],
       "id": "227-40",
       "type": "Sheet-Level Manipulation"
     },
     {
       "status": "graded",
       "cells": 897,
-      "correct": 897,
-      "pass": true,
-      "mismatches": [],
+      "correct": 746,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Main!I5",
+          "expected": 17600,
+          "actual": 0
+        },
+        {
+          "cell": "Main!J5",
+          "expected": 70,
+          "actual": -30
+        },
+        {
+          "cell": "Main!K5",
+          "expected": 12320,
+          "actual": 0
+        },
+        {
+          "cell": "Main!L5",
+          "expected": 5280,
+          "actual": 0
+        },
+        {
+          "cell": "Main!I8",
+          "expected": 17600,
+          "actual": 0
+        }
+      ],
       "id": "247-24",
       "type": "Sheet-Level Manipulation"
     },
@@ -1098,35 +1082,9 @@
     {
       "status": "graded",
       "cells": 25,
-      "correct": 10,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "Duplicates!A3",
-          "expected": "BR6",
-          "actual": "BR3"
-        },
-        {
-          "cell": "Duplicates!B3",
-          "expected": "TBQ6467",
-          "actual": "TBQ64624"
-        },
-        {
-          "cell": "Duplicates!C3",
-          "expected": "XMTKGMB88",
-          "actual": "XMTKGMA00"
-        },
-        {
-          "cell": "Duplicates!D3",
-          "expected": "2021-12-10 00:00:00",
-          "actual": "13/09/2021"
-        },
-        {
-          "cell": "Duplicates!E3",
-          "expected": 41770.68,
-          "actual": 44587.28
-        }
-      ],
+      "correct": 25,
+      "pass": true,
+      "mismatches": [],
       "id": "343-20",
       "type": "Sheet-Level Manipulation"
     },
@@ -1151,35 +1109,9 @@
     {
       "status": "graded",
       "cells": 18,
-      "correct": 6,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "Delete!A1",
-          "expected": "CUSTOMER NAME",
-          "actual": "Sub Delete_rows()\n    Application.ScreenUpdating = False\n    Application.DisplayAlerts = False\n    Dim sh1 As Worksheet\n    Dim lastrow As Long\n    Set sh1 = ThisWorkbook.Worksheets(\"Delete\")\n    lastrow = sh1.Cells(Rows.Count, \"A\").End(xlUp).Row\n    With sh1\n        .AutoFilterMode = False\n        .Range(\"A1:B\" & lastrow).AutoFilter Field:=2, Criteria1:=Array(\"STATIONERY\", \"VEGETABLES\"), Operator:=xlFilterValues\n        .Range(\"A2:C\" & lastrow).SpecialCells(xlCellTypeVisible).EntireRow.Delete\n        .AutoFilterMode = False\n    End With\n    Application.ScreenUpdating = True\n    Application.DisplayAlerts = True\nEnd Sub"
-        },
-        {
-          "cell": "Delete!A4",
-          "expected": "E& CO",
-          "actual": "D& CO"
-        },
-        {
-          "cell": "Delete!B4",
-          "expected": "GROCERY",
-          "actual": "STATIONERY"
-        },
-        {
-          "cell": "Delete!A5",
-          "expected": "F& CO",
-          "actual": "E& CO"
-        },
-        {
-          "cell": "Delete!A6",
-          "expected": "H& CO",
-          "actual": "F& CO"
-        }
-      ],
+      "correct": 18,
+      "pass": true,
+      "mismatches": [],
       "id": "359-21",
       "type": "Sheet-Level Manipulation"
     },
@@ -1213,13 +1145,13 @@
     {
       "status": "graded",
       "cells": 20,
-      "correct": 12,
+      "correct": 8,
       "pass": false,
       "mismatches": [
         {
           "cell": "Sheet1!A1",
           "expected": "Code",
-          "actual": "Sub DelBlankAboveCode()"
+          "actual": "Sub DeleteBlankRowsAboveCode()\n    Dim codeRow As Long\n    Dim i As Long\n\n    ' Find the row containing \"Code\" in column A\n    codeRow = 0\n    For i = 1 To Cells(Rows.Count, 1).End(xlUp).Row\n        If Cells(i, 1).Value = \"Code\" Then\n            codeRow = i\n            Exit For\n        End If\n    Next i\n\n    ' Delete blank rows above the Code row\n    If codeRow > 1 Then\n        For i = codeRow - 1 To 1 Step -1\n            If Cells(i, 1).Value = \"\" Then\n                Rows(i).Delete\n            End If\n        Next i\n    End If\nEnd Sub"
         },
         {
           "cell": "Sheet1!B1",
@@ -1232,13 +1164,13 @@
           "actual": null
         },
         {
-          "cell": "Sheet1!A2",
-          "expected": 98715,
-          "actual": "    Dim r As Long, i As Long"
+          "cell": "Sheet1!D1",
+          "expected": null,
+          "actual": "Address2"
         },
         {
-          "cell": "Sheet1!B2",
-          "expected": "Dave Marks",
+          "cell": "Sheet1!A2",
+          "expected": 98715,
           "actual": null
         }
       ],
@@ -1302,9 +1234,19 @@
     {
       "status": "graded",
       "cells": 56,
-      "correct": 55,
+      "correct": 53,
       "pass": false,
       "mismatches": [
+        {
+          "cell": "COLLECTION!F5",
+          "expected": 0.0,
+          "actual": "-"
+        },
+        {
+          "cell": "COLLECTION!F8",
+          "expected": 0.0,
+          "actual": "-"
+        },
         {
           "cell": "COLLECTION!E9",
           "expected": 0.0,
@@ -1353,53 +1295,59 @@
     {
       "status": "graded",
       "cells": 15,
-      "correct": 15,
-      "pass": true,
-      "mismatches": [],
+      "correct": 14,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Sheet1!A4",
+          "expected": null,
+          "actual": "Invoice No."
+        }
+      ],
       "id": "414-20",
       "type": "Sheet-Level Manipulation"
     },
     {
       "status": "graded",
       "cells": 18,
-      "correct": 18,
-      "pass": true,
-      "mismatches": [],
+      "correct": 0,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Sheet1!A2",
+          "expected": "2021-04-21 00:00:00",
+          "actual": "4/21/2021"
+        },
+        {
+          "cell": "Sheet1!A3",
+          "expected": "2021-05-04 00:00:00",
+          "actual": "5/4/2021"
+        },
+        {
+          "cell": "Sheet1!A4",
+          "expected": "2019-11-11 00:00:00",
+          "actual": "11/11/2019"
+        },
+        {
+          "cell": "Sheet1!A5",
+          "expected": "2020-02-27 00:00:00",
+          "actual": "2/27/2020"
+        },
+        {
+          "cell": "Sheet1!A6",
+          "expected": "2020-08-04 00:00:00",
+          "actual": "8/4/2020"
+        }
+      ],
       "id": "416-15",
       "type": "Sheet-Level Manipulation"
     },
     {
       "status": "graded",
       "cells": 22,
-      "correct": 11,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "Sheet1!A3",
-          "expected": "Ref",
-          "actual": "Sub Del_Blanks()"
-        },
-        {
-          "cell": "Sheet1!A4",
-          "expected": "LKP103",
-          "actual": "Dim LR As Long"
-        },
-        {
-          "cell": "Sheet1!A5",
-          "expected": "LKP104",
-          "actual": "LR = Range(\"A\" & Rows.Count).End(xlUp).Row"
-        },
-        {
-          "cell": "Sheet1!A6",
-          "expected": "LKP105",
-          "actual": "Range(\"A4:A\" & LR).AutoFilter Field:=1, Criteria1:=\"=\""
-        },
-        {
-          "cell": "Sheet1!A7",
-          "expected": "LKP106",
-          "actual": "Range(\"A4:A\" & LR).SpecialCells(xlCellTypeVisible).EntireRow.Delete"
-        }
-      ],
+      "correct": 22,
+      "pass": true,
+      "mismatches": [],
       "id": "416-27",
       "type": "Sheet-Level Manipulation"
     },
@@ -1451,33 +1399,23 @@
     {
       "status": "graded",
       "cells": 129,
-      "correct": 0,
+      "correct": 126,
       "pass": false,
       "mismatches": [
         {
-          "cell": "Blad1!B2",
-          "expected": "2021 01 20",
-          "actual": "2021-01-20 00:00:00"
+          "cell": "Blad1!B99",
+          "expected": "atum  v er",
+          "actual": null
         },
         {
-          "cell": "Blad1!B3",
-          "expected": "2021 01 20",
-          "actual": "2021-01-20 00:00:00"
+          "cell": "Blad1!B100",
+          "expected": "atum  v er",
+          "actual": null
         },
         {
-          "cell": "Blad1!B4",
-          "expected": "2021 01 07",
-          "actual": "2021-01-07 00:00:00"
-        },
-        {
-          "cell": "Blad1!B5",
-          "expected": "2021 01 04",
-          "actual": "2021-01-04 00:00:00"
-        },
-        {
-          "cell": "Blad1!B6",
-          "expected": "2021 02 25",
-          "actual": "2021-02-25 00:00:00"
+          "cell": "Blad1!B101",
+          "expected": "atum  v er",
+          "actual": null
         }
       ],
       "id": "486-17",
@@ -1524,9 +1462,35 @@
     {
       "status": "graded",
       "cells": 28,
-      "correct": 28,
-      "pass": true,
-      "mismatches": [],
+      "correct": 8,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Sheet1!A3",
+          "expected": 110,
+          "actual": null
+        },
+        {
+          "cell": "Sheet1!B3",
+          "expected": "Made",
+          "actual": null
+        },
+        {
+          "cell": "Sheet1!C3",
+          "expected": "2021-02-09 14:34:28",
+          "actual": null
+        },
+        {
+          "cell": "Sheet1!D3",
+          "expected": 20,
+          "actual": null
+        },
+        {
+          "cell": "Sheet1!A4",
+          "expected": 117,
+          "actual": 110
+        }
+      ],
       "id": "496-34",
       "type": "Sheet-Level Manipulation"
     },
@@ -1551,35 +1515,9 @@
     {
       "status": "graded",
       "cells": 53,
-      "correct": 46,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "Exp-DB!E7",
-          "expected": null,
-          "actual": "misc"
-        },
-        {
-          "cell": "Exp-DB!E8",
-          "expected": null,
-          "actual": "misc"
-        },
-        {
-          "cell": "Exp-DB!E28",
-          "expected": null,
-          "actual": "Auto"
-        },
-        {
-          "cell": "Exp-DB!E29",
-          "expected": null,
-          "actual": "Auto"
-        },
-        {
-          "cell": "Exp-DB!E30",
-          "expected": null,
-          "actual": "household"
-        }
-      ],
+      "correct": 53,
+      "pass": true,
+      "mismatches": [],
       "id": "524-31",
       "type": "Sheet-Level Manipulation"
     },
@@ -1756,9 +1694,15 @@
     {
       "status": "graded",
       "cells": 1,
-      "correct": 1,
-      "pass": true,
-      "mismatches": [],
+      "correct": 0,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Sheet1!E5",
+          "expected": 2000,
+          "actual": 5000
+        }
+      ],
       "id": "37900",
       "type": "Cell-Level Manipulation"
     },
@@ -1837,30 +1781,9 @@
     {
       "status": "graded",
       "cells": 4,
-      "correct": 0,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "Sheet1!M2",
-          "expected": 3.83333333333333,
-          "actual": "(K2*MIN(L2,J2)+I2*MIN(MAX(L2-J2,0),H2)+G2*MIN(MAX(L2-J2-H2,0),F2)+E2*MIN(MAX(L2-J2-H2-F2,0),D2)+C2*MIN(MAX(L2-J2-H2-F2-D2,0),B2))/L2"
-        },
-        {
-          "cell": "Sheet1!M3",
-          "expected": 5,
-          "actual": "(K3*MIN(L3,J3)+I3*MIN(MAX(L3-J3,0),H3)+G3*MIN(MAX(L3-J3-H3,0),F3)+E3*MIN(MAX(L3-J3-H3-F3,0),D3)+C3*MIN(MAX(L3-J3-H3-F3-D3,0),B3))/L3"
-        },
-        {
-          "cell": "Sheet1!M4",
-          "expected": 12.2608695652174,
-          "actual": "(K4*MIN(L4,J4)+I4*MIN(MAX(L4-J4,0),H4)+G4*MIN(MAX(L4-J4-H4,0),F4)+E4*MIN(MAX(L4-J4-H4-F4,0),D4)+C4*MIN(MAX(L4-J4-H4-F4-D4,0),B4))/L4"
-        },
-        {
-          "cell": "Sheet1!M5",
-          "expected": 8.57142857142857,
-          "actual": "(K5*MIN(L5,J5)+I5*MIN(MAX(L5-J5,0),H5)+G5*MIN(MAX(L5-J5-H5,0),F5)+E5*MIN(MAX(L5-J5-H5-F5,0),D5)+C5*MIN(MAX(L5-J5-H5-F5-D5,0),B5))/L5"
-        }
-      ],
+      "correct": 4,
+      "pass": true,
+      "mismatches": [],
       "id": "39432",
       "type": "Cell-Level Manipulation"
     },
@@ -1885,20 +1808,9 @@
     {
       "status": "graded",
       "cells": 5,
-      "correct": 3,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "SKUs as Bins!C3",
-          "expected": 1,
-          "actual": 0
-        },
-        {
-          "cell": "SKUs as Bins!C6",
-          "expected": 6,
-          "actual": 10
-        }
-      ],
+      "correct": 5,
+      "pass": true,
+      "mismatches": [],
       "id": "39903",
       "type": "Cell-Level Manipulation"
     },
@@ -1941,9 +1853,15 @@
     {
       "status": "graded",
       "cells": 1,
-      "correct": 1,
-      "pass": true,
-      "mismatches": [],
+      "correct": 0,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Sheet1!B7",
+          "expected": "two",
+          "actual": 2
+        }
+      ],
       "id": "41691",
       "type": "Cell-Level Manipulation"
     },
@@ -2094,9 +2012,35 @@
     {
       "status": "graded",
       "cells": 42,
-      "correct": 42,
-      "pass": true,
-      "mismatches": [],
+      "correct": 16,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Sheet1!B11",
+          "expected": 1,
+          "actual": 9
+        },
+        {
+          "cell": "Sheet1!B12",
+          "expected": 2,
+          "actual": 9
+        },
+        {
+          "cell": "Sheet1!B14",
+          "expected": 3,
+          "actual": 10
+        },
+        {
+          "cell": "Sheet1!B16",
+          "expected": 4,
+          "actual": 11
+        },
+        {
+          "cell": "Sheet1!B18",
+          "expected": 5,
+          "actual": 12
+        }
+      ],
       "id": "48588",
       "type": "Cell-Level Manipulation"
     },
@@ -2175,15 +2119,9 @@
     {
       "status": "graded",
       "cells": 1,
-      "correct": 0,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "Sheet1!B323",
-          "expected": 606,
-          "actual": "Circular reference: the formula sits in B323, which is INSIDE the range B$7:B377 that MAX() scans. So B323 depends on MAX(B$7:B377), and that MAX includes B323 itself, so the cell depends on its own value -> circular reference. Excel cannot resolve this, so it returns 0, and with the cell's 000 number format that 0 displays as 000. When you press F9, Excel evaluates just the expression MAX(B$7:B377)+1 against the existing numeric values (the largest is 605), giving 606. Fix: move the formula to a row below the MAX range (e.g. B378) or narrow the range so it does not include the formula cell."
-        }
-      ],
+      "correct": 1,
+      "pass": true,
+      "mismatches": [],
       "id": "48982",
       "type": "Cell-Level Manipulation"
     },
@@ -2205,7 +2143,7 @@
         {
           "cell": "Dashboard!B8",
           "expected": "66.67% WIN RATE",
-          "actual": 0.666666666666667
+          "actual": "67% WIN RATE"
         }
       ],
       "id": "49036",
@@ -2214,35 +2152,9 @@
     {
       "status": "graded",
       "cells": 46,
-      "correct": 0,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "Sheet1!C2",
-          "expected": "21/11/21 14:28",
-          "actual": "21/11/2021 14:28"
-        },
-        {
-          "cell": "Sheet1!C3",
-          "expected": "22/11/21 06:00",
-          "actual": "22/11/2021 06:00"
-        },
-        {
-          "cell": "Sheet1!C4",
-          "expected": "23/11/21 06:00",
-          "actual": "23/11/2021 06:00"
-        },
-        {
-          "cell": "Sheet1!C5",
-          "expected": "23/11/21 22:04",
-          "actual": "23/11/2021 22:04"
-        },
-        {
-          "cell": "Sheet1!C6",
-          "expected": "24/11/21 18:00",
-          "actual": "24/11/2021 18:00"
-        }
-      ],
+      "correct": 46,
+      "pass": true,
+      "mismatches": [],
       "id": "49196",
       "type": "Cell-Level Manipulation"
     },
@@ -2276,35 +2188,9 @@
     {
       "status": "graded",
       "cells": 60,
-      "correct": 52,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "Edit!C7",
-          "expected": "11:00:00",
-          "actual": null
-        },
-        {
-          "cell": "Edit!D7",
-          "expected": "13:45:00",
-          "actual": null
-        },
-        {
-          "cell": "Edit!E7",
-          "expected": "15:15:00",
-          "actual": null
-        },
-        {
-          "cell": "Edit!C10",
-          "expected": "13:00:00",
-          "actual": null
-        },
-        {
-          "cell": "Edit!B14",
-          "expected": "10:30:00",
-          "actual": null
-        }
-      ],
+      "correct": 60,
+      "pass": true,
+      "mismatches": [],
       "id": "49667",
       "type": "Cell-Level Manipulation"
     },
@@ -2548,15 +2434,9 @@
     {
       "status": "graded",
       "cells": 1,
-      "correct": 0,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "HR !GK29",
-          "expected": 692.71486185,
-          "actual": 603.73639095
-        }
-      ],
+      "correct": 1,
+      "pass": true,
+      "mismatches": [],
       "id": "54590",
       "type": "Cell-Level Manipulation"
     },
@@ -2670,42 +2550,68 @@
     {
       "status": "graded",
       "cells": 17,
-      "correct": 17,
-      "pass": true,
-      "mismatches": [],
+      "correct": 7,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "\u05d2\u05d9\u05dc\u05d9\u05d5\u05df1!C6",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "\u05d2\u05d9\u05dc\u05d9\u05d5\u05df1!C7",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "\u05d2\u05d9\u05dc\u05d9\u05d5\u05df1!C8",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "\u05d2\u05d9\u05dc\u05d9\u05d5\u05df1!C9",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "\u05d2\u05d9\u05dc\u05d9\u05d5\u05df1!C10",
+          "expected": 0,
+          "actual": null
+        }
+      ],
       "id": "5835",
       "type": "Cell-Level Manipulation"
     },
     {
       "status": "graded",
       "cells": 18,
-      "correct": 0,
+      "correct": 5,
       "pass": false,
       "mismatches": [
         {
           "cell": "Sheet1!G2",
           "expected": 0.08,
-          "actual": null
+          "actual": 0.14
         },
         {
           "cell": "Sheet1!G3",
           "expected": 0.08,
-          "actual": null
+          "actual": 0.14
         },
         {
           "cell": "Sheet1!G4",
           "expected": 0.06,
-          "actual": null
+          "actual": 0.105
         },
         {
           "cell": "Sheet1!G5",
           "expected": 0.18,
-          "actual": null
+          "actual": 0.24
         },
         {
           "cell": "Sheet1!G6",
           "expected": 0.07,
-          "actual": null
+          "actual": 0.1
         }
       ],
       "id": "6239",
@@ -2851,33 +2757,33 @@
     {
       "status": "graded",
       "cells": 25,
-      "correct": 12,
+      "correct": 20,
       "pass": false,
       "mismatches": [
         {
-          "cell": "Base!E14",
-          "expected": "Everaldo",
-          "actual": "Carlos"
+          "cell": "Base!E5",
+          "expected": "Sonia",
+          "actual": null
         },
         {
-          "cell": "Base!E15",
-          "expected": "Domingos",
-          "actual": "Carlos"
+          "cell": "Base!E8",
+          "expected": "Mariza",
+          "actual": null
+        },
+        {
+          "cell": "Base!E10",
+          "expected": "Marcy",
+          "actual": null
+        },
+        {
+          "cell": "Base!E13",
+          "expected": "Carlos",
+          "actual": null
         },
         {
           "cell": "Base!E16",
           "expected": "Fontana",
-          "actual": "Carlos"
-        },
-        {
-          "cell": "Base!E17",
-          "expected": null,
-          "actual": "Mario"
-        },
-        {
-          "cell": "Base!E18",
-          "expected": null,
-          "actual": "Mario"
+          "actual": null
         }
       ],
       "id": "13284",
@@ -2958,9 +2864,15 @@
     {
       "status": "graded",
       "cells": 1,
-      "correct": 1,
-      "pass": true,
-      "mismatches": [],
+      "correct": 0,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Sheet1!B1",
+          "expected": 10,
+          "actual": 45301
+        }
+      ],
       "id": "31628",
       "type": "Cell-Level Manipulation"
     },
@@ -2985,7 +2897,7 @@
     {
       "status": "graded",
       "cells": 16,
-      "correct": 14,
+      "correct": 8,
       "pass": false,
       "mismatches": [
         {
@@ -2997,6 +2909,21 @@
           "cell": "Sheet1!B3",
           "expected": null,
           "actual": "C78"
+        },
+        {
+          "cell": "Sheet1!B12",
+          "expected": "C78",
+          "actual": "C77"
+        },
+        {
+          "cell": "Sheet1!B13",
+          "expected": "C78",
+          "actual": "C77"
+        },
+        {
+          "cell": "Sheet1!B14",
+          "expected": "C78",
+          "actual": "C76"
         }
       ],
       "id": "32023",
@@ -3092,9 +3019,25 @@
     {
       "status": "graded",
       "cells": 5,
-      "correct": 5,
-      "pass": true,
-      "mismatches": [],
+      "correct": 2,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Sheet1!K3",
+          "expected": "Activity 1",
+          "actual": null
+        },
+        {
+          "cell": "Sheet1!K4",
+          "expected": "Activity 1",
+          "actual": null
+        },
+        {
+          "cell": "Sheet1!K5",
+          "expected": "Activity 2",
+          "actual": null
+        }
+      ],
       "id": "33157",
       "type": "Cell-Level Manipulation"
     },
@@ -3484,17 +3427,12 @@
     {
       "status": "graded",
       "cells": 4,
-      "correct": 0,
+      "correct": 1,
       "pass": false,
       "mismatches": [
         {
           "cell": "Sheet1!D2",
           "expected": "Apple",
-          "actual": "Orange"
-        },
-        {
-          "cell": "Sheet1!D3",
-          "expected": "Orange",
           "actual": null
         },
         {
@@ -3607,20 +3545,9 @@
     {
       "status": "graded",
       "cells": 3,
-      "correct": 1,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "Sheet1!D22",
-          "expected": 0.1,
-          "actual": "#REF!"
-        },
-        {
-          "cell": "Sheet1!D23",
-          "expected": 0.09,
-          "actual": "#REF!"
-        }
-      ],
+      "correct": 3,
+      "pass": true,
+      "mismatches": [],
       "id": "50811",
       "type": "Cell-Level Manipulation"
     },
@@ -3702,15 +3629,9 @@
     {
       "status": "graded",
       "cells": 2,
-      "correct": 1,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "Sheet1!C2",
-          "expected": "2021-07-31 11:14:10",
-          "actual": null
-        }
-      ],
+      "correct": 2,
+      "pass": true,
+      "mismatches": [],
       "id": "52220",
       "type": "Cell-Level Manipulation"
     },
@@ -3777,9 +3698,35 @@
     {
       "status": "graded",
       "cells": 208,
-      "correct": 208,
-      "pass": true,
-      "mismatches": [],
+      "correct": 200,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Sheet1!AE22",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Sheet1!AE23",
+          "expected": 2,
+          "actual": null
+        },
+        {
+          "cell": "Sheet1!AE24",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Sheet1!AE25",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "Sheet1!AE26",
+          "expected": 0,
+          "actual": null
+        }
+      ],
       "id": "53161",
       "type": "Cell-Level Manipulation"
     },
@@ -3858,30 +3805,9 @@
     {
       "status": "graded",
       "cells": 149,
-      "correct": 145,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "Sheet1!B7",
-          "expected": "Military Family Leave",
-          "actual": null
-        },
-        {
-          "cell": "Sheet1!B8",
-          "expected": "Maternity Leave",
-          "actual": null
-        },
-        {
-          "cell": "Sheet1!B9",
-          "expected": "Paternity Leave",
-          "actual": null
-        },
-        {
-          "cell": "Sheet1!B10",
-          "expected": "None",
-          "actual": null
-        }
-      ],
+      "correct": 149,
+      "pass": true,
+      "mismatches": [],
       "id": "54638",
       "type": "Cell-Level Manipulation"
     },
@@ -3942,7 +3868,7 @@
     {
       "status": "graded",
       "cells": 1460,
-      "correct": 1246,
+      "correct": 850,
       "pass": false,
       "mismatches": [
         {
@@ -3966,9 +3892,9 @@
           "actual": null
         },
         {
-          "cell": "Compiled and located schools da!B9",
-          "expected": "#N/A",
-          "actual": 2004
+          "cell": "Compiled and located schools da!B7",
+          "expected": 3125,
+          "actual": null
         }
       ],
       "id": "55427",
@@ -4049,9 +3975,25 @@
     {
       "status": "graded",
       "cells": 6,
-      "correct": 6,
-      "pass": true,
-      "mismatches": [],
+      "correct": 3,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "Sheet1!C6",
+          "expected": "9558385555",
+          "actual": null
+        },
+        {
+          "cell": "Sheet1!C7",
+          "expected": "CHK8385343",
+          "actual": null
+        },
+        {
+          "cell": "Sheet1!C8",
+          "expected": "CHK8395240",
+          "actual": null
+        }
+      ],
       "id": "56920",
       "type": "Cell-Level Manipulation"
     },
@@ -4175,25 +4117,9 @@
     {
       "status": "graded",
       "cells": 16,
-      "correct": 13,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "Sheet1!C4",
-          "expected": 4,
-          "actual": "n/a"
-        },
-        {
-          "cell": "Sheet1!C5",
-          "expected": 6,
-          "actual": "n/a"
-        },
-        {
-          "cell": "Sheet1!C6",
-          "expected": 12,
-          "actual": "n/a"
-        }
-      ],
+      "correct": 16,
+      "pass": true,
+      "mismatches": [],
       "id": "59595",
       "type": "Cell-Level Manipulation"
     },
@@ -4233,17 +4159,17 @@
         {
           "cell": "Data!AJ14",
           "expected": 40982.1633425799,
-          "actual": 41122.014524435
+          "actual": 41122.0145244349
         },
         {
           "cell": "Data!AK14",
           "expected": 40982.1633425799,
-          "actual": 41122.014524435
+          "actual": 41122.0145244349
         },
         {
           "cell": "Data!AL14",
           "expected": 62411.2410922792,
-          "actual": 62624.2187663672
+          "actual": 62624.2187663671
         },
         {
           "cell": "Data!AM14",
@@ -4289,35 +4215,9 @@
     {
       "status": "graded",
       "cells": 12,
-      "correct": 0,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "Sheet1!B11",
-          "expected": 0.3225806451612903,
-          "actual": null
-        },
-        {
-          "cell": "Sheet1!C11",
-          "expected": 0.5172413793103449,
-          "actual": null
-        },
-        {
-          "cell": "Sheet1!D11",
-          "expected": 0.22580645161290322,
-          "actual": null
-        },
-        {
-          "cell": "Sheet1!E11",
-          "expected": 0.16666666666666666,
-          "actual": null
-        },
-        {
-          "cell": "Sheet1!F11",
-          "expected": 0.5161290322580645,
-          "actual": null
-        }
-      ],
+      "correct": 12,
+      "pass": true,
+      "mismatches": [],
       "id": "46646",
       "type": "Cell-Level Manipulation"
     },
@@ -4351,15 +4251,9 @@
     {
       "status": "graded",
       "cells": 1,
-      "correct": 0,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "Sheet1!AE5",
-          "expected": 228,
-          "actual": 310
-        }
-      ],
+      "correct": 1,
+      "pass": true,
+      "mismatches": [],
       "id": "55468",
       "type": "Cell-Level Manipulation"
     },
@@ -4390,27 +4284,27 @@
         {
           "cell": "WEEKDAY!C2",
           "expected": "Mon",
-          "actual": "1900-01-03 00:00:00"
+          "actual": "Monday"
         },
         {
           "cell": "WEEKDAY!C3",
           "expected": "Tue",
-          "actual": "1900-01-04 00:00:00"
+          "actual": "Tuesday"
         },
         {
           "cell": "WEEKDAY!C4",
           "expected": "Sun",
-          "actual": "1900-01-02 00:00:00"
+          "actual": "Sunday"
         },
         {
           "cell": "WEEKDAY!C5",
           "expected": "Mon",
-          "actual": "1900-01-03 00:00:00"
+          "actual": "Monday"
         },
         {
           "cell": "WEEKDAY!C6",
           "expected": "Fri",
-          "actual": "1900-01-07 00:00:00"
+          "actual": "Friday"
         }
       ],
       "id": "55977",
@@ -4443,7 +4337,7 @@
         {
           "cell": "Sheet1!C4",
           "expected": 6.166666667559182,
-          "actual": null
+          "actual": "#DIV/0!"
         },
         {
           "cell": "Sheet1!C5",
@@ -4453,7 +4347,7 @@
         {
           "cell": "Sheet1!C6",
           "expected": 10.623611111805076,
-          "actual": 6.16666666755918
+          "actual": 6.16666666755919
         },
         {
           "cell": "Sheet1!C7",
@@ -4472,44 +4366,44 @@
     {
       "status": "graded",
       "cells": 24,
-      "correct": 24,
-      "pass": true,
-      "mismatches": [],
+      "correct": 14,
+      "pass": false,
+      "mismatches": [
+        {
+          "cell": "COVER!B19",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "COVER!C19",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "COVER!D19",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "COVER!E19",
+          "expected": 0,
+          "actual": null
+        },
+        {
+          "cell": "COVER!B20",
+          "expected": 0,
+          "actual": null
+        }
+      ],
       "id": "56915",
       "type": "Cell-Level Manipulation"
     },
     {
       "status": "graded",
       "cells": 32,
-      "correct": 20,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "Sheet2!J2",
-          "expected": "Engine LS",
-          "actual": "Engine"
-        },
-        {
-          "cell": "Sheet2!I7",
-          "expected": "Power (kW)",
-          "actual": 70
-        },
-        {
-          "cell": "Sheet2!J7",
-          "expected": "Engine HS",
-          "actual": 700
-        },
-        {
-          "cell": "Sheet2!K7",
-          "expected": "Power take-off (rpm)",
-          "actual": 1428
-        },
-        {
-          "cell": "Sheet2!L7",
-          "expected": "(Nm)",
-          "actual": 468.137254901961
-        }
-      ],
+      "correct": 32,
+      "pass": true,
+      "mismatches": [],
       "id": "56953",
       "type": "Cell-Level Manipulation"
     },
@@ -4552,35 +4446,9 @@
     {
       "status": "graded",
       "cells": 12,
-      "correct": 4,
-      "pass": false,
-      "mismatches": [
-        {
-          "cell": "Sheet1!D5",
-          "expected": 3.75,
-          "actual": 0
-        },
-        {
-          "cell": "Sheet1!D6",
-          "expected": 3.75,
-          "actual": 0
-        },
-        {
-          "cell": "Sheet1!D7",
-          "expected": 3.75,
-          "actual": 0
-        },
-        {
-          "cell": "Sheet1!D11",
-          "expected": 1,
-          "actual": 0
-        },
-        {
-          "cell": "Sheet1!D12",
-          "expected": 1,
-          "actual": 0
-        }
-      ],
+      "correct": 12,
+      "pass": true,
+      "mismatches": [],
       "id": "57612",
       "type": "Cell-Level Manipulation"
     },
@@ -4757,33 +4625,33 @@
     {
       "status": "graded",
       "cells": 28,
-      "correct": 5,
+      "correct": 11,
       "pass": false,
       "mismatches": [
         {
           "cell": "Sheet1!I2",
           "expected": null,
-          "actual": 1
+          "actual": "a"
         },
         {
           "cell": "Sheet1!J2",
           "expected": null,
-          "actual": 3
+          "actual": "b"
         },
         {
           "cell": "Sheet1!K2",
           "expected": null,
-          "actual": "a"
-        },
-        {
-          "cell": "Sheet1!L2",
-          "expected": null,
-          "actual": "b"
-        },
-        {
-          "cell": "Sheet1!M2",
-          "expected": null,
           "actual": "c"
+        },
+        {
+          "cell": "Sheet1!I3",
+          "expected": "a",
+          "actual": "x"
+        },
+        {
+          "cell": "Sheet1!J3",
+          "expected": "b",
+          "actual": "w"
         }
       ],
       "id": "59884",

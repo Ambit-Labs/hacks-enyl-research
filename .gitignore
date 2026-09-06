@@ -16,11 +16,13 @@ runs/*
 !runs/r03/
 !runs/r07/
 !runs/r08/
+!runs/r09/
 !runs/final/
 runs/r01/*
 runs/r03/*
 runs/r07/*
 runs/r08/*
+runs/r09/*
 runs/final/*
 !runs/*/failures.md
 !runs/*/results.json
