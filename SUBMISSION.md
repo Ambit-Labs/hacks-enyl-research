@@ -5,6 +5,7 @@
 - Team name: Ambit Labs
 - Members, one GitHub handle per line:
   - ciocan
+  - anamariastate
 - Repo URL: https://github.com/Ambit-Labs/hacks-enyl-research
 
 ## What we built and why
