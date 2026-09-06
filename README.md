@@ -4,8 +4,17 @@ An agent that solves SpreadsheetBench tasks: given a workbook and a plain-Englis
 instruction, it edits the workbook so the answer cells hold the correct result. Built on
 [eve](https://eve.dev), a framework for durable AI agents; a judge running this repo does
 not need to know eve to build the sandbox image, run predictions, or score the result.
-The model is fixed in code at `deepseek/deepseek-v4-flash-0731` via the Vercel AI
-Gateway; it is not configurable through an environment variable.
+The goal of this project is a fine-tuned Ornith 1.5 9B that solves the benchmark
+end to end. The 9B is served on a private OpenAI-compatible endpoint supplied to the
+judges separately, and the section "Running your task set on the Ornith 9B endpoint"
+below shows how to score a task set against it. The scored artifacts in this repo come
+from the same harness driven by `deepseek/deepseek-v4-flash-0731` via the Vercel AI
+Gateway, which is the committed default solver (a literal in `agent/lib/solver.ts`,
+not an environment variable): the DeepSeek runs produced the trajectories the 9B was
+trained on and the numbers every other model is compared against. Everything done with
+the other models (DeepSeek, Claude Sonnet 4.5, Ornith 35B) was in support of that goal:
+building the harness, finding the failure classes, generating training data, and
+measuring where the 9B stands.
 
 ## Requirements
 
@@ -235,8 +244,12 @@ back to `"deepseek"` afterward: that default is what the scored submission runs.
 
 ## Findings
 
-Every model in this row ran through the same tool loop and instructions as the
-DeepSeek final, so the columns compare solvers, not harnesses. "SB 400 full" is our
+The Ornith 9B fine-tune is the target; the other rows exist to build and measure it.
+DeepSeek drove the harness to 0.8725 and supplied the 282 passing trajectories the 9B
+was trained on; Claude Sonnet 4.5 solved 31 of DeepSeek's 58 failures to provide
+teacher trajectories for a second round; Ornith 35B was tried as the solver to see how
+far the untuned family gets. Every model ran through the same tool loop and
+instructions, so the columns compare solvers, not harnesses. "SB 400 full" is our
 verified 400-task set; "80 r01 failures" and "58/60 held-out" are fixed id subsets
 from issues #12 and #16; "100 DeepSeek passes" is a random sample of tasks DeepSeek
 solved; "SB2" is SpreadsheetBench 2, a harder, unrelated held-out benchmark (see
