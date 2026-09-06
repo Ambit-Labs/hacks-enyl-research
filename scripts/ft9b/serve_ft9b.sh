@@ -19,6 +19,12 @@ SERVED_NAME="${SERVED_NAME:-Ornith-9B-ft}"
 PORT="${PORT:-8001}"
 KEY_FILE="${KEY_FILE:-/root/.ft9b_key}"
 MAX_MODEL_LEN="${MAX_MODEL_LEN:-32768}"
+GPU_MEM_UTIL="${GPU_MEM_UTIL:-0.9}"
+# At GPU_MEM_UTIL 0.42 (splitting the H100 for two served models) the
+# default max_num_seqs of 1024 exceeds the Mamba cache blocks this
+# hybrid-attention model can fit; the eval only ever runs at concurrency 16,
+# so cap it well below that ceiling instead of raising memory further.
+MAX_NUM_SEQS="${MAX_NUM_SEQS:-128}"
 VENV="${VENV:-/root/venv}"
 LOG_FILE="${LOG_FILE:-/root/vllm-ft9b.log}"
 
@@ -31,7 +37,7 @@ if [ ! -f "$KEY_FILE" ]; then
   chmod 600 "$KEY_FILE"
 fi
 
-log "starting: model=$MODEL_DIR served-as=$SERVED_NAME port=$PORT max-model-len=$MAX_MODEL_LEN"
+log "starting: model=$MODEL_DIR served-as=$SERVED_NAME port=$PORT max-model-len=$MAX_MODEL_LEN gpu-mem-util=$GPU_MEM_UTIL"
 
 pkill -f '[v]llm serve.*'"$SERVED_NAME" 2>/dev/null && sleep 3 || true
 
@@ -46,6 +52,8 @@ VLLM_API_KEY="$(cat "$KEY_FILE")" nohup "$VENV/bin/vllm" serve "$MODEL_DIR" \
   --host 0.0.0.0 --port "$PORT" \
   --served-model-name "$SERVED_NAME" \
   --max-model-len "$MAX_MODEL_LEN" \
+  --gpu-memory-utilization "$GPU_MEM_UTIL" \
+  --max-num-seqs "$MAX_NUM_SEQS" \
   --enable-auto-tool-choice --tool-call-parser qwen3_xml \
   --reasoning-parser qwen3 --trust-remote-code --enable-prefix-caching \
   > "$LOG_FILE" 2>&1 &
