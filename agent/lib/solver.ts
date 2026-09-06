@@ -5,7 +5,7 @@
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
 import { wrapLanguageModel, type LanguageModel, type LanguageModelMiddleware } from "ai";
 
-export const SOLVER: "deepseek" | "ornith" = "ornith";
+export const SOLVER: "deepseek" | "ornith" | "teacher" = "teacher";
 
 // The #13 worker found that at temperature 0 Ornith's reasoning never
 // terminates on non-trivial prompts (it burns the whole output budget and
@@ -21,6 +21,14 @@ const DEEPSEEK_MODEL_ID = "deepseek/deepseek-v4-flash-0731";
 // Model name is a literal, per the hard rules. Only the endpoint and key
 // come from the environment.
 const ORNITH_MODEL_NAME = "Ornith-1.5-35B-A3B";
+
+// Issue #16: a stronger model over OpenRouter, used to generate teacher
+// trajectories for the 9B fine-tune on the 58 tasks DeepSeek fails. Chosen
+// from `GET /models` on 2026-09-05 in preference order (claude-sonnet-4.5 >
+// gpt-5 > gemini-2.5-pro); all three were available, so this is
+// claude-sonnet-4.5. Literal per the hard rules; only the key comes from the
+// environment.
+const TEACHER_MODEL_NAME = "anthropic/claude-sonnet-4.5";
 
 // eve strips modelOptions.providerOptions before a provider-authored
 // LanguageModel reaches the wire (it only forwards that field for a gateway
@@ -61,10 +69,23 @@ function ornithModel(): LanguageModel {
   });
 }
 
+function teacherModel(): LanguageModel {
+  const apiKey = process.env.OPEN_ROUTER_API_KEY;
+  if (!apiKey) throw new Error("OPEN_ROUTER_API_KEY is not set");
+  const openrouter = createOpenAICompatible({
+    name: "openrouter",
+    baseURL: "https://openrouter.ai/api/v1",
+    apiKey,
+  });
+  return openrouter(TEACHER_MODEL_NAME);
+}
+
 // Returns the gateway id string for DeepSeek, or a provider-authored
-// LanguageModel for Ornith, depending on SOLVER.
+// LanguageModel for Ornith or the teacher, depending on SOLVER.
 export function solverModel(): string | LanguageModel {
-  return SOLVER === "ornith" ? ornithModel() : DEEPSEEK_MODEL_ID;
+  if (SOLVER === "ornith") return ornithModel();
+  if (SOLVER === "teacher") return teacherModel();
+  return DEEPSEEK_MODEL_ID;
 }
 
 // The label scripts/traces.ts records as "model" on every trace line. A
@@ -73,7 +94,9 @@ export function solverModel(): string | LanguageModel {
 // it did when agent.ts held one literal; this keeps it a single source
 // instead of a second hand-copied constant in traces.ts.
 export function solverModelLabel(): string {
-  return SOLVER === "ornith" ? ORNITH_MODEL_NAME : DEEPSEEK_MODEL_ID;
+  if (SOLVER === "ornith") return ORNITH_MODEL_NAME;
+  if (SOLVER === "teacher") return TEACHER_MODEL_NAME;
+  return DEEPSEEK_MODEL_ID;
 }
 
 // Ornith is not in the AI Gateway catalog, so eve cannot resolve its context
@@ -86,6 +109,14 @@ export function solverModelLabel(): string {
 // 65536 backend then rejects. Edit by hand alongside ORNITH_BASE_URL.
 // Undefined for DeepSeek lets eve keep resolving that from the Gateway
 // catalog as before.
+// OpenRouter lists a 1M-token context for claude-sonnet-4.5, but that is the
+// beta 1M-context tier; the standard tier this call uses is 200k. Stating
+// the smaller number only costs some headroom before eve compacts, while
+// the larger one would let a request through that the standard tier then
+// rejects. Undefined for DeepSeek lets eve keep resolving that from the
+// Gateway catalog as before; ornith keeps its own value.
 export function solverContextWindowTokens(): number | undefined {
-  return SOLVER === "ornith" ? 65536 : undefined;
+  if (SOLVER === "ornith") return 65536;
+  if (SOLVER === "teacher") return 200_000;
+  return undefined;
 }
