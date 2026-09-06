@@ -242,6 +242,83 @@ and `Ornith-1.5-9B-base`, thinking off, temperature 0, `--max-model-len 32768`. 
 about 45 seconds per task at 16 concurrent requests per box. Remember to set `SOLVER`
 back to `"deepseek"` afterward: that default is what the scored submission runs.
 
+## How we approached it and why
+
+The work ran as a GitHub-issue pipeline (issues #1 to #16, epic in #10): a coordinator
+session planned and dispatched one worker agent per issue, and a separate verifier
+agent that had not written the code ran each issue's checklist before it closed.
+Evidence for every step is in the issue comments. In order:
+
+1. **A harness before any model work.** SpreadsheetBench answers are formulas
+   computed from the sheet's own data, so a single model call cannot verify itself.
+   We built an eve agent with four tools: `load_task` (instruction, answer range, a
+   first dump of the workbook), sandboxed `bash` with openpyxl, `recalc_and_read`
+   (headless LibreOffice recalculation plus a read of the answer range and any error
+   cells, the same recalculation the grader does), and `submit`. The sandbox is a
+   Docker image with no network. The batch runner writes the judge-facing artifacts
+   (predictions, outputs, per-step traces with token counts, run log). Baseline r01:
+   0.800.
+
+2. **Make the runs honest and repeatable.** Traces from session events, a resume
+   mode, a per-task timeout with an init-workbook fallback, container cleanup, and a
+   packaging script that copies a run to the repo root and fills the scores block.
+   r03 at 0.855 was packaged and clone-tested early so a valid submission existed at
+   every later step.
+
+3. **Chase the noise.** From the evening on, the model's first turn came back as
+   garbled tool-call text on 15 to 35 percent of tasks. We replayed eve's exact request
+   237 times through the SDK's non-streaming path with no reproduction, then through
+   the streaming path with 4 garbles in 30, and confirmed eve always streams a session
+   turn with no client switch. The fix that held was retrying a task in a fresh session
+   up to three attempts, plus a runner bug fix: a failed attempt's fallback file had
+   been making a second garbled attempt look like a success.
+
+4. **Stand up Ornith.** The 35B was served with vLLM on Runcrate H100s (the serve
+   script, the CUDA compat and PATH workarounds, and a local least-loaded proxy over
+   several boxes are all in `scripts/runcrate/`). Two findings shaped everything
+   after: Ornith's structured output ignores `response_format` schemas, and at
+   temperature 0 its thinking never terminates unless `enable_thinking` is off.
+
+5. **Measure the 35B where it matters.** As the solver it kept 70 of 100 tasks
+   DeepSeek passes and scored 31 of 80 on the failure set against DeepSeek's 44. As a
+   critic before submit it scored 28 of 61 wrong-value tasks against 33 without it.
+   Both closed as negative with the tables in #12 and #13.
+
+6. **Find out what a 95 percent target would need.** Across three runs of the same
+   code, 300 tasks always pass, 41 sometimes, 33 never; majority voting over runs
+   scores no better than one run and the union of every run tops out at 0.9425. So
+   selection cannot reach 95; only fixing systematic failures can. An analysis of the
+   33 never-pass tasks (`docs/research/never-pass-33.md`) found nine caused by skipping
+   the recalculation or submitting over an error cell and eight by output conventions.
+   Two changes followed: `submit` now recalculates and refuses on unconfirmed error
+   cells, and the instructions stop telling the model to fill every cell and spell out
+   how labels, display strings and numbers must be written. Verified on the 33 plus a
+   40-task control, then a full run: r09 at 0.8725, the packaged final.
+
+7. **Train the 9B.** Ornith AI publishes weights and serving recipes but not its
+   self-improvement loop, so we reproduced the one stage we could: rejection-sampled
+   supervised fine-tuning. The 282 passing DeepSeek trajectories became multi-turn
+   tool-call samples (goldens only chose which trajectories to keep, offline); 58
+   failures and 60 passes were held out. LoRA rank 32 on all projections, two epochs,
+   97 minutes on one H100 (`scripts/ft9b/`). Claude Sonnet 4.5 was run through the
+   same harness on the 58 failures and solved 31, giving teacher trajectories for a
+   second round.
+
+8. **Measure the 9B honestly.** On the 118 held-out tasks the base 9B scores 45, the
+   fine-tune 29, DeepSeek 82; on the full 400 the fine-tune scores 0.34. It quits
+   earlier than the base model, which points at the truncated tool outputs and the
+   single trajectory shape in the training set. SpreadsheetBench 2, a separate and
+   harder set with zero overlap, was converted as a true held-out check: DeepSeek 52 of
+   282, both 9B variants context-limited at 32k. A second training round with the
+   teacher data was prepared but not run before the deadline.
+
+Why this order: the harness and a safe packaged final came first because nothing else
+is gradable without them; the noise investigation came next because it was costing
+more points than any model choice; the 35B experiments established what the untuned
+family could do before spending GPU hours on training; the ceiling analysis decided
+where the remaining effort could pay; and the 9B was trained last, with held-out
+subsets and an unrelated benchmark, so its number means something.
+
 ## Findings
 
 The Ornith 9B fine-tune is the target; the other rows exist to build and measure it.
