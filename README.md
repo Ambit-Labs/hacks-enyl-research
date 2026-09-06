@@ -28,11 +28,11 @@ this repo does both, with a fine-tuned Ornith 1.5 9B as the goal.
 An eve agent takes a task, dumps the workbook, writes openpyxl code in a sandbox,
 recalculates through headless LibreOffice, reads the answer range back, and submits a
 workbook that a second recalculation has checked. That harness is model-agnostic. The
-committed default solver is `deepseek/deepseek-v4-flash-0731` via the Vercel AI
-Gateway; it produced the scored artifacts in this repo, pass rate 0.8725 on the 400,
-and the 282 passing trajectories we fine-tuned Ornith 1.5 9B on with LoRA. The 9B,
-tuned and untuned, is served on private vLLM endpoints (details supplied to the judges
-separately) and the harness runs against it by flipping one constant. Every other model
+scored solver is Ornith 1.5 9B, LoRA fine-tuned by us on 282 passing trajectories and
+served on a private vLLM endpoint (details supplied to the judges separately); it is
+the default, and `SOLVER` in `.env.local` selects another without a code change. The
+trajectories came from the same harness driven by `deepseek/deepseek-v4-flash-0731`
+via the Vercel AI Gateway, which reached 0.8725 on the 400 and is the comparison line. Every other model
 we touched, Ornith 35B as solver and as critic, Claude Sonnet 4.5 as a teacher, was in
 support of that goal: building and debugging the harness, finding the systematic
 failure classes, generating training data, and measuring where the 9B stands on
@@ -129,9 +129,8 @@ URL, health, and request counters. The proxy never logs keys or request bodies.
 
 ### Running your task set on the Ornith 9B endpoint
 
-DeepSeek is the default solver and the one the scored submission runs on. This
-section is for anyone who wants to point the same harness at our Ornith 9B endpoints
-instead, on their own task set.
+The fine-tuned Ornith 9B is the default solver and the scored submission. No code
+change is needed.
 
 1. Add these to `.env.local` (values supplied privately, never committed to the
    repo):
@@ -139,18 +138,17 @@ instead, on their own task set.
    FT9B_BASE_URL=<endpoint>/v1
    FT9B_API_KEY=<key>
    ```
-   For the untuned base model instead of the fine-tune, also add
-   `FT9B_BASE_URL_BASE=<endpoint>/v1` (it reuses `FT9B_API_KEY`).
-2. In `agent/lib/solver.ts`, set `SOLVER = "ft9b"` for the fine-tune, or `"base9b"`
-   for the base model.
-3. `npm run build`
-4. `npm run predict -- --dataset-dir <their set> --out-dir <out>`
-5. `scripts/score.sh <out>`
+   For the untuned base model instead of the fine-tune, set `SOLVER=base9b` and
+   `FT9B_BASE_URL_BASE=<endpoint>/v1` with that box's key in `FT9B_API_KEY`. For the
+   DeepSeek solver that drove development, set `SOLVER=deepseek` and an
+   `AI_GATEWAY_API_KEY`.
+2. `npm run build`
+3. `npm run predict -- --dataset-dir <their set> --out-dir <out>`
+4. `scripts/score.sh <out>`
 
 The endpoint serves an OpenAI-compatible API over vLLM, model names `Ornith-9B-ft`
 and `Ornith-1.5-9B-base`, thinking off, temperature 0, `--max-model-len 32768`. Expect
-about 45 seconds per task at 16 concurrent requests per box. Remember to set `SOLVER`
-back to `"deepseek"` afterward: that default is what the scored submission runs.
+about 45 seconds per task at 16 concurrent requests per box.
 
 ### Running with the default DeepSeek solver
 
