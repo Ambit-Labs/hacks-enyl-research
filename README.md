@@ -410,6 +410,20 @@ early-stopping check, which did not fit before the deadline.
 
 ### Findings
 
+Why the 9B did not complete all 400 tasks. Every task has a prediction line and an
+output workbook, because the runner retries a failed attempt in a fresh session up to
+three times and then copies the untouched init workbook as the output; those fallback
+tasks score zero. In the fine-tuned 9B's run, 233 tasks reached `submit`, 135 never
+did after three attempts, and 32 ended in a model error. Three causes, in order of
+weight: the model stops calling tools and answers in prose before submitting, which
+the fine-tune made worse (median 8 to 9 tool calls against the base model's 13 to 14,
+and against DeepSeek's habit of finishing the loop); workbook dumps and long tool
+outputs overflow the 32768-token context the 9B is served with, so large sheets fail on
+the first call; and a share of first turns come back as malformed tool-call text
+rather than a structured call, which a small model does more often than DeepSeek. The
+untuned base 9B shows the same pattern at a lower rate, which is why it scores higher
+on the held-out sets.
+
 The Ornith 9B fine-tune is the target; the other rows exist to build and measure it.
 DeepSeek drove the harness to 0.8725 and supplied the 282 passing trajectories the 9B
 was trained on; Claude Sonnet 4.5 solved 31 of DeepSeek's 58 failures to provide
