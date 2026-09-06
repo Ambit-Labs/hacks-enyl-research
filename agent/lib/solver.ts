@@ -1,11 +1,22 @@
-// Solver model selection. "deepseek" is the committed default and the one
-// the scored submission runs on. Switch by hand for a research run; the run
-// directory name (e.g. runs/r02-ornith-fails) records which value produced
-// it. No env var chooses the model at runtime, per the project's hard rules.
+// Solver model selection. "ft9b", the fine-tuned Ornith 1.5 9B on a private
+// vLLM endpoint (FT9B_BASE_URL, FT9B_API_KEY), is the default and the scored
+// submission; no code change is needed to keep it. Other solvers are picked
+// with SOLVER=<value> in .env.local (read once when the agent module loads),
+// so nobody has to edit this file. "deepseek" drove the harness development. The run directory
+// name (e.g. runs/r02-ornith-fails) records which value produced it.
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
 import { wrapLanguageModel, type LanguageModel, type LanguageModelMiddleware } from "ai";
 
-export const SOLVER: "deepseek" | "ornith" | "teacher" | "ft9b" | "base9b" = "deepseek";
+export type SolverName = "deepseek" | "ornith" | "teacher" | "ft9b" | "base9b";
+const SOLVER_NAMES: readonly SolverName[] = ["deepseek", "ornith", "teacher", "ft9b", "base9b"];
+
+function readSolver(): SolverName {
+  const raw = (process.env.SOLVER ?? "ft9b").trim();
+  if ((SOLVER_NAMES as readonly string[]).includes(raw)) return raw as SolverName;
+  throw new Error(`SOLVER=${raw} is not one of ${SOLVER_NAMES.join(", ")}`);
+}
+
+export const SOLVER: SolverName = readSolver();
 
 // The #13 worker found that at temperature 0 Ornith's reasoning never
 // terminates on non-trivial prompts (it burns the whole output budget and

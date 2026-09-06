@@ -34,12 +34,12 @@ task gets a scored prediction even when the model never finishes.
 
 ## Models
 
-- `deepseek/deepseek-v4-flash-0731`, called through the Vercel AI Gateway. Fixed as a
-  literal in `agent/agent.ts`, not read from an environment variable.
-- The scored submission uses DeepSeek only. As research, we also trained a LoRA
-  fine-tune of Ornith 9B on our own passing trajectories and evaluated it (0.34 on
-  the 400, see the README's Findings section); it is served on a private endpoint
-  supplied separately and was never used for the scored outputs.
+- Scored submission: Ornith 1.5 9B (`ornith-ai/Ornith-1.5-9B`), LoRA fine-tuned by us
+  on 282 of our own passing agent trajectories and served on a private vLLM endpoint
+  (details supplied separately). Selected by default; `SOLVER` in `.env.local` picks
+  another solver without a code change.
+- `deepseek/deepseek-v4-flash-0731` via the Vercel AI Gateway drove the harness
+  development and produced the training trajectories (0.8725 on the 400, see README).
 
 ## Scores on the 400
 
@@ -50,10 +50,10 @@ task gets a scored prediction even when the model never finishes.
   "graded": 400,
   "missing": 0,
   "errors": 0,
-  "pass_rate": 0.8725,
-  "cell_accuracy": 0.8123,
-  "pass_rate_cell_level": 0.8945,
-  "pass_rate_sheet_level": 0.824
+  "pass_rate": 0.34,
+  "cell_accuracy": 0.4337,
+  "pass_rate_cell_level": 0.32,
+  "pass_rate_sheet_level": 0.384
 }
 ```
 <!-- scores:end -->
