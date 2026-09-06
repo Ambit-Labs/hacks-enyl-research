@@ -1,11 +1,11 @@
-// Solver model selection for the A/B experiment in issue #12. Edited by hand
-// per experiment; the run directory name (e.g. runs/r02-ornith-fails) records
-// which value produced it. No env var chooses the model at runtime, per the
-// project's hard rules.
+// Solver model selection. "deepseek" is the committed default and the one
+// the scored submission runs on. Switch by hand for a research run; the run
+// directory name (e.g. runs/r02-ornith-fails) records which value produced
+// it. No env var chooses the model at runtime, per the project's hard rules.
 import { createOpenAICompatible } from "@ai-sdk/openai-compatible";
 import { wrapLanguageModel, type LanguageModel, type LanguageModelMiddleware } from "ai";
 
-export const SOLVER: "deepseek" | "ornith" | "teacher" | "ft9b" | "base9b" = "teacher";
+export const SOLVER: "deepseek" | "ornith" | "teacher" | "ft9b" | "base9b" = "deepseek";
 
 // The #13 worker found that at temperature 0 Ornith's reasoning never
 // terminates on non-trivial prompts (it burns the whole output budget and

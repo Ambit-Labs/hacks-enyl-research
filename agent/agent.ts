@@ -3,8 +3,10 @@ import { solverModel, solverContextWindowTokens } from "#lib/solver.ts";
 
 export default defineAgent({
   // Fixed in code, never from an env var. SOLVER in agent/lib/solver.ts
-  // picks DeepSeek (AI Gateway id) or Ornith (provider-authored model) for
-  // the #12 A/B experiment.
+  // defaults to "deepseek", which resolves to the literal model id
+  // "deepseek/deepseek-v4-flash-0731" via the AI Gateway; that default is
+  // also the scored submission. SOLVER can be switched by hand to a
+  // research solver (ornith, teacher, ft9b, base9b) for a local run.
   model: solverModel(),
   // Ornith is not in the AI Gateway catalog, so eve needs this set by hand;
   // undefined for DeepSeek keeps the existing Gateway-catalog resolution.

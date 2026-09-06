@@ -32,8 +32,8 @@ Copy `.env.example` to `.env.local` and fill in:
 - `AI_GATEWAY_API_KEY`: the primary path for a headless run against the Vercel AI
   Gateway. Verified: `npm run predict` and `scripts/score.sh` both ran clean on this
   key alone, with no `VERCEL_OIDC_TOKEN` in the environment.
-- `VERCEL_OIDC_TOKEN`: an alternative for a linked Vercel project, pulled with
-  `vercel env pull`. Set this only if you don't have an `AI_GATEWAY_API_KEY`.
+- `VERCEL_OIDC_TOKEN`: also verified headless, for a linked Vercel project, pulled
+  with `vercel env pull`. Set this only if you don't have an `AI_GATEWAY_API_KEY`.
 - `SB_DATASET_DIR`: path to the SpreadsheetBench dataset directory (a `dataset.json`
   plus per-task init workbooks and prompts).
 - `EVE_TRACES_CONTENT`, `EVE_TRACES_RETAIN_COUNT`, `EVE_TRACES_MAX_AGE_MS`,
@@ -208,11 +208,92 @@ On startup it generates a random bearer key and writes it to `runs/boxes/proxy.e
 same way you would a single box's env file. `GET /healthz` lists each backend's base
 URL, health, and request counters. The proxy never logs keys or request bodies.
 
+## Running your task set on the Ornith 9B endpoint
+
+DeepSeek is the default solver and the one the scored submission runs on. This
+section is for anyone who wants to point the same harness at our Ornith 9B endpoints
+instead, on their own task set.
+
+1. Add these to `.env.local` (values supplied privately, never committed to the
+   repo):
+   ```
+   FT9B_BASE_URL=<endpoint>/v1
+   FT9B_API_KEY=<key>
+   ```
+   For the untuned base model instead of the fine-tune, also add
+   `FT9B_BASE_URL_BASE=<endpoint>/v1` (it reuses `FT9B_API_KEY`).
+2. In `agent/lib/solver.ts`, set `SOLVER = "ft9b"` for the fine-tune, or `"base9b"`
+   for the base model.
+3. `npm run build`
+4. `npm run predict -- --dataset-dir <their set> --out-dir <out>`
+5. `scripts/score.sh <out>`
+
+The endpoint serves an OpenAI-compatible API over vLLM, model names `Ornith-9B-ft`
+and `Ornith-1.5-9B-base`, thinking off, temperature 0, `--max-model-len 32768`. Expect
+about 45 seconds per task at 16 concurrent requests per box. Remember to set `SOLVER`
+back to `"deepseek"` afterward: that default is what the scored submission runs.
+
+## Findings
+
+Every model in this row ran through the same tool loop and instructions as the
+DeepSeek final, so the columns compare solvers, not harnesses. "SB 400 full" is our
+verified 400-task set; "80 r01 failures" and "58/60 held-out" are fixed id subsets
+from issues #12 and #16; "100 DeepSeek passes" is a random sample of tasks DeepSeek
+solved; "SB2" is SpreadsheetBench 2, a harder, unrelated held-out benchmark (see
+`docs/research/spreadsheetbench2.md`).
+
+| Model | SB 400 full | 80 r01 failures | 100 DeepSeek passes | 58 held-out failures | 60 held-out passes | SB2 282 | SB2 sample 100 |
+|---|---|---|---|---|---|---|---|
+| DeepSeek r09 | 349 | 44 | 95 | 24 | 58 | 52 | 15 |
+| Claude Sonnet 4.5 | not run | not run | not run | 31 | not run | not run | not run |
+| Ornith 35B | not run | 31 | 70 | not run | not run | not run | not run |
+| Ornith 9B base | BASE9B_FULL400 | 14 | not run | 14 | 31 | not run | 3 |
+| Ornith 9B fine-tuned | 136 (0.34) | 11 | not run | 11 | 18 | not run | 3 |
+
+What raised the score: issue #16 found that 7 of the 33 tasks DeepSeek never passed
+skipped the pre-submit recalculation check entirely, and 2 more submitted over a
+reported Excel error. Moving that check into `submit` itself, tightening the
+"fill every cell" instruction so empty answers stay empty, and adding rules against
+retyping labels or writing display-formatted values as the wrong type took the pass
+rate from 0.855 (r03) to 0.8725 (r09, the final).
+
+Why Ornith 35B lost: on the 100 tasks DeepSeek passed, Ornith kept only 70 (issue
+#12). It also needed a much larger context window (one task in five overflowed
+65k tokens) and, with thinking on, took about four minutes of model time per task.
+No split by instruction type came out net positive, so DeepSeek stayed the solver.
+
+Why the critic didn't help: issue #13 tried a second-model verdict from Ornith 35B
+before submit. Against the current code on the same ids, it won 5-7 tasks and lost
+10, a wash with a slight negative lean, for the cost of an added call and an Ornith
+dependency. The code is kept on branch `worktree-agent-a0dd7ce4b05acbe15`, unmerged.
+
+How the 9B fine-tune was done and why it hurt: issue #16 took the passing trajectories
+from a DeepSeek run and LoRA fine-tuned Ornith-1.5-9B on them, then re-served the
+adapter over vLLM. On the full 400 it scored 0.34 against DeepSeek's 0.8725,
+submitting only 233 of 400 tasks versus DeepSeek's 398. On the held-out set it did
+worse than the untuned base model it started from on both passes and failures, and
+gave up earlier (median 8-9 tool calls versus the base model's 13-14): fine-tuning on
+a few hundred trajectories from a much stronger model taught it to imitate the shape
+of a solve, not to solve, and it abandons harder tasks sooner than before the
+fine-tune. See `docs/research/ornith-self-improvement.md` for the full plan and the
+data-size caveats that predicted this outcome going in.
+
+SB2 as a held-out check: since SB2 shares no tasks with our 400, it separates real
+solving ability from anything specific to the 400-task set. DeepSeek's 52/282 (18.4%)
+sits in the expected range for a small model against the paper's published 34.89%
+best score. Both 9B models scored 3/100 on a sample, not because they're worse
+reasoners on this benchmark specifically, but because SB2's workbooks routinely
+exceed the 32768-token context these endpoints are configured with, so nearly 90% of
+tasks never reach a `submit` call.
+
 ## Things to look at
 
 - `runs/*/failures.md`: per-run failure breakdowns from past dev and verification
   runs, one row per failed task with its bucket and model-call count.
-- The GitHub issue trail (#1 through #8): the order the pieces were built in, what each
-  verifier checked, and the gaps found along the way (a resume bug fixed in #5, a
-  `tool.result.status` mislabeling fixed in #6, the 12-call budget edge and the
-  trace prompt gap noted above).
+- The GitHub issue trail (#1 through #16): the order the pieces were built in, what
+  each verifier checked, and the gaps found along the way (a resume bug fixed in #5, a
+  `tool.result.status` mislabeling fixed in #6, the 12-call budget edge and the trace
+  prompt gap noted above, the Ornith and critic A/B tests in #12 and #13, the
+  never-pass-33 analysis and the 9B fine-tune in #16).
+- `docs/research/never-pass-33.md`, `docs/research/ornith-self-improvement.md`,
+  `docs/research/spreadsheetbench2.md`: the research behind the findings above.
