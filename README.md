@@ -319,6 +319,62 @@ family could do before spending GPU hours on training; the ceiling analysis deci
 where the remaining effort could pay; and the 9B was trained last, with held-out
 subsets and an unrelated benchmark, so its number means something.
 
+## How the Ornith 9B was fine-tuned
+
+Scripts: `scripts/ft9b/build_sft.py` (dataset), `scripts/ft9b/train_lora.py`
+(training and merge), `scripts/ft9b/serve_ft9b.sh` (vLLM), `scripts/ft9b/README.md`
+(step by step). Research notes with sources: `docs/research/ornith-self-improvement.md`.
+
+**Base model.** `ornith-ai/Ornith-1.5-9B` on Hugging Face, a dense Qwen3.5-lineage
+model (`Qwen3_5ForConditionalGeneration`), MIT license, loaded with
+`AutoModelForCausalLM` in bf16.
+
+**Training data.** The r08 DeepSeek run over the 400 verified tasks (0.855). The 342
+tasks it passed were split with seed 20260906 into 282 for training and 60 held out;
+the 58 tasks it failed were all held out. Each training trajectory became one
+multi-turn chat sample in the OpenAI messages format: the system message is
+`agent/instructions.md` as the solver saw it; the user message is `task <id>`; each
+assistant turn carries the tool calls as structured `tool_calls` with the arguments as
+JSON objects (Ornith's chat template iterates over them and throws on strings); each
+tool turn carries the tool output, truncated to 6000 characters with a marker; the last
+assistant turn is the `submit` call and the sample ends at its result. The tool
+definitions (name, description, JSON schema) ride along in a `tools` field so the chat
+template renders them the way vLLM does at inference. Golden workbooks were never read;
+they only decided, offline through the evaluator, which trajectories were kept. 282
+samples, 5.2 million characters, longest 60k characters, none over the 100k cap.
+
+**Recipe.** LoRA through PEFT on all linear projections, rank 32, alpha 64, dropout
+0.05. bf16, max sequence length 32768, no packing, 2 epochs, learning rate 1e-4 with
+cosine decay, batch 1 with 8 steps of gradient accumulation (72 optimizer steps),
+gradient checkpointing. Loss on assistant tokens only: TRL's `assistant_only_loss` is a
+silent no-op here because Ornith's chat template has no generation tags, so the script
+probes for that at runtime and falls back to a collator that masks everything between
+each `<|im_start|>assistant` marker and the next role marker. Stack on the box: plain
+TRL 1.12, transformers 5.16, PEFT 0.20, torch 2.14 with the CUDA 13 compat libraries
+on a CUDA 12.8 driver; Unsloth was tried first and dropped because it silently
+downgraded the stack. One H100, 97 minutes. Train loss 0.58 to 0.55, mean token
+accuracy about 0.90 at the end. The adapter (1.6 GB) was merged into bf16 weights
+(17 GB) and served with vLLM 0.28 using the same parsers as the 35B
+(`--tool-call-parser qwen3_xml --reasoning-parser qwen3`), thinking disabled through
+`chat_template_kwargs`, temperature 0, context 32768.
+
+**Evaluation protocol.** Never on the training ids. Three views: the 60 held-out passes
+(retention), the 58 held-out failures (gain), and SpreadsheetBench 2, an unrelated set
+with zero overlap. The untuned 9B was served alongside on the same box as the control.
+The full-400 number for the fine-tune includes its own training tasks and is reported
+only because it was asked for; the held-out columns are the ones that mean something.
+
+**Result and reading.** Held-out: base 45 of 118, fine-tune 29, DeepSeek 82. Full 400:
+0.34. The fine-tune quits earlier than the base (median 8 to 9 tool calls against 13 to
+14) and fails to submit more often (135 of 400 never submitted). Two features of the
+data explain that better than the hyperparameters: tool outputs were truncated to 6000
+characters, so the model learned to act on less evidence than it will see at inference,
+and every sample has the same shape and ends in `submit`, which teaches the form of the
+loop more than the reasoning inside it. The 30 trajectories Claude Sonnet 4.5 produced
+on the 58 failures (`scripts/ft9b/build_teacher_sft.py` on the `ornith-solver-12`
+branch) were built for a second round with full tool outputs and a held-out
+early-stopping check, which did not fit before the deadline.
+
 ## Findings
 
 The Ornith 9B fine-tune is the target; the other rows exist to build and measure it.
