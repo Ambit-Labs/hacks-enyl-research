@@ -1,29 +1,55 @@
 # enyl-research
 
-An agent that solves SpreadsheetBench tasks: given a workbook and a plain-English
-instruction, it edits the workbook so the answer cells hold the correct result. Built on
-[eve](https://eve.dev), a framework for durable AI agents; a judge running this repo does
-not need to know eve to build the sandbox image, run predictions, or score the result.
-The goal of this project is a fine-tuned Ornith 1.5 9B that solves the benchmark
-end to end. The 9B is served on a private OpenAI-compatible endpoint supplied to the
-judges separately, and the section "Running your task set on the Ornith 9B endpoint"
-below shows how to score a task set against it. The scored artifacts in this repo come
-from the same harness driven by `deepseek/deepseek-v4-flash-0731` via the Vercel AI
-Gateway, which is the committed default solver (a literal in `agent/lib/solver.ts`,
-not an environment variable): the DeepSeek runs produced the trajectories the 9B was
-trained on and the numbers every other model is compared against. Everything done with
-the other models (DeepSeek, Claude Sonnet 4.5, Ornith 35B) was in support of that goal:
-building the harness, finding the failure classes, generating training data, and
-measuring where the 9B stands.
+Ambit Labs' entry to the Ylookup x Encode hackathon on SpreadsheetBench, built on
+[eve](https://eve.dev). Organizers' brief, dataset and evaluator:
+[ylookup/encode-hackathon/research](https://github.com/ylookup/encode-hackathon/tree/main/research).
 
-## Requirements
+## Problem
+
+This repo is our entry to the Ylookup x Encode hackathon. The task, dataset, evaluator
+and submission rules are the organizers' and live at
+[ylookup/encode-hackathon/research](https://github.com/ylookup/encode-hackathon/tree/main/research):
+SpreadsheetBench, 400 real spreadsheet tasks from Excel forums. Each task is a workbook
+and a plain-English instruction; the deliverable is the workbook with the answer cells
+filled in. Only the cells in `answer_position` on `answer_sheet` are graded, after a
+LibreOffice recalculation, against a golden workbook, with the official
+SpreadsheetBench normalisation. Judges run `npm run predict` on tasks we have not seen
+and score the answer cells with the evaluator vendored unchanged in `eval/`. Golden
+values may never appear in prompts, traces or seeds.
+
+The hard part is that most answers are formulas computed from the sheet's own data,
+which a model cannot verify from the prompt text alone: it has to write and run code
+against the workbook, recalculate, and read back what the grader will read. The
+organizers invited two routes, fine-tune a model or build a harness around one, and
+this repo does both, with a fine-tuned Ornith 1.5 9B as the goal.
+
+## What it does and how it solves it
+
+An eve agent takes a task, dumps the workbook, writes openpyxl code in a sandbox,
+recalculates through headless LibreOffice, reads the answer range back, and submits a
+workbook that a second recalculation has checked. That harness is model-agnostic. The
+committed default solver is `deepseek/deepseek-v4-flash-0731` via the Vercel AI
+Gateway; it produced the scored artifacts in this repo, pass rate 0.8725 on the 400,
+and the 282 passing trajectories we fine-tuned Ornith 1.5 9B on with LoRA. The 9B,
+tuned and untuned, is served on private vLLM endpoints (details supplied to the judges
+separately) and the harness runs against it by flipping one constant. Every other model
+we touched, Ornith 35B as solver and as critic, Claude Sonnet 4.5 as a teacher, was in
+support of that goal: building and debugging the harness, finding the systematic
+failure classes, generating training data, and measuring where the 9B stands on
+held-out tasks and on SpreadsheetBench 2. The honest result so far: the fine-tuned 9B
+scores 29 of 118 held-out tasks against 45 for the untuned base and 82 for DeepSeek,
+and the section on the fine-tune explains why and what the next round changes.
+
+## Setup and requirements
+
+### Requirements
 
 - Node 24 or newer
 - Docker, or a host that can run [microsandbox](https://github.com/microsandbox/microsandbox) — the agent's code-execution sandbox needs one of the two
 - LibreOffice, only if you want to run `scripts/score.sh` or `scripts/failures.py` outside the sandbox image (the vendored evaluator recalculates formulas with `soffice`)
 - [`uv`](https://docs.astral.sh/uv/), to run the vendored evaluator in `eval/`
 
-## Setup
+### Install
 
 ```bash
 npm ci
@@ -49,7 +75,84 @@ Copy `.env.example` to `.env.local` and fill in:
   `EVE_TRACES_MAX_TOTAL_BYTES`: eve's own trace-retention knobs, unrelated to scoring;
   leave unset unless you need them.
 
-## Run
+### Serving the Ornith 9B on Runcrate
+
+This is how the 9B is run. The judges receive a live endpoint from us; to reproduce it
+from scratch, the same scripts create and serve a box.
+
+`scripts/runcrate/serve_ornith.sh` serves an Ornith model on a Runcrate H100 as an
+OpenAI-compatible vLLM endpoint. It was written for the 35B (`ornith-ai/Ornith-1.5-35B-A3B-FP8`,
+used in #12 and #13); the 9B boxes reuse its `create` step and the setup and serve recipe
+in `scripts/ft9b/` (base weights `ornith-ai/Ornith-1.5-9B`, merged fine-tune at
+`/root/merged`, served names `Ornith-9B-ft` and `Ornith-1.5-9B-base`, port 8000,
+`--tool-call-parser qwen3_xml --reasoning-parser qwen3 --max-model-len 32768`). Not
+needed for the default `npm run predict`, which stays on `deepseek/deepseek-v4-flash-0731`.
+
+```bash
+scripts/runcrate/serve_ornith.sh create   # pick the cheapest single H100, launch the box
+scripts/runcrate/serve_ornith.sh setup    # install uv + a venv + vLLM, pull the weights,
+                                           #   plus a CUDA forward-compat fix (see below)
+scripts/runcrate/serve_ornith.sh serve    # start vLLM, wait for readiness, write .env.local, smoke test
+scripts/runcrate/serve_ornith.sh status   # print the public IP and a one-line curl check
+scripts/runcrate/serve_ornith.sh delete   # terminate the box
+```
+Named `ornith-serve`; delete it once nothing needs it (bills per minute, currently
+$2.75/hr in montreal-canada-2). `serve` writes `ORNITH_API_KEY` and `ORNITH_BASE_URL`
+to `.env.local`; the key is generated locally, sent over `rc ssh` stdin, and never
+appears anywhere else. `ubuntu-inference`'s driver only speaks CUDA 12.8, older than
+pip's default vLLM/torch build, so `setup` installs `cuda-compat-13-0` for forward
+compatibility, and `serve` puts the venv on `PATH` so flashinfer's first-request JIT
+can find `ninja`.
+
+`create` to `serve`-ready took about 22 minutes end to end. `ornith-serve` is running
+now, left up for #12 and #13.
+
+#### Load-balancing across multiple Ornith boxes
+
+`scripts/runcrate/ornith_proxy.mjs` is a dependency-free reverse proxy that spreads
+requests across every box that has an env file in `runs/boxes/*.env`, so the agent can
+keep pointing at one `ORNITH_BASE_URL` while boxes come and go. It re-reads
+`runs/boxes/*.env` every 30s (no restart needed for a new box), health-checks each
+backend's `/models` on the same interval, and load-balances chat completions and
+`/models` with least-in-flight-requests, retrying once on a different backend if a
+connection fails before any response byte arrives. Streaming responses are piped
+through unbuffered, so SSE works normally.
+
+```bash
+nohup node scripts/runcrate/ornith_proxy.mjs > runs/boxes/proxy.log 2>&1 &
+```
+
+On startup it generates a random bearer key and writes it to `runs/boxes/proxy.env`
+(mode 0600) alongside `ORNITH_BASE_URL=http://127.0.0.1:8100/v1`; source that file the
+same way you would a single box's env file. `GET /healthz` lists each backend's base
+URL, health, and request counters. The proxy never logs keys or request bodies.
+
+### Running your task set on the Ornith 9B endpoint
+
+DeepSeek is the default solver and the one the scored submission runs on. This
+section is for anyone who wants to point the same harness at our Ornith 9B endpoints
+instead, on their own task set.
+
+1. Add these to `.env.local` (values supplied privately, never committed to the
+   repo):
+   ```
+   FT9B_BASE_URL=<endpoint>/v1
+   FT9B_API_KEY=<key>
+   ```
+   For the untuned base model instead of the fine-tune, also add
+   `FT9B_BASE_URL_BASE=<endpoint>/v1` (it reuses `FT9B_API_KEY`).
+2. In `agent/lib/solver.ts`, set `SOLVER = "ft9b"` for the fine-tune, or `"base9b"`
+   for the base model.
+3. `npm run build`
+4. `npm run predict -- --dataset-dir <their set> --out-dir <out>`
+5. `scripts/score.sh <out>`
+
+The endpoint serves an OpenAI-compatible API over vLLM, model names `Ornith-9B-ft`
+and `Ornith-1.5-9B-base`, thinking off, temperature 0, `--max-model-len 32768`. Expect
+about 45 seconds per task at 16 concurrent requests per box. Remember to set `SOLVER`
+back to `"deepseek"` afterward: that default is what the scored submission runs.
+
+### Running with the default DeepSeek solver
 
 ```bash
 npm run predict -- --dataset-dir /path/to/data --out-dir /path/to/out
@@ -86,7 +189,7 @@ Run one `npm run predict` at a time per host. eve's dev server is a per-project
 singleton, and a second concurrent run can end up sharing it with the first, producing
 stray output files.
 
-## Score
+### Scoring
 
 ```bash
 scripts/score.sh <run-dir>
@@ -114,7 +217,27 @@ characters of its instruction. It only reports on tasks present in
 task this run never attempted isn't a bucket-worthy failure. Plain `python3` works
 too if `openpyxl` is already on your `PATH`.
 
-## Packaging the final run
+### Where outputs land
+
+Under `<out-dir>`:
+
+- `predictions.jsonl`: one `{"id", "output", "status"}` line per task. `status` is
+  `ok` or the failure text.
+- `outputs/<id>.xlsx`: the predicted workbook for each task.
+- `traces/<id>.jsonl`: one line per model call for that task, written from the
+  session's event stream: `step`, `model`, `prompt`, `response`, `input_tokens`,
+  `output_tokens`, `latency_ms`, `error`, and, on a step that called a tool, `tool`,
+  `tool_input`, `tool_output`. Any field over 20,000 characters is cut with a trailing
+  `[truncated]`. `prompt` holds the literal first user message (`task <id>`) on step
+  1 only; later steps leave it empty, because the full model input for those calls —
+  system instructions, history, tool results — is assembled server-side per call and
+  never reaches the client event stream. A trace-writing failure is logged to stderr
+  and `run.log` but never fails the task.
+- `run.log`: the full stdout/stderr of the run.
+- `results.json`: written by `scripts/score.sh`, the evaluator's summary block.
+- `failures.md`: written by `scripts/failures.py`.
+
+### Packaging a run as the final
 
 ```bash
 scripts/finalize.sh <run-dir>
@@ -137,27 +260,7 @@ exceed 100 MB with the `git lfs track` command to run.
 Run this once, right before submitting, against the run directory that holds the final
 scored 400-task run.
 
-## Where outputs land
-
-Under `<out-dir>`:
-
-- `predictions.jsonl`: one `{"id", "output", "status"}` line per task. `status` is
-  `ok` or the failure text.
-- `outputs/<id>.xlsx`: the predicted workbook for each task.
-- `traces/<id>.jsonl`: one line per model call for that task, written from the
-  session's event stream: `step`, `model`, `prompt`, `response`, `input_tokens`,
-  `output_tokens`, `latency_ms`, `error`, and, on a step that called a tool, `tool`,
-  `tool_input`, `tool_output`. Any field over 20,000 characters is cut with a trailing
-  `[truncated]`. `prompt` holds the literal first user message (`task <id>`) on step
-  1 only; later steps leave it empty, because the full model input for those calls —
-  system instructions, history, tool results — is assembled server-side per call and
-  never reaches the client event stream. A trace-writing failure is logged to stderr
-  and `run.log` but never fails the task.
-- `run.log`: the full stdout/stderr of the run.
-- `results.json`: written by `scripts/score.sh`, the evaluator's summary block.
-- `failures.md`: written by `scripts/failures.py`.
-
-## If the sandbox backend isn't detected
+### If the sandbox backend isn't detected
 
 `agent/sandbox/sandbox.ts` uses eve's `defaultBackend()`, which tries, in order: Vercel
 Sandbox (only on hosted Vercel), Docker, microsandbox, then a plain-bash fallback with
@@ -172,77 +275,9 @@ backends are configured to pull `enyl-sandbox:local`, and neither exists until t
 build runs. If neither backend is available, `npm run predict` will fail when the agent
 tries to run code in the sandbox, not at startup.
 
-## Optional: Ornith on Runcrate
+## The approach
 
-Infra for #12 and #13: serves `ornith-ai/Ornith-1.5-35B-A3B-FP8` on a Runcrate H100 as
-an OpenAI-compatible endpoint. Not needed for `npm run predict`, which stays fixed on
-`deepseek/deepseek-v4-flash-0731`.
-
-```bash
-scripts/runcrate/serve_ornith.sh create   # pick the cheapest single H100, launch the box
-scripts/runcrate/serve_ornith.sh setup    # install uv + a venv + vLLM, pull the weights,
-                                           #   plus a CUDA forward-compat fix (see below)
-scripts/runcrate/serve_ornith.sh serve    # start vLLM, wait for readiness, write .env.local, smoke test
-scripts/runcrate/serve_ornith.sh status   # print the public IP and a one-line curl check
-scripts/runcrate/serve_ornith.sh delete   # terminate the box
-```
-Named `ornith-serve`; delete it once nothing needs it (bills per minute, currently
-$2.75/hr in montreal-canada-2). `serve` writes `ORNITH_API_KEY` and `ORNITH_BASE_URL`
-to `.env.local`; the key is generated locally, sent over `rc ssh` stdin, and never
-appears anywhere else. `ubuntu-inference`'s driver only speaks CUDA 12.8, older than
-pip's default vLLM/torch build, so `setup` installs `cuda-compat-13-0` for forward
-compatibility, and `serve` puts the venv on `PATH` so flashinfer's first-request JIT
-can find `ninja`.
-
-`create` to `serve`-ready took about 22 minutes end to end. `ornith-serve` is running
-now, left up for #12 and #13.
-
-### Load-balancing across multiple Ornith boxes
-
-`scripts/runcrate/ornith_proxy.mjs` is a dependency-free reverse proxy that spreads
-requests across every box that has an env file in `runs/boxes/*.env`, so the agent can
-keep pointing at one `ORNITH_BASE_URL` while boxes come and go. It re-reads
-`runs/boxes/*.env` every 30s (no restart needed for a new box), health-checks each
-backend's `/models` on the same interval, and load-balances chat completions and
-`/models` with least-in-flight-requests, retrying once on a different backend if a
-connection fails before any response byte arrives. Streaming responses are piped
-through unbuffered, so SSE works normally.
-
-```bash
-nohup node scripts/runcrate/ornith_proxy.mjs > runs/boxes/proxy.log 2>&1 &
-```
-
-On startup it generates a random bearer key and writes it to `runs/boxes/proxy.env`
-(mode 0600) alongside `ORNITH_BASE_URL=http://127.0.0.1:8100/v1`; source that file the
-same way you would a single box's env file. `GET /healthz` lists each backend's base
-URL, health, and request counters. The proxy never logs keys or request bodies.
-
-## Running your task set on the Ornith 9B endpoint
-
-DeepSeek is the default solver and the one the scored submission runs on. This
-section is for anyone who wants to point the same harness at our Ornith 9B endpoints
-instead, on their own task set.
-
-1. Add these to `.env.local` (values supplied privately, never committed to the
-   repo):
-   ```
-   FT9B_BASE_URL=<endpoint>/v1
-   FT9B_API_KEY=<key>
-   ```
-   For the untuned base model instead of the fine-tune, also add
-   `FT9B_BASE_URL_BASE=<endpoint>/v1` (it reuses `FT9B_API_KEY`).
-2. In `agent/lib/solver.ts`, set `SOLVER = "ft9b"` for the fine-tune, or `"base9b"`
-   for the base model.
-3. `npm run build`
-4. `npm run predict -- --dataset-dir <their set> --out-dir <out>`
-5. `scripts/score.sh <out>`
-
-The endpoint serves an OpenAI-compatible API over vLLM, model names `Ornith-9B-ft`
-and `Ornith-1.5-9B-base`, thinking off, temperature 0, `--max-model-len 32768`. Expect
-about 45 seconds per task at 16 concurrent requests per box. Remember to set `SOLVER`
-back to `"deepseek"` afterward: that default is what the scored submission runs.
-
-## How we approached it and why
+### How we approached it and why
 
 The work ran as a GitHub-issue pipeline (issues #1 to #16, epic in #10): a coordinator
 session planned and dispatched one worker agent per issue, and a separate verifier
@@ -319,7 +354,7 @@ family could do before spending GPU hours on training; the ceiling analysis deci
 where the remaining effort could pay; and the 9B was trained last, with held-out
 subsets and an unrelated benchmark, so its number means something.
 
-## How the Ornith 9B was fine-tuned
+### How the Ornith 9B was fine-tuned
 
 Scripts: `scripts/ft9b/build_sft.py` (dataset), `scripts/ft9b/train_lora.py`
 (training and merge), `scripts/ft9b/serve_ft9b.sh` (vLLM), `scripts/ft9b/README.md`
@@ -375,7 +410,7 @@ on the 58 failures (`scripts/ft9b/build_teacher_sft.py` on the `ornith-solver-12
 branch) were built for a second round with full tool outputs and a held-out
 early-stopping check, which did not fit before the deadline.
 
-## Findings
+### Findings
 
 The Ornith 9B fine-tune is the target; the other rows exist to build and measure it.
 DeepSeek drove the harness to 0.8725 and supplied the 282 passing trajectories the 9B
@@ -432,7 +467,7 @@ reasoners on this benchmark specifically, but because SB2's workbooks routinely
 exceed the 32768-token context these endpoints are configured with, so nearly 90% of
 tasks never reach a `submit` call.
 
-## Things to look at
+### Things to look at
 
 - `runs/*/failures.md`: per-run failure breakdowns from past dev and verification
   runs, one row per failed task with its bucket and model-call count.
