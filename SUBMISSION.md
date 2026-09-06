@@ -15,13 +15,18 @@ the instruction, the answer range, and a first-look dump of the workbook's sheet
 formulas; a sandboxed bash tool lets the model write and run Python against the
 workbook with openpyxl; `recalc_and_read` runs the workbook through headless
 LibreOffice and reads back the answer range plus any error-valued cells, so the model
-checks its own work before submitting; `submit` validates the workbook and writes it
-to the output directory. The sandbox is a Docker (or microsandbox) container built
+checks its own work before submitting; `submit` recalculates the workbook once more, refuses if an answer cell
+holds an unconfirmed Excel error, then validates the workbook and writes it to the
+output directory. The sandbox is a Docker (or microsandbox) container built
 from a repo-root Dockerfile with no network egress, since everything the model needs
 is already in the image. We chose an agent over a single model call because
 SpreadsheetBench answers usually need a formula computed from the sheet's own data,
 not a value guessed from the prompt text, and only code execution plus a recalculation
-step can verify that. Instructions cap the agent at 12 tool calls; most tasks finish well under that, but
+step can verify that. Instructions also tell the model that an empty cell can be the right answer, to
+copy labels byte for byte from the workbook, and to write display strings as text
+and numbers as numbers, because the grader compares cached values exactly. A
+failed attempt is retried in a fresh session up to two more times, which absorbs
+the model's occasional garbled first turn. Instructions cap the agent at 12 tool calls; most tasks finish well under that, but
 some hit the ceiling and submit their best attempt rather than looping further.
 Traces capture every tool call and token count, with one known gap: the full model
 input for calls after the first is assembled server-side and never reaches the client
