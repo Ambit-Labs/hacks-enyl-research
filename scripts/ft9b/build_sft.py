@@ -193,7 +193,7 @@ def build_sample(task_id: str, trace_lines: list[dict], system_prompt: str) -> d
         call_counter += 1
         call_id = f"call_{call_counter}"
         tool_input = line.get("tool_input")
-        arguments = json.dumps(tool_input if tool_input is not None else {})
+        arguments = tool_input if tool_input is not None else {}
         messages.append(
             {
                 "role": "assistant",
