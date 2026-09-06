@@ -44,10 +44,10 @@ one the model never finishes.
   "graded": 400,
   "missing": 0,
   "errors": 0,
-  "pass_rate": 0.855,
-  "cell_accuracy": 0.8273,
-  "pass_rate_cell_level": 0.8764,
-  "pass_rate_sheet_level": 0.808
+  "pass_rate": 0.8725,
+  "cell_accuracy": 0.8123,
+  "pass_rate_cell_level": 0.8945,
+  "pass_rate_sheet_level": 0.824
 }
 ```
 <!-- scores:end -->
