@@ -28,8 +28,9 @@ this repo does both, with a fine-tuned Ornith 1.5 9B as the goal.
 An eve agent takes a task, dumps the workbook, writes openpyxl code in a sandbox,
 recalculates through headless LibreOffice, reads the answer range back, and submits a
 workbook that a second recalculation has checked. That harness is model-agnostic. The
-scored solver is Ornith 1.5 9B, LoRA fine-tuned by us on 282 passing trajectories and
-served on a private vLLM endpoint (details supplied to the judges separately); it is
+scored solver is Ornith 1.5 9B, LoRA fine-tuned by us on 282 passing trajectories
+([weights on Hugging Face](https://huggingface.co/ciocan/ornith-1.5-9b-spreadsheetbench-merged))
+and served on a private vLLM endpoint (details supplied to the judges separately); it is
 the default, and `SOLVER` in `.env.local` selects another without a code change. The
 trajectories came from the same harness driven by `deepseek/deepseek-v4-flash-0731`
 via the Vercel AI Gateway, which reached 0.8725 on the 400 and is the comparison line. Every other model
@@ -354,9 +355,13 @@ subsets and an unrelated benchmark, so its number means something.
 
 ### How the Ornith 9B was fine-tuned
 
-Scripts: `scripts/ft9b/build_sft.py` (dataset), `scripts/ft9b/train_lora.py`
-(training and merge), `scripts/ft9b/serve_ft9b.sh` (vLLM), `scripts/ft9b/README.md`
-(step by step). Research notes with sources: `docs/research/ornith-self-improvement.md`.
+Weights on Hugging Face: the LoRA adapter at
+[ciocan/ornith-1.5-9b-spreadsheetbench-lora](https://huggingface.co/ciocan/ornith-1.5-9b-spreadsheetbench-lora)
+(242 MB, with the model card) and the merged bf16 model at
+[ciocan/ornith-1.5-9b-spreadsheetbench-merged](https://huggingface.co/ciocan/ornith-1.5-9b-spreadsheetbench-merged)
+(17 GB, what the endpoint serves). Scripts: `scripts/ft9b/build_sft.py` (dataset),
+`scripts/ft9b/train_lora.py` (training and merge), `scripts/ft9b/serve_ft9b.sh`
+(vLLM), `scripts/ft9b/README.md` (step by step). Research notes with sources: `docs/research/ornith-self-improvement.md`.
 
 **Base model.** `ornith-ai/Ornith-1.5-9B` on Hugging Face, a dense Qwen3.5-lineage
 model (`Qwen3_5ForConditionalGeneration`), MIT license, loaded with

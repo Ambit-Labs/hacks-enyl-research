@@ -35,7 +35,9 @@ task gets a scored prediction even when the model never finishes.
 ## Models
 
 - Scored submission: Ornith 1.5 9B (`ornith-ai/Ornith-1.5-9B`), LoRA fine-tuned by us
-  on 282 of our own passing agent trajectories and served on a private vLLM endpoint
+  on 282 of our own passing agent trajectories, weights at
+  https://huggingface.co/ciocan/ornith-1.5-9b-spreadsheetbench-merged (adapter:
+  ciocan/ornith-1.5-9b-spreadsheetbench-lora), served on a private vLLM endpoint
   (details supplied separately). Selected by default; `SOLVER` in `.env.local` picks
   another solver without a code change.
 - `deepseek/deepseek-v4-flash-0731` via the Vercel AI Gateway drove the harness
